@@ -97,8 +97,8 @@
 <meta name="description" content="高并发相关基础知识特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  高并发相关基础知识0、工具1、基础概念2、CPU多级缓存3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)4、乱序执行优化5、JAVA 内存模型(JMM)6、Java内存模型-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（二）：高并发相关基础知识 - MESI - JMM">
-<meta property="og:url" content="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（二）：高并发相关基础知识-MESI-JMM/index.html">
-<meta property="og:site_name" content="九层之台，起于累土">
+<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（二）：高并发相关基础知识-MESI-JMM.html">
+<meta property="og:site_name" content="不正经斯基的博客">
 <meta property="og:description" content="高并发相关基础知识特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  高并发相关基础知识0、工具1、基础概念2、CPU多级缓存3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)4、乱序执行优化5、JAVA 内存模型(JMM)6、Java内存模型-">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180405170329143?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
@@ -145,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（二）：高并发相关基础知识-MESI-JMM/"/>
+  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（二）：高并发相关基础知识-MESI-JMM.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（二）：高并发相关基础知识 - MESI - JMM | 九层之台，起于累土</title>
+  <title>Java并发编程入门与高并发面试（二）：高并发相关基础知识 - MESI - JMM | 不正经斯基的博客</title>
   
 
 
@@ -188,12 +188,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">九层之台，起于累土</span>
+        <span class="site-title">不正经斯基的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">老不正经斯基</h1>
+        <h1 class="site-subtitle" itemprop="description">九层之台 起于累土</h1>
       
   </div>
 
@@ -319,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（二）：高并发相关基础知识-MESI-JMM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（二）：高并发相关基础知识-MESI-JMM.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -328,7 +328,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="九层之台，起于累土">
+      <meta itemprop="name" content="不正经斯基的博客">
     </span>
 
     
@@ -544,6 +544,35 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Li Wen WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Li Wen Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -558,7 +587,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（一）：详细讲解-网站性能测试工具Apache-Bench/" rel="next" title="Java并发编程入门与高并发面试（一）：详细讲解 - 网站性能测试工具Apache Bench">
+              <a href="/Java并发编程入门与高并发面试（一）：详细讲解-网站性能测试工具Apache-Bench.html" rel="next" title="Java并发编程入门与高并发面试（一）：详细讲解 - 网站性能测试工具Apache Bench">
                 <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（一）：详细讲解 - 网站性能测试工具Apache Bench
               </a>
             
@@ -568,7 +597,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（三）：线程安全性-原子性-CAS（CAS的ABA问题）/" rel="prev" title="Java并发编程入门与高并发面试（三）：线程安全性-原子性-CAS（CAS的ABA问题）">
+              <a href="/Java并发编程入门与高并发面试（三）：线程安全性-原子性-CAS（CAS的ABA问题）.html" rel="prev" title="Java并发编程入门与高并发面试（三）：线程安全性-原子性-CAS（CAS的ABA问题）">
                 Java并发编程入门与高并发面试（三）：线程安全性-原子性-CAS（CAS的ABA问题） <i class="fa fa-chevron-right"></i>
               </a>
             

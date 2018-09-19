@@ -97,8 +97,8 @@
 <meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   new Thread的弊端  线程池的好处  线程池类图  线程池核心类-ThreadPoolExecutor  使用Executor创建线程池">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（十四）：线程池 Executor">
-<meta property="og:url" content="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（十四）：线程池-Executor/index.html">
-<meta property="og:site_name" content="九层之台，起于累土">
+<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（十四）：线程池-Executor.html">
+<meta property="og:site_name" content="不正经斯基的博客">
 <meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   new Thread的弊端  线程池的好处  线程池类图  线程池核心类-ThreadPoolExecutor  使用Executor创建线程池">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180505135807405?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（十四）：线程池-Executor/"/>
+  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（十四）：线程池-Executor.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（十四）：线程池 Executor | 九层之台，起于累土</title>
+  <title>Java并发编程入门与高并发面试（十四）：线程池 Executor | 不正经斯基的博客</title>
   
 
 
@@ -183,12 +183,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">九层之台，起于累土</span>
+        <span class="site-title">不正经斯基的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">老不正经斯基</h1>
+        <h1 class="site-subtitle" itemprop="description">九层之台 起于累土</h1>
       
   </div>
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（十四）：线程池-Executor/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（十四）：线程池-Executor.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -323,7 +323,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="九层之台，起于累土">
+      <meta itemprop="name" content="不正经斯基的博客">
     </span>
 
     
@@ -565,6 +565,35 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Li Wen WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Li Wen Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -579,7 +608,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（十三）：并发容器J-U-C-组件FutureTask、ForkJoin、BlockingQueue/" rel="next" title="Java并发编程入门与高并发面试（十三）：并发容器J.U.C -- 组件FutureTask、ForkJoin、BlockingQueue">
+              <a href="/Java并发编程入门与高并发面试（十三）：并发容器J-U-C-组件FutureTask、ForkJoin、BlockingQueue.html" rel="next" title="Java并发编程入门与高并发面试（十三）：并发容器J.U.C -- 组件FutureTask、ForkJoin、BlockingQueue">
                 <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（十三）：并发容器J.U.C -- 组件FutureTask、ForkJoin、BlockingQueue
               </a>
             
@@ -589,7 +618,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（十五）：线程死锁/" rel="prev" title="Java并发编程入门与高并发面试（十五）：线程死锁">
+              <a href="/Java并发编程入门与高并发面试（十五）：线程死锁.html" rel="prev" title="Java并发编程入门与高并发面试（十五）：线程死锁">
                 Java并发编程入门与高并发面试（十五）：线程死锁 <i class="fa fa-chevron-right"></i>
               </a>
             

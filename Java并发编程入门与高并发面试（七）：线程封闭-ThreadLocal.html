@@ -94,17 +94,21 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、什么是线程封闭？它其实就是把对象封装到一个线程里，只有一个线程能看到这个对象，那么这个对象就算不是线程安全的，也不会出现任何线程安全方面的问题。 线程封闭技术有一个常见的应用：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map">
-<meta property="og:url" content="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map/index.html">
-<meta property="og:site_name" content="九层之台，起于累土">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta property="og:title" content="Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal">
+<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（七）：线程封闭-ThreadLocal.html">
+<meta property="og:site_name" content="不正经斯基的博客">
+<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、什么是线程封闭？它其实就是把对象封装到一个线程里，只有一个线程能看到这个对象，那么这个对象就算不是线程安全的，也不会出现任何线程安全方面的问题。 线程封闭技术有一个常见的应用：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-15T01:46:56.807Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20180411204833840?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180411203503274?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180411203545536?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-09-15T01:44:11.528Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta name="twitter:title" content="Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal">
+<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、什么是线程封闭？它其实就是把对象封装到一个线程里，只有一个线程能看到这个对象，那么这个对象就算不是线程安全的，也不会出现任何线程安全方面的问题。 线程封闭技术有一个常见的应用：">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180411204833840?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
 
@@ -133,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map/"/>
+  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（七）：线程封闭-ThreadLocal.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map | 九层之台，起于累土</title>
+  <title>Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal | 不正经斯基的博客</title>
   
 
 
@@ -176,12 +180,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">九层之台，起于累土</span>
+        <span class="site-title">不正经斯基的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">老不正经斯基</h1>
+        <h1 class="site-subtitle" itemprop="description">九层之台 起于累土</h1>
       
   </div>
 
@@ -307,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（七）：线程封闭-ThreadLocal.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -316,7 +320,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="九层之台，起于累土">
+      <meta itemprop="name" content="不正经斯基的博客">
     </span>
 
     
@@ -324,7 +328,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map</h2>
+          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal</h2>
         
 
         <div class="post-meta">
@@ -336,7 +340,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:19+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:15+08:00">
                 2018-09-14
               </time>
             
@@ -352,7 +356,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:46:56+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:44:11+08:00">
                 2018-09-15
               </time>
             
@@ -416,60 +420,34 @@
       
         <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
 <hr>
-<ul>
-<li>概述<ul>
-<li><ul>
-<li>ArrayList –&gt; CopyOnWriteArrayList</li>
-<li>HashSet –&gt; CopyOnWriteArraySet</li>
-<li>TreeSet –&gt; ConcurrentSkipListSet</li>
-<li>HashMap –&gt; ConcurrentHashMap</li>
-<li>TreeMap –&gt; ConcurrentSkipListMap</li>
-<li>安全共享对象策略</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<h4 id="1、什么是线程封闭？"><a href="#1、什么是线程封闭？" class="headerlink" title="1、什么是线程封闭？"></a>1、什么是线程封闭？</h4><p>它其实就是把对象封装到一个线程里，只有一个线程能看到这个对象，那么这个对象就算不是线程安全的，也不会出现任何线程安全方面的问题。</p>
+<p>线程封闭技术有一个常见的应用：</p>
 <a id="more"></a>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Java并发容器JUC是三个单词的缩写。是JDK下面的一个包名。即Java.util.concurrency。<br>上一节我们介绍了ArrayList、HashMap、HashSet对应的同步容器保证其线程安全，这节我们介绍一下其对应的并发容器。</p>
-<h5 id="ArrayList-–-gt-CopyOnWriteArrayList"><a href="#ArrayList-–-gt-CopyOnWriteArrayList" class="headerlink" title="ArrayList –&gt; CopyOnWriteArrayList"></a>ArrayList –&gt; CopyOnWriteArrayList</h5><p>CopyOnWriteArrayList 写操作时复制，当有新元素添加到集合中时，从原有的数组中拷贝一份出来，然后在新的数组上作写操作，将原来的数组指向新的数组。整个数组的add操作都是在锁的保护下进行的，防止并发时复制多份副本。读操作是在原数组中进行，不需要加锁</p>
+<blockquote>
+<p>数据库连接对应jdbc的Connection对象，Connection对象在实现的时候并没有对线程安全做太多的处理，jdbc的规范里也没有要求Connection对象必须是线程安全的。<br>实际在服务器应用程序中，线程从连接池获取了一个Connection对象，使用完再把Connection对象返回给连接池，由于大多数请求都是由单线程采用同步的方式来处理的，并且在Connection对象返回之前，连接池不会将它分配给其他线程。因此这种连接管理模式处理请求时隐含的将Connection对象封闭在线程里面，这样我们使用的connection对象虽然本身不是线程安全的，但是它通过线程封闭也做到了线程安全。</p>
+</blockquote>
+<h4 id="2、线程封闭的种类："><a href="#2、线程封闭的种类：" class="headerlink" title="2、线程封闭的种类："></a>2、线程封闭的种类：</h4><p>（1）Ad-hoc 线程封闭：</p>
+<p>Ad-hoc线程封闭是指，维护线程封闭性的职责完全由程序实现来承担。Ad-hoc线程封闭是非常脆弱的，因为没有任何一种语言特性，例如可见性修饰符或局部变量，能将对象封闭到目标线程上。事实上，对线程封闭对象（例如，GUI应用程序中的可视化组件或数据模型等）的引用通常保存在公有变量中。</p>
+<p>（2）堆栈封闭：<br>堆栈封闭其实就是方法中定义局部变量。不存在并发问题。多个线程访问一个方法的时候，方法中的局部变量都会被拷贝一份到线程的栈中（Java内存模型），所以局部变量是不会被多个线程所共享的。</p>
+<p>（3）ThreadLocal线程封闭：<br>它是一个特别好的封闭方法，其实ThreadLocal内部维护了一个map,map的key是每个线程的名称，而map的value就是我们要封闭的对象。ThreadLocal提供了get、set、remove方法，每个操作都是基于当前线程的，所以它是线程安全的。<br><img src="https://img-blog.csdn.net/20180411204833840?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//ThreadLocal的get方法源码</span><br><span class="line">public T get() &#123;</span><br><span class="line">    Thread t = Thread.currentThread();//当前线程对象</span><br><span class="line">    ThreadLocalMap map = getMap(t);//get操作基于当前线程</span><br><span class="line">    if (map != null) &#123;</span><br><span class="line">        ThreadLocalMap.Entry e = map.getEntry(this);</span><br><span class="line">        if (e != null) &#123;</span><br><span class="line">            @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">            T result = (T)e.value;</span><br><span class="line">            return result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return setInitialValue();</span><br><span class="line">&#125;1234567891011121314</span><br></pre></td></tr></table></figure>
+<h4 id="3、Springboot框架中使用ThreadLocal"><a href="#3、Springboot框架中使用ThreadLocal" class="headerlink" title="3、Springboot框架中使用ThreadLocal"></a>3、Springboot框架中使用ThreadLocal</h4><p>说明：<br>1、这里不描述springboot框架的搭建过程，假定你已经有了一个可以正常运行的springboot简单项目。<br>2、我们这里的例子使用的是springboot框架中的filter与Interceptor来使用threadLocal，对于Springboot的filter与Interceptor不做过多的讲解。</p>
+<p>coding：<br>（1）创建一个包含ThreadLocal对象的类，并提供基础的添加、删除、获取操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class RequestHolder &#123;</span><br><span class="line"></span><br><span class="line">    private final static ThreadLocal&lt;Long&gt; requestHolder = new ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public static void add(Long id) &#123;</span><br><span class="line">        requestHolder.set(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Long getId() &#123;</span><br><span class="line">        return requestHolder.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void remove() &#123;</span><br><span class="line">        requestHolder.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;12345678910111213141516</span><br></pre></td></tr></table></figure>
+<p>（2）创建Filter，在Filter中对ThreadLocal做添加操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class HttpFilter implements Filter &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void init(FilterConfig filterConfig) throws ServletException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void doFilter(ServletRequest servletRequest,</span><br><span class="line">                         ServletResponse servletResponse,</span><br><span class="line">                         FilterChain filterChain) throws IOException, ServletException &#123;</span><br><span class="line">        HttpServletRequest request = (HttpServletRequest) servletRequest;</span><br><span class="line">        //打印当前线程的ID与请求路径</span><br><span class="line">        log.info(&quot;do filter, &#123;&#125;, &#123;&#125;&quot;, Thread.currentThread().getId(), request.getServletPath());</span><br><span class="line">        //将当前线程ID添加到ThreadLocal中</span><br><span class="line">        RequestHolder.add(Thread.currentThread().getId());</span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void destroy() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;123456789101112131415161718192021222324</span><br></pre></td></tr></table></figure>
+<p>（3)创建controller，在controller中获取到filter中存入的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/threadLocal&quot;)</span><br><span class="line">public class ThreadLocalController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/test&quot;)</span><br><span class="line">    @ResponseBody</span><br><span class="line">    public Long test() &#123;</span><br><span class="line">        return RequestHolder.getId();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">1234567891011</span><br></pre></td></tr></table></figure>
+<p>（4）创建拦截器Interceptor，在拦截器中删除刚才添加的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class HttpInterceptor extends HandlerInterceptorAdapter &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,</span><br><span class="line">                             Object handler) throws Exception &#123;</span><br><span class="line">        log.info(&quot;preHandle&quot;);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, </span><br><span class="line">                            Object handler, Exception ex) throws Exception &#123;</span><br><span class="line">        RequestHolder.remove();</span><br><span class="line">        log.info(&quot;afterCompletion&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">123456789101112131415161718</span><br></pre></td></tr></table></figure>
+<p>（5）在springboot的启动类Application中注册filter与Interceptor。要继承WebMvcConfigurerAdapter 类。（我这里的启动类名为：ConcurrencyApplication）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">public class ConcurrencyApplication extends WebMvcConfigurerAdapter &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(ConcurrencyApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //注册过滤器</span><br><span class="line">    @Bean</span><br><span class="line">    public FilterRegistrationBean httpFilter() &#123;</span><br><span class="line">        FilterRegistrationBean registrationBean = new FilterRegistrationBean();</span><br><span class="line">        registrationBean.setFilter(new HttpFilter());</span><br><span class="line">        //设置要过滤的url</span><br><span class="line">        registrationBean.addUrlPatterns(&quot;/threadLocal/*&quot;);</span><br><span class="line">        return registrationBean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //注册拦截器</span><br><span class="line">    @Override</span><br><span class="line">    public void addInterceptors(InterceptorRegistry registry) &#123;</span><br><span class="line">        registry.addInterceptor(new HttpInterceptor()).addPathPatterns(&quot;/**&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;1234567891011121314151617181920212223</span><br></pre></td></tr></table></figure>
+<p>（6）运行程序，访问 <a href="http://localhost:8080/threadLocal/test" target="_blank" rel="noopener">http://localhost:8080/threadLocal/test</a> 结果如下：</p>
 <ul>
-<li>缺点：<br>1.写操作时复制消耗内存，如果元素比较多时候，容易导致young gc 和full gc。<br>2.不能用于实时读的场景.由于复制和add操作等需要时间，故读取时可能读到旧值。<br>能做到最终一致性，但无法满足实时性的要求，更适合读多写少的场景。<br>如果无法知道数组有多大，或者add,set操作有多少，慎用此类,在大量的复制副本的过程中很容易出错。</li>
-<li>设计思想：<br>1.读写分离<br>2.最终一致性<br>3.使用时另外开辟空间，防止并发冲突</li>
-<li>源码分析</li>
+<li>页面中打印出我们当前的线程ID：<br><img src="https://img-blog.csdn.net/20180411203503274?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></li>
+<li>查看控制台：<br><img src="https://img-blog.csdn.net/20180411203545536?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>从控制台的打印日志我们可以看出，首先filter过滤器先获取到我们当前的线程ID为40、我们当前的请求路径为/threadLocal/test ，紧接着进入了我们的Interceptor的preHandle方法中，打印了preHandle字样。最后进入了我们的Interceptor的afterCompletion方法，删除了我们之前存入的值，并打印了afterCompletion字样。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public CopyOnWriteArrayList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    Object[] elements;//使用对象数组来承载数据</span><br><span class="line">    if (c.getClass() == CopyOnWriteArrayList.class)</span><br><span class="line">        elements = ((CopyOnWriteArrayList&lt;?&gt;)c).getArray();</span><br><span class="line">    else &#123;</span><br><span class="line">        elements = c.toArray();</span><br><span class="line">        // c.toArray might (incorrectly) not return Object[] (see 6260652)</span><br><span class="line">        if (elements.getClass() != Object[].class)</span><br><span class="line">            elements = Arrays.copyOf(elements, elements.length, Object[].class);</span><br><span class="line">    &#125;</span><br><span class="line">    setArray(elements);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加数据方法</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    final ReentrantLock lock = this.lock;//使用重入锁，保证线程安全</span><br><span class="line">    lock.lock();</span><br><span class="line">    try &#123;</span><br><span class="line">        Object[] elements = getArray();//获取当前数组数据</span><br><span class="line">        int len = elements.length;</span><br><span class="line">        Object[] newElements = Arrays.copyOf(elements, len + 1);//复制当前数组并且扩容+1</span><br><span class="line">        newElements[len] = e;//将要添加的数据放入新数组</span><br><span class="line">        setArray(newElements);//将原来的数组指向新的数组</span><br><span class="line">        return true;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//获取数据方法，与普通的get没什么差别</span><br><span class="line">private E get(Object[] a, int index) &#123;</span><br><span class="line">    return (E) a[index];</span><br><span class="line">&#125;12345678910111213141516171819202122232425262728293031323334</span><br></pre></td></tr></table></figure>
-<h5 id="HashSet-–-gt-CopyOnWriteArraySet"><a href="#HashSet-–-gt-CopyOnWriteArraySet" class="headerlink" title="HashSet –&gt; CopyOnWriteArraySet"></a>HashSet –&gt; CopyOnWriteArraySet</h5><ul>
-<li>它是线程安全的，底层实现使用的是CopyOnWriteArrayList，因此它也适用于大小很小的set集合，只读操作远大于可变操作。因为他需要copy整个数组，所以包括add、remove、set它的开销相对于大一些。</li>
-<li>迭代器不支持可变的remove操作。使用迭代器遍历的时候速度很快，而且不会与其他线程发生冲突。</li>
-<li>源码分析：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public CopyOnWriteArraySet() &#123;</span><br><span class="line">    al = new CopyOnWriteArrayList&lt;E&gt;();//底层使用CopyOnWriteArrayList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加元素方法，基本实现原理与CopyOnWriteArrayList相同</span><br><span class="line">private boolean addIfAbsent(E e, Object[] snapshot) &#123;</span><br><span class="line">    final ReentrantLock lock = this.lock;</span><br><span class="line">    lock.lock();</span><br><span class="line">    try &#123;</span><br><span class="line">        Object[] current = getArray();</span><br><span class="line">        int len = current.length;</span><br><span class="line">        if (snapshot != current) &#123;//添加了元素去重操作</span><br><span class="line">            // Optimize for lost race to another addXXX operation</span><br><span class="line">            int common = Math.min(snapshot.length, len);</span><br><span class="line">            for (int i = 0; i &lt; common; i++)</span><br><span class="line">                if (current[i] != snapshot[i] &amp;&amp; eq(e, current[i]))</span><br><span class="line">                    return false;</span><br><span class="line">            if (indexOf(e, current, common, len) &gt;= 0)</span><br><span class="line">                    return false;</span><br><span class="line">        &#125;</span><br><span class="line">        Object[] newElements = Arrays.copyOf(current, len + 1);</span><br><span class="line">        newElements[len] = e;</span><br><span class="line">        setArray(newElements);</span><br><span class="line">        return true;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;1234567891011121314151617181920212223242526272829</span><br></pre></td></tr></table></figure>
-<h5 id="TreeSet-–-gt-ConcurrentSkipListSet"><a href="#TreeSet-–-gt-ConcurrentSkipListSet" class="headerlink" title="TreeSet –&gt; ConcurrentSkipListSet"></a>TreeSet –&gt; ConcurrentSkipListSet</h5><p>它是JDK6新增的类，同TreeSet一样支持自然排序，并且可以在构造的时候自己定义比较器。</p>
-<ul>
-<li>同其他set集合，是基于map集合的（基于ConcurrentSkipListMap），在多线程环境下，里面的contains、add、remove操作都是线程安全的。</li>
-<li>多个线程可以安全的并发的执行插入、移除、和访问操作。但是对于批量操作addAll、removeAll、retainAll和containsAll并不能保证以原子方式执行，原因是addAll、removeAll、retainAll底层调用的还是contains、add、remove方法，只能保证每一次的执行是原子性的，代表在单一执行操纵时不会被打断，但是不能保证每一次批量操作都不会被打断。在使用批量操作时，还是需要手动加上同步操作的。</li>
-<li>不允许使用null元素的，它无法可靠的将参数及返回值与不存在的元素区分开来。</li>
-<li>源码分析：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public ConcurrentSkipListSet() &#123;</span><br><span class="line">    m = new ConcurrentSkipListMap&lt;E,Object&gt;();//使用ConcurrentSkipListMap实现</span><br><span class="line">&#125;1234</span><br></pre></td></tr></table></figure>
-<h5 id="HashMap-–-gt-ConcurrentHashMap"><a href="#HashMap-–-gt-ConcurrentHashMap" class="headerlink" title="HashMap –&gt; ConcurrentHashMap"></a>HashMap –&gt; ConcurrentHashMap</h5><ul>
-<li>不允许空值，在实际的应用中除了少数的插入操作和删除操作外，绝大多数我们使用map都是读取操作。而且读操作大多数都是成功的。基于这个前提，它针对读操作做了大量的优化。因此这个类在高并发环境下有特别好的表现。</li>
-<li>ConcurrentHashMap作为Concurrent一族，其有着高效地并发操作，相比Hashtable的笨重，ConcurrentHashMap则更胜一筹了。</li>
-<li>在1.8版本以前，ConcurrentHashMap采用分段锁的概念，使锁更加细化，但是1.8已经改变了这种思路，而是利用CAS+Synchronized来保证并发更新的安全，当然底层采用数组+链表+红黑树的存储结构。</li>
-<li>源码分析：推荐参考chenssy的博文：<a href="https://blog.csdn.net/chenssy/article/details/73521950" target="_blank" rel="noopener">J.U.C之Java并发容器：ConcurrentHashMap</a></li>
-</ul>
-<h5 id="TreeMap-–-gt-ConcurrentSkipListMap"><a href="#TreeMap-–-gt-ConcurrentSkipListMap" class="headerlink" title="TreeMap –&gt; ConcurrentSkipListMap"></a>TreeMap –&gt; ConcurrentSkipListMap</h5><ul>
-<li>底层实现采用SkipList跳表</li>
-<li>曾经有人用ConcurrentHashMap与ConcurrentSkipListMap做性能测试，在4个线程1.6W的数据条件下，前者的数据存取速度是后者的4倍左右。但是后者有几个前者不能比拟的优点：<br>1、Key是有序的<br>2、支持更高的并发，存储时间与线程数无关</li>
-</ul>
-<h5 id="安全共享对象策略"><a href="#安全共享对象策略" class="headerlink" title="安全共享对象策略"></a>安全共享对象策略</h5><ul>
-<li>线程限制：一个被线程限制的对象，由线程独占，并且只能被占有它的线程修改</li>
-<li>共享只读：一个共享只读的U帝乡，在没有额外同步的情况下，可以被多个线程并发访问，但是任何线程都不能修改它</li>
-<li>线程安全对象：一个线程安全的对象或者容器，在内部通过同步机制来保障线程安全，多以其他线程无需额外的同步就可以通过公共接口随意访问他</li>
-<li>被守护对象：被守护对象只能通过获取特定的锁来访问。</li>
-</ul>
-<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/79947616" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/79947616</a></p>
+<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/79902773" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/79902773</a></p>
 
       
     </div>
@@ -479,6 +457,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Li Wen WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Li Wen Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -494,8 +501,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（八）：线程不安全类、同步容器/" rel="next" title="Java并发编程入门与高并发面试（八）：线程不安全类、同步容器">
-                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（八）：线程不安全类、同步容器
+              <a href="/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html" rel="next" title="Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX">
+                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX
               </a>
             
           </div>
@@ -504,8 +511,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap/" rel="prev" title="Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap">
-                Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap <i class="fa fa-chevron-right"></i>
+              <a href="/Java并发编程入门与高并发面试（八）：线程不安全类、同步容器.html" rel="prev" title="Java并发编程入门与高并发面试（八）：线程不安全类、同步容器">
+                Java并发编程入门与高并发面试（八）：线程不安全类、同步容器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -640,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayList-–-gt-CopyOnWriteArrayList"><span class="nav-number">1.0.1.</span> <span class="nav-text">ArrayList –&gt; CopyOnWriteArrayList</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashSet-–-gt-CopyOnWriteArraySet"><span class="nav-number">1.0.2.</span> <span class="nav-text">HashSet –&gt; CopyOnWriteArraySet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeSet-–-gt-ConcurrentSkipListSet"><span class="nav-number">1.0.3.</span> <span class="nav-text">TreeSet –&gt; ConcurrentSkipListSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap-–-gt-ConcurrentHashMap"><span class="nav-number">1.0.4.</span> <span class="nav-text">HashMap –&gt; ConcurrentHashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeMap-–-gt-ConcurrentSkipListMap"><span class="nav-number">1.0.5.</span> <span class="nav-text">TreeMap –&gt; ConcurrentSkipListMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安全共享对象策略"><span class="nav-number">1.0.6.</span> <span class="nav-text">安全共享对象策略</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、什么是线程封闭？"><span class="nav-number">1.</span> <span class="nav-text">1、什么是线程封闭？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、线程封闭的种类："><span class="nav-number">2.</span> <span class="nav-text">2、线程封闭的种类：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Springboot框架中使用ThreadLocal"><span class="nav-number">3.</span> <span class="nav-text">3、Springboot框架中使用ThreadLocal</span></a></li></ol></div>
             
 
           </div>

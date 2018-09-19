@@ -94,21 +94,24 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
+<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  概念1、不可变对象有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：  对象创建一个其状态不能修改  对象所有域都是final类型  对象是正确创建的(在对象创建期间，this引用没有逸出)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier">
-<meta property="og:url" content="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（十一）：并发容器J-U-C-AQS组件CountDownLatch、Semaphore、CyclicBarrier/index.html">
-<meta property="og:site_name" content="九层之台，起于累土">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
+<meta property="og:title" content="Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX">
+<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html">
+<meta property="og:site_name" content="不正经斯基的博客">
+<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  概念1、不可变对象有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：  对象创建一个其状态不能修改  对象所有域都是final类型  对象是正确创建的(在对象创建期间，this引用没有逸出)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20180423191843274?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20180423234242640?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T07:59:52.550Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20180411153701945?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/2018041115395523?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180411154323558?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180411162003137?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180411162457565?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180411165721456?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-09-15T01:42:47.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta name="twitter:title" content="Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX">
+<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  概念1、不可变对象有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：  对象创建一个其状态不能修改  对象所有域都是final类型  对象是正确创建的(在对象创建期间，this引用没有逸出)">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180411153701945?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
 
@@ -137,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（十一）：并发容器J-U-C-AQS组件CountDownLatch、Semaphore、CyclicBarrier/"/>
+  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier | 九层之台，起于累土</title>
+  <title>Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX | 不正经斯基的博客</title>
   
 
 
@@ -180,12 +183,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">九层之台，起于累土</span>
+        <span class="site-title">不正经斯基的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">老不正经斯基</h1>
+        <h1 class="site-subtitle" itemprop="description">九层之台 起于累土</h1>
       
   </div>
 
@@ -311,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（十一）：并发容器J-U-C-AQS组件CountDownLatch、Semaphore、CyclicBarrier/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -320,7 +323,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="九层之台，起于累土">
+      <meta itemprop="name" content="不正经斯基的博客">
     </span>
 
     
@@ -328,7 +331,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier</h2>
+          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX</h2>
         
 
         <div class="post-meta">
@@ -340,7 +343,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:23+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:14+08:00">
                 2018-09-14
               </time>
             
@@ -356,7 +359,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T15:59:52+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:42:47+08:00">
                 2018-09-15
               </time>
             
@@ -420,58 +423,42 @@
       
         <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
 <hr>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h4 id="1、不可变对象"><a href="#1、不可变对象" class="headerlink" title="1、不可变对象"></a>1、不可变对象</h4><p>有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：</p>
 <ul>
-<li><p>AQS简介</p>
+<li><p>对象创建一个其状态不能修改</p>
 </li>
-<li><p>AQS设计思想</p>
+<li><p>对象所有域都是final类型</p>
 </li>
-<li><p>AQS的大致实现思路</p>
-</li>
-<li><p>AQS组件：CountDownLatch</p>
-</li>
-<li><p>AQS组件：Semaphore</p>
-</li>
-<li><p>AQS组件：CyclicBarrier</p>
+<li><p>对象是正确创建的(在对象创建期间，this引用没有逸出)</p>
 <a id="more"></a>
 </li>
 </ul>
-<h3 id="AQS简介"><a href="#AQS简介" class="headerlink" title="AQS简介"></a>AQS简介</h3><p>AQS全名：AbstractQueuedSynchronizer，是并发容器J.U.C（java.lang.concurrent）下locks包内的一个类。它实现了一个<strong>FIFO</strong>(FirstIn、FisrtOut先进先出)的队列。底层实现的数据结构是一个<strong>双向列表</strong>。<br><img src="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br><strong>Sync queue</strong>：同步队列，是一个双向列表。包括head节点和tail节点。head节点主要用作后续的调度。<br><strong>Condition queue</strong>：非必须，单向列表。当程序中存在cindition的时候才会存在此列表。</p>
-<h3 id="AQS设计思想"><a href="#AQS设计思想" class="headerlink" title="AQS设计思想"></a>AQS设计思想</h3><ul>
-<li>使用Node实现FIFO队列，可以用于构建锁或者其他同步装置的基础框架。</li>
-<li>利用int类型标识状态。在AQS类中有一个叫做state的成员变量</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * The synchronization state.</span><br><span class="line"> */</span><br><span class="line">private volatile int state;1234</span><br></pre></td></tr></table></figure>
+<h4 id="2、创建一个不可变对象的方法"><a href="#2、创建一个不可变对象的方法" class="headerlink" title="2、创建一个不可变对象的方法"></a>2、创建一个不可变对象的方法</h4><p>（1）自己定义<br>这里可以采用的方式包括：<br>1、将类声明为final，这样它就不能被继承。<br>2、将所有的成员声明为私有的，这样就不允许直接访问这些成员。<br>3、对变量不提供set方法，将所有可变的成员声明为final，这样就只能赋值一次。通过构造器初始化所有成员进行深度拷贝。<br>4、在get方法中不直接返回对象的本身，而是克隆对象，返回对象的拷贝。</p>
+<p>（2）使用Java中提供的Collection类中的各种unmodifiable开头的方法<br>（3）使用Guava中的Immutable开头的类</p>
+<h4 id="3、final关键字"><a href="#3、final关键字" class="headerlink" title="3、final关键字"></a>3、final关键字</h4><p>final关键字可以修饰类、修饰方法、修饰变量</p>
 <ul>
-<li>基于AQS有一个同步组件，叫做ReentrantLock。在这个组件里，stste表示获取锁的线程数，假如state=0，表示还没有线程获取锁，1表示有线程获取了锁。大于1表示重入锁的数量。</li>
-<li>继承：子类通过继承并通过实现它的方法管理其状态（acquire和release方法操纵状态）。</li>
-<li>可以同时实现排它锁和共享锁模式（独占、共享），站在一个使用者的角度，AQS的功能主要分为两类：独占和共享。它的所有子类中，要么实现并使用了它的独占功能的api，要么使用了共享锁的功能，而不会同时使用两套api，即便是最有名的子类ReentrantReadWriteLock也是通过两个内部类读锁和写锁分别实现了两套api来实现的。</li>
+<li>修饰类：类不能被集成。<br>基础类型的包装类都是final类型的类。final类中的成员变量可以根据需要设置为final，但是要注意的是，final类中的所有成员方法都会被隐式的指定为final方法</li>
+<li>修饰方法：<br>(1)把方法锁定，以防任何继承类修改它的含义<br>(2)效率：在早期的java实现版本中，会将final方法转为内嵌调用。但是如果方法过于庞大，可能看不见效果。一个private方法会被隐式的指定为final方法</li>
+<li>修饰变量：<br>基本数据类型变量，在初始化之后，它的值就不能被修改了。如果是引用类型变量，在它初始化之后便不能再指向另外的对象。<br><img src="https://img-blog.csdn.net/20180411153701945?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></li>
 </ul>
-<h3 id="AQS的大致实现思路"><a href="#AQS的大致实现思路" class="headerlink" title="AQS的大致实现思路"></a>AQS的大致实现思路</h3><p>AQS内部维护了一个CLH队列来管理锁。线程会首先尝试获取锁，如果失败就将当前线程及等待状态等信息包装成一个node节点加入到同步队列sync queue里。<br>接着会不断的循环尝试获取锁，条件是当前节点为head的直接后继才会尝试。如果失败就会阻塞自己直到自己被唤醒。而当持有锁的线程释放锁的时候，会唤醒队列中的后继线程。</p>
-<h3 id="AQS组件：CountDownLatch"><a href="#AQS组件：CountDownLatch" class="headerlink" title="AQS组件：CountDownLatch"></a>AQS组件：CountDownLatch</h3><p><img src="https://img-blog.csdn.net/20180423191843274?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-<ul>
-<li>通过一个计数来保证线程是否需要被阻塞。实现一个或多个线程等待其他线程执行的场景。</li>
-</ul>
-<p>我们定义一个CountDownLatch，通过给定的计数器为其初始化，该计数器是原子性操作，保证同时只有一个线程去操作该计数器。调用该类await方法的线程会一直处于阻塞状态。只有其他线程调用countDown方法（每次使计数器-1），使计数器归零才能继续执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">final CountDownLatch countDownLatch = new CountDownLatch(threadCount);</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; threadCount; i++) &#123;</span><br><span class="line">    final int threadNum = i;</span><br><span class="line">    exec.execute(() -&gt; &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            test(threadNum);  //需要被等待的线程执行的方法</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            log.error(&quot;exception&quot;, e);</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            countDownLatch.countDown();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">countDownLatch.await();123456789101112131415</span><br></pre></td></tr></table></figure>
-<p>CountDownLatch的await方法还有重载形式，可以设置等待的时间，如果超过此时间，计数器还未清零，则不继续等待：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">countDownLatch.await(10, TimeUnit.MILLISECONDS);</span><br><span class="line"></span><br><span class="line">//参数1：等待的时间长度</span><br><span class="line">//参数2：等待的时间单位1234</span><br></pre></td></tr></table></figure>
-<h3 id="AQS组件：Semaphore"><a href="#AQS组件：Semaphore" class="headerlink" title="AQS组件：Semaphore"></a>AQS组件：Semaphore</h3><ul>
-<li>用于保证同一时间并发访问线程的数目。</li>
-<li>信号量在操作系统中是很重要的概念，Java并发库里的Semaphore就可以很轻松的完成类似操作系统信号量的控制。Semaphore可以很容易控制系统中某个资源被同时访问的线程个数。</li>
-<li>在数据结构中我们学过链表，链表正常是可以保存无限个节点的，而Semaphore可以实现有限大小的列表。</li>
-<li>使用场景：仅能提供有限访问的资源。比如数据库连接。</li>
-<li>Semaphore使用acquire方法和release方法来实现控制：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 1、普通调用</span><br><span class="line"> */</span><br><span class="line">try &#123;</span><br><span class="line">     semaphore.acquire(); // 获取一个许可</span><br><span class="line">     test();//需要并发控制的内容</span><br><span class="line">     semaphore.release(); // 释放一个许可</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">     log.error(&quot;exception&quot;, e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 2、同时获取多个许可，同时释放多个许可</span><br><span class="line"> */</span><br><span class="line"> try &#123;</span><br><span class="line">     semaphore.acquire(2);</span><br><span class="line">     test();</span><br><span class="line">     semaphore.release(2);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">     log.error(&quot;exception&quot;, e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 3、尝试获取许可，获取不到不执行</span><br><span class="line"> */</span><br><span class="line"> try &#123;</span><br><span class="line">     if (semaphore.tryAcquire()) &#123;</span><br><span class="line">        test(threadNum);</span><br><span class="line">        semaphore.release();</span><br><span class="line">     &#125;</span><br><span class="line"> &#125; catch (Exception e) &#123;</span><br><span class="line">     log.error(&quot;exception&quot;, e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 4、尝试获取许可一段时间，获取不到不执行</span><br><span class="line"> * 参数1：等待时间长度  参数2：等待时间单位</span><br><span class="line"> */</span><br><span class="line">try &#123;</span><br><span class="line">     if (semaphore.tryAcquire(5000, TimeUnit.MILLISECONDS)) &#123;</span><br><span class="line">        test(threadNum);</span><br><span class="line">        semaphore.release(); </span><br><span class="line">     &#125;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">     log.error(&quot;exception&quot;, e);</span><br><span class="line">&#125;12345678910111213141516171819202122232425262728293031323334353637383940414243444546</span><br></pre></td></tr></table></figure>
-<h3 id="AQS组件：CyclicBarrier"><a href="#AQS组件：CyclicBarrier" class="headerlink" title="AQS组件：CyclicBarrier"></a>AQS组件：CyclicBarrier</h3><p><img src="https://img-blog.csdn.net/20180423234242640?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-<ul>
-<li>也是一个同步辅助类，它允许一组线程相互等待，直到到达某个公共的屏障点（循环屏障）</li>
-<li>通过它可以完成多个线程之间相互等待，只有每个线程都准备就绪后才能继续往下执行后面的操作。</li>
-<li>每当有一个线程执行了await方法，计数器就会执行+1操作，待计数器达到预定的值，所有的线程再同时继续执行。由于计数器释放之后可以重用（reset方法），所以称之为循环屏障。</li>
-<li>与CountDownLatch区别：<br>1、计数器可重复用<br>2、描述一个或多个线程等待其他线程的关系/多个线程相互等待</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//公共线程循环调用方法</span><br><span class="line">private static CyclicBarrier barrier = new CyclicBarrier(5);</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">    ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        final int threadNum = i;</span><br><span class="line">        Thread.sleep(1000);</span><br><span class="line">        executor.execute(() -&gt; &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                race(threadNum);</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                log.error(&quot;exception&quot;, e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    executor.shutdown();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用方法1：每个线程都持续等待</span><br><span class="line">private static void race(int threadNum) throws Exception &#123;</span><br><span class="line">    Thread.sleep(1000);</span><br><span class="line">    log.info(&quot;&#123;&#125; is ready&quot;, threadNum);</span><br><span class="line">    barrier.await();</span><br><span class="line">    log.info(&quot;&#123;&#125; continue&quot;, threadNum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用方法2：每个线程只等待一段时间</span><br><span class="line">private static void race(int threadNum) throws Exception &#123;</span><br><span class="line">    Thread.sleep(1000);</span><br><span class="line">    try &#123;</span><br><span class="line">        barrier.await(2000, TimeUnit.MILLISECONDS);</span><br><span class="line">    &#125; catch (InterruptedException | BrokenBarrierException | TimeoutException e) &#123;</span><br><span class="line">        log.warn(&quot;BarrierException&quot;, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用方法3：在初始化的时候设置runnable，当线程达到屏障时优先执行runnable</span><br><span class="line">private static CyclicBarrier barrier = new CyclicBarrier(5, () -&gt; &#123;</span><br><span class="line">    log.info(&quot;callback is running&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/80054133" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/80054133</a></p>
+<p>从上图我们可见，<br>（1）对一个被final修饰的变量（Integer a、String b）被赋值时在编译过程中就出现了错误。<br>（2）（map）在重新被指向一个新的map对象的时候也出现了错误。<br>那么对被定义为final的map进行赋值呢？我们单独运行map.put(1,3)语句，结果是可以的。<strong>被final修饰的引用类型变量，虽然不能重新指向，但是可以修改</strong>,这一点尤为要注意。<br><img src="https://img-blog.csdn.net/2018041115395523?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>（3）当final修饰方法的参数时：同样也是不允许在方法内部对其修改的。<br><img src="https://img-blog.csdn.net/20180411154323558?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h4 id="4、Java-unmodifiable相关方法"><a href="#4、Java-unmodifiable相关方法" class="headerlink" title="4、Java:unmodifiable相关方法"></a>4、Java:unmodifiable相关方法</h4><p>使用Java的Collection类的unmodifiable相关方法，可以创建不可变对象。unmodifiable相关方法包含：Collection、List、Map、Set….<br><img src="https://img-blog.csdn.net/20180411162003137?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class ImmutableExample &#123;</span><br><span class="line"></span><br><span class="line">    private static Map&lt;Integer, Integer&gt; map = Maps.newHashMap();</span><br><span class="line"></span><br><span class="line">    static &#123;</span><br><span class="line">        map.put(1, 2);</span><br><span class="line">        map.put(3, 4);</span><br><span class="line">        map.put(5, 6);</span><br><span class="line">        map = Collections.unmodifiableMap(map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        map.put(1, 3);</span><br><span class="line">        log.info(&quot;&#123;&#125;&quot;, map.get(1));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;1234567891011121314151617</span><br></pre></td></tr></table></figure>
+<p>上面程序的执行结果为：在map.put（1，3）操作的位置抛出了异常。由此可见map对象已经成为不可变对象。<br><img src="https://img-blog.csdn.net/20180411162457565?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>那么unmodifiable相关类的实现原理是什么呢？我们查看一下Collections.unmodifiableMap的源码：（以下源码只筛选出表达观点的部分，非全部）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;K,V&gt; Map&lt;K,V&gt; unmodifiableMap(Map&lt;? extends K, ? extends V&gt; m) &#123;</span><br><span class="line">        return new UnmodifiableMap&lt;&gt;(m);</span><br><span class="line">&#125;</span><br><span class="line">private static class UnmodifiableMap&lt;K,V&gt; implements Map&lt;K,V&gt;, Serializable &#123;</span><br><span class="line">    ...</span><br><span class="line">    public V put(K key, V value) &#123;</span><br><span class="line">        throw new UnsupportedOperationException();</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;12345678910</span><br></pre></td></tr></table></figure>
+<p>Collections.unmodifiableMap在执行时，将参数中的map对象进行了转换，转换为Collection类中的内部类 UnmodifiableMap对象。而 UnmodifiableMap对map的<strong>更新方法</strong>（比如put、remove等）进行了重写，均返回UnsupportedOperationException异常，这样就做到了map对象的不可变。</p>
+<h4 id="5、Guava-Immutable相关类"><a href="#5、Guava-Immutable相关类" class="headerlink" title="5、Guava:Immutable相关类"></a>5、Guava:Immutable相关类</h4><p>使用Guava的Immutable相关类也可以创建不可变对象。同样包含很多类型：Collection、List、Map、Set….<br><img src="https://img-blog.csdn.net/20180411165721456?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>举栗子：<br>（1）ImmutableList</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private final static ImmutableList&lt;Integer&gt; list = ImmutableList.of(1, 2, 3);</span><br><span class="line"></span><br><span class="line">list.add(4);//这一句在书写完就会被IDE提示该add方法为过时方法，实际为不可用方法123</span><br></pre></td></tr></table></figure>
+<p>对于ImmutableList.of方法，如果传多个参数，需要这样一直写下去，以逗号分隔每个参数。其源码中是这样实现的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">//单个或少于12个参数时</span><br><span class="line">public static &lt;E&gt; ImmutableList&lt;E&gt; of() &#123;</span><br><span class="line">    return RegularImmutableList.EMPTY;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static &lt;E&gt; ImmutableList&lt;E&gt; of(E element) &#123;</span><br><span class="line">    return new SingletonImmutableList(element);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static &lt;E&gt; ImmutableList&lt;E&gt; of(E e1, E e2) &#123;</span><br><span class="line">    return construct(e1, e2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static &lt;E&gt; ImmutableList&lt;E&gt; of(E e1, E e2, E e3) &#123;</span><br><span class="line">    return construct(e1, e2, e3);</span><br><span class="line">&#125;</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">//多于12个参数时，参数列表中最后的E...other会以数组形式接收参数</span><br><span class="line">@SafeVarargs</span><br><span class="line">public static &lt;E&gt; ImmutableList&lt;E&gt; of(E e1, E e2, E e3, E e4, E e5,</span><br><span class="line"> E e6, E e7, E e8, E e9, E e10, E e11, E e12, E... others) &#123;</span><br><span class="line">    Object[] array = new Object[12 + others.length];</span><br><span class="line">    array[0] = e1;</span><br><span class="line">    array[1] = e2;</span><br><span class="line">    array[2] = e3;</span><br><span class="line">    array[3] = e4;</span><br><span class="line">    array[4] = e5;</span><br><span class="line">    array[5] = e6;</span><br><span class="line">    array[6] = e7;</span><br><span class="line">    array[7] = e8;</span><br><span class="line">    array[8] = e9;</span><br><span class="line">    array[9] = e10;</span><br><span class="line">    array[10] = e11;</span><br><span class="line">    array[11] = e12;</span><br><span class="line">    System.arraycopy(others, 0, array, 12, others.length);</span><br><span class="line">    return construct(array);</span><br><span class="line">&#125;1234567891011121314151617181920212223242526272829303132333435363738</span><br></pre></td></tr></table></figure>
+<p>运行结果仍然为抛出UnsupportedOperationException异常。<br>分析源码：Immutable相关类使用了跟Java的unmodifiable相关类相似的实现方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/** @deprecated */</span><br><span class="line">    @Deprecated</span><br><span class="line">    @CanIgnoreReturnValue</span><br><span class="line">    public final boolean add(E e) &#123;</span><br><span class="line">        throw new UnsupportedOperationException();</span><br><span class="line">    &#125;123456</span><br></pre></td></tr></table></figure>
+<p>（2）ImmutableSet<br>ImmutableSet除了使用of的方法进行初始化，还可以使用copyof方法，将Collection类型、Iterator类型作为参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private final static ImmutableSet set = ImmutableSet.copyOf(list);</span><br><span class="line"></span><br><span class="line">private final static ImmutableSet set = ImmutableSet.copyOf(list.iterator());123</span><br></pre></td></tr></table></figure>
+<p>（3）ImmutableMap<br>ImmutableMap有特殊的builder写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private final static ImmutableMap&lt;Integer, Integer&gt; map = ImmutableMap.of(1, 2, 3, 4);</span><br><span class="line"></span><br><span class="line">private final static ImmutableMap&lt;Integer, Integer&gt; map2 = ImmutableMap.&lt;Integer, Integer&gt;builder()</span><br><span class="line">           .put(1, 2).put(3, 4).put(5, 6).build();</span><br></pre></td></tr></table></figure>
+<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/79897550" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/79897550</a></p>
 
       
     </div>
@@ -481,6 +468,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Li Wen WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Li Wen Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -496,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap/" rel="next" title="Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap">
-                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap
+              <a href="/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式.html" rel="next" title="Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式">
+                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式
               </a>
             
           </div>
@@ -506,8 +522,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（十二）：并发容器J-U-C-AQS组件-锁：ReentrantLock、ReentrantReadWriteLock、StempedLock/" rel="prev" title="Java并发编程入门与高并发面试（十二）：并发容器J.U.C -- AQS组件 锁：ReentrantLock、ReentrantReadWriteLock、StempedLock">
-                Java并发编程入门与高并发面试（十二）：并发容器J.U.C -- AQS组件 锁：ReentrantLock、ReentrantReadWriteLock、StempedLock <i class="fa fa-chevron-right"></i>
+              <a href="/Java并发编程入门与高并发面试（七）：线程封闭-ThreadLocal.html" rel="prev" title="Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal">
+                Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -642,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS简介"><span class="nav-number">1.</span> <span class="nav-text">AQS简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS设计思想"><span class="nav-number">2.</span> <span class="nav-text">AQS设计思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS的大致实现思路"><span class="nav-number">3.</span> <span class="nav-text">AQS的大致实现思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS组件：CountDownLatch"><span class="nav-number">4.</span> <span class="nav-text">AQS组件：CountDownLatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS组件：Semaphore"><span class="nav-number">5.</span> <span class="nav-text">AQS组件：Semaphore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS组件：CyclicBarrier"><span class="nav-number">6.</span> <span class="nav-text">AQS组件：CyclicBarrier</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、不可变对象"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、创建一个不可变对象的方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、创建一个不可变对象的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、final关键字"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、final关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Java-unmodifiable相关方法"><span class="nav-number">1.0.4.</span> <span class="nav-text">4、Java:unmodifiable相关方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、Guava-Immutable相关类"><span class="nav-number">1.0.5.</span> <span class="nav-text">5、Guava:Immutable相关类</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

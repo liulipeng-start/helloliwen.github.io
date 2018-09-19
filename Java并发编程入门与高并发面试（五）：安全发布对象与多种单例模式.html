@@ -97,8 +97,8 @@
 <meta name="description" content="概念 发布对象 对象逸出   代码演示 不安全发布对象 对象逸出   安全发布对象示例（多种单例模式演示） 1、懒汉式（最简式） 2、懒汉式（synchronized） 3、双重同步锁模式【先入坑再出坑】 4、饿汉式（最简式） 5、饿汉式（静态块初始化） 6、枚举式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式">
-<meta property="og:url" content="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式/index.html">
-<meta property="og:site_name" content="九层之台，起于累土">
+<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式.html">
+<meta property="og:site_name" content="不正经斯基的博客">
 <meta property="og:description" content="概念 发布对象 对象逸出   代码演示 不安全发布对象 对象逸出   安全发布对象示例（多种单例模式演示） 1、懒汉式（最简式） 2、懒汉式（synchronized） 3、双重同步锁模式【先入坑再出坑】 4、饿汉式（最简式） 5、饿汉式（静态块初始化） 6、枚举式">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180409165630129?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式/"/>
+  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式 | 九层之台，起于累土</title>
+  <title>Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式 | 不正经斯基的博客</title>
   
 
 
@@ -178,12 +178,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">九层之台，起于累土</span>
+        <span class="site-title">不正经斯基的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">老不正经斯基</h1>
+        <h1 class="site-subtitle" itemprop="description">九层之台 起于累土</h1>
       
   </div>
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -318,7 +318,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="九层之台，起于累土">
+      <meta itemprop="name" content="不正经斯基的博客">
     </span>
 
     
@@ -497,6 +497,35 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Li Wen WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Li Wen Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -511,7 +540,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（四）：线程安全性-可见性-有序性/" rel="next" title="Java并发编程入门与高并发面试（四）：线程安全性-可见性-有序性">
+              <a href="/Java并发编程入门与高并发面试（四）：线程安全性-可见性-有序性.html" rel="next" title="Java并发编程入门与高并发面试（四）：线程安全性-可见性-有序性">
                 <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（四）：线程安全性-可见性-有序性
               </a>
             
@@ -521,7 +550,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/14/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX/" rel="prev" title="Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX">
+              <a href="/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html" rel="prev" title="Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX">
                 Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX <i class="fa fa-chevron-right"></i>
               </a>
             
