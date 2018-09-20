@@ -94,21 +94,17 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
+<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier">
-<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（十一）：并发容器J-U-C-AQS组件CountDownLatch、Semaphore、CyclicBarrier.html">
-<meta property="og:site_name" content="不正经斯基的博客">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
+<meta property="og:title" content="Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map">
+<meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map.html">
+<meta property="og:site_name" content="尘世间一迷途小程序猿">
+<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20180423191843274?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20180423234242640?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T07:59:52.550Z">
+<meta property="og:updated_time" content="2018-09-15T01:46:56.807Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta name="twitter:title" content="Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map">
+<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
 
 
 
@@ -137,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（十一）：并发容器J-U-C-AQS组件CountDownLatch、Semaphore、CyclicBarrier.html"/>
+  <link rel="canonical" href="http://yoursite.com/高并发/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier | 不正经斯基的博客</title>
+  <title>Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map | 尘世间一迷途小程序猿</title>
   
 
 
@@ -180,7 +176,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">不正经斯基的博客</span>
+        <span class="site-title">尘世间一迷途小程序猿</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -311,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（十一）：并发容器J-U-C-AQS组件CountDownLatch、Semaphore、CyclicBarrier.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/高并发/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -320,7 +316,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不正经斯基的博客">
+      <meta itemprop="name" content="尘世间一迷途小程序猿">
     </span>
 
     
@@ -328,7 +324,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier</h2>
+          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map</h2>
         
 
         <div class="post-meta">
@@ -340,7 +336,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:23+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:19+08:00">
                 2018-09-14
               </time>
             
@@ -356,7 +352,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T15:59:52+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:46:56+08:00">
                 2018-09-15
               </time>
             
@@ -421,57 +417,59 @@
         <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
 <hr>
 <ul>
-<li><p>AQS简介</p>
+<li>概述<ul>
+<li><ul>
+<li>ArrayList –&gt; CopyOnWriteArrayList</li>
+<li>HashSet –&gt; CopyOnWriteArraySet</li>
+<li>TreeSet –&gt; ConcurrentSkipListSet</li>
+<li>HashMap –&gt; ConcurrentHashMap</li>
+<li>TreeMap –&gt; ConcurrentSkipListMap</li>
+<li>安全共享对象策略</li>
+</ul>
 </li>
-<li><p>AQS设计思想</p>
+</ul>
 </li>
-<li><p>AQS的大致实现思路</p>
-</li>
-<li><p>AQS组件：CountDownLatch</p>
-</li>
-<li><p>AQS组件：Semaphore</p>
-</li>
-<li><p>AQS组件：CyclicBarrier</p>
+</ul>
 <a id="more"></a>
-</li>
-</ul>
-<h3 id="AQS简介"><a href="#AQS简介" class="headerlink" title="AQS简介"></a>AQS简介</h3><p>AQS全名：AbstractQueuedSynchronizer，是并发容器J.U.C（java.lang.concurrent）下locks包内的一个类。它实现了一个<strong>FIFO</strong>(FirstIn、FisrtOut先进先出)的队列。底层实现的数据结构是一个<strong>双向列表</strong>。<br><img src="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br><strong>Sync queue</strong>：同步队列，是一个双向列表。包括head节点和tail节点。head节点主要用作后续的调度。<br><strong>Condition queue</strong>：非必须，单向列表。当程序中存在cindition的时候才会存在此列表。</p>
-<h3 id="AQS设计思想"><a href="#AQS设计思想" class="headerlink" title="AQS设计思想"></a>AQS设计思想</h3><ul>
-<li>使用Node实现FIFO队列，可以用于构建锁或者其他同步装置的基础框架。</li>
-<li>利用int类型标识状态。在AQS类中有一个叫做state的成员变量</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * The synchronization state.</span><br><span class="line"> */</span><br><span class="line">private volatile int state;1234</span><br></pre></td></tr></table></figure>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Java并发容器JUC是三个单词的缩写。是JDK下面的一个包名。即Java.util.concurrency。<br>上一节我们介绍了ArrayList、HashMap、HashSet对应的同步容器保证其线程安全，这节我们介绍一下其对应的并发容器。</p>
+<h5 id="ArrayList-–-gt-CopyOnWriteArrayList"><a href="#ArrayList-–-gt-CopyOnWriteArrayList" class="headerlink" title="ArrayList –&gt; CopyOnWriteArrayList"></a>ArrayList –&gt; CopyOnWriteArrayList</h5><p>CopyOnWriteArrayList 写操作时复制，当有新元素添加到集合中时，从原有的数组中拷贝一份出来，然后在新的数组上作写操作，将原来的数组指向新的数组。整个数组的add操作都是在锁的保护下进行的，防止并发时复制多份副本。读操作是在原数组中进行，不需要加锁</p>
 <ul>
-<li>基于AQS有一个同步组件，叫做ReentrantLock。在这个组件里，stste表示获取锁的线程数，假如state=0，表示还没有线程获取锁，1表示有线程获取了锁。大于1表示重入锁的数量。</li>
-<li>继承：子类通过继承并通过实现它的方法管理其状态（acquire和release方法操纵状态）。</li>
-<li>可以同时实现排它锁和共享锁模式（独占、共享），站在一个使用者的角度，AQS的功能主要分为两类：独占和共享。它的所有子类中，要么实现并使用了它的独占功能的api，要么使用了共享锁的功能，而不会同时使用两套api，即便是最有名的子类ReentrantReadWriteLock也是通过两个内部类读锁和写锁分别实现了两套api来实现的。</li>
+<li>缺点：<br>1.写操作时复制消耗内存，如果元素比较多时候，容易导致young gc 和full gc。<br>2.不能用于实时读的场景.由于复制和add操作等需要时间，故读取时可能读到旧值。<br>能做到最终一致性，但无法满足实时性的要求，更适合读多写少的场景。<br>如果无法知道数组有多大，或者add,set操作有多少，慎用此类,在大量的复制副本的过程中很容易出错。</li>
+<li>设计思想：<br>1.读写分离<br>2.最终一致性<br>3.使用时另外开辟空间，防止并发冲突</li>
+<li>源码分析</li>
 </ul>
-<h3 id="AQS的大致实现思路"><a href="#AQS的大致实现思路" class="headerlink" title="AQS的大致实现思路"></a>AQS的大致实现思路</h3><p>AQS内部维护了一个CLH队列来管理锁。线程会首先尝试获取锁，如果失败就将当前线程及等待状态等信息包装成一个node节点加入到同步队列sync queue里。<br>接着会不断的循环尝试获取锁，条件是当前节点为head的直接后继才会尝试。如果失败就会阻塞自己直到自己被唤醒。而当持有锁的线程释放锁的时候，会唤醒队列中的后继线程。</p>
-<h3 id="AQS组件：CountDownLatch"><a href="#AQS组件：CountDownLatch" class="headerlink" title="AQS组件：CountDownLatch"></a>AQS组件：CountDownLatch</h3><p><img src="https://img-blog.csdn.net/20180423191843274?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public CopyOnWriteArrayList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    Object[] elements;//使用对象数组来承载数据</span><br><span class="line">    if (c.getClass() == CopyOnWriteArrayList.class)</span><br><span class="line">        elements = ((CopyOnWriteArrayList&lt;?&gt;)c).getArray();</span><br><span class="line">    else &#123;</span><br><span class="line">        elements = c.toArray();</span><br><span class="line">        // c.toArray might (incorrectly) not return Object[] (see 6260652)</span><br><span class="line">        if (elements.getClass() != Object[].class)</span><br><span class="line">            elements = Arrays.copyOf(elements, elements.length, Object[].class);</span><br><span class="line">    &#125;</span><br><span class="line">    setArray(elements);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加数据方法</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    final ReentrantLock lock = this.lock;//使用重入锁，保证线程安全</span><br><span class="line">    lock.lock();</span><br><span class="line">    try &#123;</span><br><span class="line">        Object[] elements = getArray();//获取当前数组数据</span><br><span class="line">        int len = elements.length;</span><br><span class="line">        Object[] newElements = Arrays.copyOf(elements, len + 1);//复制当前数组并且扩容+1</span><br><span class="line">        newElements[len] = e;//将要添加的数据放入新数组</span><br><span class="line">        setArray(newElements);//将原来的数组指向新的数组</span><br><span class="line">        return true;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//获取数据方法，与普通的get没什么差别</span><br><span class="line">private E get(Object[] a, int index) &#123;</span><br><span class="line">    return (E) a[index];</span><br><span class="line">&#125;12345678910111213141516171819202122232425262728293031323334</span><br></pre></td></tr></table></figure>
+<h5 id="HashSet-–-gt-CopyOnWriteArraySet"><a href="#HashSet-–-gt-CopyOnWriteArraySet" class="headerlink" title="HashSet –&gt; CopyOnWriteArraySet"></a>HashSet –&gt; CopyOnWriteArraySet</h5><ul>
+<li>它是线程安全的，底层实现使用的是CopyOnWriteArrayList，因此它也适用于大小很小的set集合，只读操作远大于可变操作。因为他需要copy整个数组，所以包括add、remove、set它的开销相对于大一些。</li>
+<li>迭代器不支持可变的remove操作。使用迭代器遍历的时候速度很快，而且不会与其他线程发生冲突。</li>
+<li>源码分析：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public CopyOnWriteArraySet() &#123;</span><br><span class="line">    al = new CopyOnWriteArrayList&lt;E&gt;();//底层使用CopyOnWriteArrayList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加元素方法，基本实现原理与CopyOnWriteArrayList相同</span><br><span class="line">private boolean addIfAbsent(E e, Object[] snapshot) &#123;</span><br><span class="line">    final ReentrantLock lock = this.lock;</span><br><span class="line">    lock.lock();</span><br><span class="line">    try &#123;</span><br><span class="line">        Object[] current = getArray();</span><br><span class="line">        int len = current.length;</span><br><span class="line">        if (snapshot != current) &#123;//添加了元素去重操作</span><br><span class="line">            // Optimize for lost race to another addXXX operation</span><br><span class="line">            int common = Math.min(snapshot.length, len);</span><br><span class="line">            for (int i = 0; i &lt; common; i++)</span><br><span class="line">                if (current[i] != snapshot[i] &amp;&amp; eq(e, current[i]))</span><br><span class="line">                    return false;</span><br><span class="line">            if (indexOf(e, current, common, len) &gt;= 0)</span><br><span class="line">                    return false;</span><br><span class="line">        &#125;</span><br><span class="line">        Object[] newElements = Arrays.copyOf(current, len + 1);</span><br><span class="line">        newElements[len] = e;</span><br><span class="line">        setArray(newElements);</span><br><span class="line">        return true;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;1234567891011121314151617181920212223242526272829</span><br></pre></td></tr></table></figure>
+<h5 id="TreeSet-–-gt-ConcurrentSkipListSet"><a href="#TreeSet-–-gt-ConcurrentSkipListSet" class="headerlink" title="TreeSet –&gt; ConcurrentSkipListSet"></a>TreeSet –&gt; ConcurrentSkipListSet</h5><p>它是JDK6新增的类，同TreeSet一样支持自然排序，并且可以在构造的时候自己定义比较器。</p>
 <ul>
-<li>通过一个计数来保证线程是否需要被阻塞。实现一个或多个线程等待其他线程执行的场景。</li>
+<li>同其他set集合，是基于map集合的（基于ConcurrentSkipListMap），在多线程环境下，里面的contains、add、remove操作都是线程安全的。</li>
+<li>多个线程可以安全的并发的执行插入、移除、和访问操作。但是对于批量操作addAll、removeAll、retainAll和containsAll并不能保证以原子方式执行，原因是addAll、removeAll、retainAll底层调用的还是contains、add、remove方法，只能保证每一次的执行是原子性的，代表在单一执行操纵时不会被打断，但是不能保证每一次批量操作都不会被打断。在使用批量操作时，还是需要手动加上同步操作的。</li>
+<li>不允许使用null元素的，它无法可靠的将参数及返回值与不存在的元素区分开来。</li>
+<li>源码分析：</li>
 </ul>
-<p>我们定义一个CountDownLatch，通过给定的计数器为其初始化，该计数器是原子性操作，保证同时只有一个线程去操作该计数器。调用该类await方法的线程会一直处于阻塞状态。只有其他线程调用countDown方法（每次使计数器-1），使计数器归零才能继续执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">final CountDownLatch countDownLatch = new CountDownLatch(threadCount);</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; threadCount; i++) &#123;</span><br><span class="line">    final int threadNum = i;</span><br><span class="line">    exec.execute(() -&gt; &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            test(threadNum);  //需要被等待的线程执行的方法</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            log.error(&quot;exception&quot;, e);</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            countDownLatch.countDown();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">countDownLatch.await();123456789101112131415</span><br></pre></td></tr></table></figure>
-<p>CountDownLatch的await方法还有重载形式，可以设置等待的时间，如果超过此时间，计数器还未清零，则不继续等待：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">countDownLatch.await(10, TimeUnit.MILLISECONDS);</span><br><span class="line"></span><br><span class="line">//参数1：等待的时间长度</span><br><span class="line">//参数2：等待的时间单位1234</span><br></pre></td></tr></table></figure>
-<h3 id="AQS组件：Semaphore"><a href="#AQS组件：Semaphore" class="headerlink" title="AQS组件：Semaphore"></a>AQS组件：Semaphore</h3><ul>
-<li>用于保证同一时间并发访问线程的数目。</li>
-<li>信号量在操作系统中是很重要的概念，Java并发库里的Semaphore就可以很轻松的完成类似操作系统信号量的控制。Semaphore可以很容易控制系统中某个资源被同时访问的线程个数。</li>
-<li>在数据结构中我们学过链表，链表正常是可以保存无限个节点的，而Semaphore可以实现有限大小的列表。</li>
-<li>使用场景：仅能提供有限访问的资源。比如数据库连接。</li>
-<li>Semaphore使用acquire方法和release方法来实现控制：</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public ConcurrentSkipListSet() &#123;</span><br><span class="line">    m = new ConcurrentSkipListMap&lt;E,Object&gt;();//使用ConcurrentSkipListMap实现</span><br><span class="line">&#125;1234</span><br></pre></td></tr></table></figure>
+<h5 id="HashMap-–-gt-ConcurrentHashMap"><a href="#HashMap-–-gt-ConcurrentHashMap" class="headerlink" title="HashMap –&gt; ConcurrentHashMap"></a>HashMap –&gt; ConcurrentHashMap</h5><ul>
+<li>不允许空值，在实际的应用中除了少数的插入操作和删除操作外，绝大多数我们使用map都是读取操作。而且读操作大多数都是成功的。基于这个前提，它针对读操作做了大量的优化。因此这个类在高并发环境下有特别好的表现。</li>
+<li>ConcurrentHashMap作为Concurrent一族，其有着高效地并发操作，相比Hashtable的笨重，ConcurrentHashMap则更胜一筹了。</li>
+<li>在1.8版本以前，ConcurrentHashMap采用分段锁的概念，使锁更加细化，但是1.8已经改变了这种思路，而是利用CAS+Synchronized来保证并发更新的安全，当然底层采用数组+链表+红黑树的存储结构。</li>
+<li>源码分析：推荐参考chenssy的博文：<a href="https://blog.csdn.net/chenssy/article/details/73521950" target="_blank" rel="noopener">J.U.C之Java并发容器：ConcurrentHashMap</a></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 1、普通调用</span><br><span class="line"> */</span><br><span class="line">try &#123;</span><br><span class="line">     semaphore.acquire(); // 获取一个许可</span><br><span class="line">     test();//需要并发控制的内容</span><br><span class="line">     semaphore.release(); // 释放一个许可</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">     log.error(&quot;exception&quot;, e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 2、同时获取多个许可，同时释放多个许可</span><br><span class="line"> */</span><br><span class="line"> try &#123;</span><br><span class="line">     semaphore.acquire(2);</span><br><span class="line">     test();</span><br><span class="line">     semaphore.release(2);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">     log.error(&quot;exception&quot;, e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 3、尝试获取许可，获取不到不执行</span><br><span class="line"> */</span><br><span class="line"> try &#123;</span><br><span class="line">     if (semaphore.tryAcquire()) &#123;</span><br><span class="line">        test(threadNum);</span><br><span class="line">        semaphore.release();</span><br><span class="line">     &#125;</span><br><span class="line"> &#125; catch (Exception e) &#123;</span><br><span class="line">     log.error(&quot;exception&quot;, e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 4、尝试获取许可一段时间，获取不到不执行</span><br><span class="line"> * 参数1：等待时间长度  参数2：等待时间单位</span><br><span class="line"> */</span><br><span class="line">try &#123;</span><br><span class="line">     if (semaphore.tryAcquire(5000, TimeUnit.MILLISECONDS)) &#123;</span><br><span class="line">        test(threadNum);</span><br><span class="line">        semaphore.release(); </span><br><span class="line">     &#125;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">     log.error(&quot;exception&quot;, e);</span><br><span class="line">&#125;12345678910111213141516171819202122232425262728293031323334353637383940414243444546</span><br></pre></td></tr></table></figure>
-<h3 id="AQS组件：CyclicBarrier"><a href="#AQS组件：CyclicBarrier" class="headerlink" title="AQS组件：CyclicBarrier"></a>AQS组件：CyclicBarrier</h3><p><img src="https://img-blog.csdn.net/20180423234242640?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-<ul>
-<li>也是一个同步辅助类，它允许一组线程相互等待，直到到达某个公共的屏障点（循环屏障）</li>
-<li>通过它可以完成多个线程之间相互等待，只有每个线程都准备就绪后才能继续往下执行后面的操作。</li>
-<li>每当有一个线程执行了await方法，计数器就会执行+1操作，待计数器达到预定的值，所有的线程再同时继续执行。由于计数器释放之后可以重用（reset方法），所以称之为循环屏障。</li>
-<li>与CountDownLatch区别：<br>1、计数器可重复用<br>2、描述一个或多个线程等待其他线程的关系/多个线程相互等待</li>
+<h5 id="TreeMap-–-gt-ConcurrentSkipListMap"><a href="#TreeMap-–-gt-ConcurrentSkipListMap" class="headerlink" title="TreeMap –&gt; ConcurrentSkipListMap"></a>TreeMap –&gt; ConcurrentSkipListMap</h5><ul>
+<li>底层实现采用SkipList跳表</li>
+<li>曾经有人用ConcurrentHashMap与ConcurrentSkipListMap做性能测试，在4个线程1.6W的数据条件下，前者的数据存取速度是后者的4倍左右。但是后者有几个前者不能比拟的优点：<br>1、Key是有序的<br>2、支持更高的并发，存储时间与线程数无关</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//公共线程循环调用方法</span><br><span class="line">private static CyclicBarrier barrier = new CyclicBarrier(5);</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">    ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        final int threadNum = i;</span><br><span class="line">        Thread.sleep(1000);</span><br><span class="line">        executor.execute(() -&gt; &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                race(threadNum);</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                log.error(&quot;exception&quot;, e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    executor.shutdown();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用方法1：每个线程都持续等待</span><br><span class="line">private static void race(int threadNum) throws Exception &#123;</span><br><span class="line">    Thread.sleep(1000);</span><br><span class="line">    log.info(&quot;&#123;&#125; is ready&quot;, threadNum);</span><br><span class="line">    barrier.await();</span><br><span class="line">    log.info(&quot;&#123;&#125; continue&quot;, threadNum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用方法2：每个线程只等待一段时间</span><br><span class="line">private static void race(int threadNum) throws Exception &#123;</span><br><span class="line">    Thread.sleep(1000);</span><br><span class="line">    try &#123;</span><br><span class="line">        barrier.await(2000, TimeUnit.MILLISECONDS);</span><br><span class="line">    &#125; catch (InterruptedException | BrokenBarrierException | TimeoutException e) &#123;</span><br><span class="line">        log.warn(&quot;BarrierException&quot;, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用方法3：在初始化的时候设置runnable，当线程达到屏障时优先执行runnable</span><br><span class="line">private static CyclicBarrier barrier = new CyclicBarrier(5, () -&gt; &#123;</span><br><span class="line">    log.info(&quot;callback is running&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/80054133" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/80054133</a></p>
+<h5 id="安全共享对象策略"><a href="#安全共享对象策略" class="headerlink" title="安全共享对象策略"></a>安全共享对象策略</h5><ul>
+<li>线程限制：一个被线程限制的对象，由线程独占，并且只能被占有它的线程修改</li>
+<li>共享只读：一个共享只读的U帝乡，在没有额外同步的情况下，可以被多个线程并发访问，但是任何线程都不能修改它</li>
+<li>线程安全对象：一个线程安全的对象或者容器，在内部通过同步机制来保障线程安全，多以其他线程无需额外的同步就可以通过公共接口随意访问他</li>
+<li>被守护对象：被守护对象只能通过获取特定的锁来访问。</li>
+</ul>
+<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/79947616" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/79947616</a></p>
 
       
     </div>
@@ -486,7 +484,7 @@
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>谢谢你请我吃糖果！</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>打赏</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -525,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap.html" rel="next" title="Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap">
-                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap
+              <a href="/高并发/Java并发编程入门与高并发面试（八）：线程不安全类、同步容器.html" rel="next" title="Java并发编程入门与高并发面试（八）：线程不安全类、同步容器">
+                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（八）：线程不安全类、同步容器
               </a>
             
           </div>
@@ -535,8 +533,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Java并发编程入门与高并发面试（十二）：并发容器J-U-C-AQS组件-锁：ReentrantLock、ReentrantReadWriteLock、StempedLock.html" rel="prev" title="Java并发编程入门与高并发面试（十二）：并发容器J.U.C -- AQS组件 锁：ReentrantLock、ReentrantReadWriteLock、StempedLock">
-                Java并发编程入门与高并发面试（十二）：并发容器J.U.C -- AQS组件 锁：ReentrantLock、ReentrantReadWriteLock、StempedLock <i class="fa fa-chevron-right"></i>
+              <a href="/高并发/Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap.html" rel="prev" title="Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap">
+                Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -671,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS简介"><span class="nav-number">1.</span> <span class="nav-text">AQS简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS设计思想"><span class="nav-number">2.</span> <span class="nav-text">AQS设计思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS的大致实现思路"><span class="nav-number">3.</span> <span class="nav-text">AQS的大致实现思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS组件：CountDownLatch"><span class="nav-number">4.</span> <span class="nav-text">AQS组件：CountDownLatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS组件：Semaphore"><span class="nav-number">5.</span> <span class="nav-text">AQS组件：Semaphore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS组件：CyclicBarrier"><span class="nav-number">6.</span> <span class="nav-text">AQS组件：CyclicBarrier</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayList-–-gt-CopyOnWriteArrayList"><span class="nav-number">1.0.1.</span> <span class="nav-text">ArrayList –&gt; CopyOnWriteArrayList</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashSet-–-gt-CopyOnWriteArraySet"><span class="nav-number">1.0.2.</span> <span class="nav-text">HashSet –&gt; CopyOnWriteArraySet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeSet-–-gt-ConcurrentSkipListSet"><span class="nav-number">1.0.3.</span> <span class="nav-text">TreeSet –&gt; ConcurrentSkipListSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap-–-gt-ConcurrentHashMap"><span class="nav-number">1.0.4.</span> <span class="nav-text">HashMap –&gt; ConcurrentHashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeMap-–-gt-ConcurrentSkipListMap"><span class="nav-number">1.0.5.</span> <span class="nav-text">TreeMap –&gt; ConcurrentSkipListMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安全共享对象策略"><span class="nav-number">1.0.6.</span> <span class="nav-text">安全共享对象策略</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

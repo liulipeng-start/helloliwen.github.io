@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Apache,高并发," />
 
 
 
@@ -94,17 +94,23 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、Apache Bench 简介Apache Bench是Apache 服务器附带的工具，专门用来执行网站服务器的运行效能，特别是针对Apache 网站服务器。原本用来检测Apache网站能够提供的效能，特别是能看出Apache能">
+<meta name="keywords" content="Apache,高并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map">
-<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map.html">
-<meta property="og:site_name" content="不正经斯基的博客">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta property="og:title" content="Java并发编程入门与高并发面试（一）：详细讲解 - 网站性能测试工具Apache Bench">
+<meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（一）：详细讲解-网站性能测试工具Apache-Bench.html">
+<meta property="og:site_name" content="尘世间一迷途小程序猿">
+<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、Apache Bench 简介Apache Bench是Apache 服务器附带的工具，专门用来执行网站服务器的运行效能，特别是针对Apache 网站服务器。原本用来检测Apache网站能够提供的效能，特别是能看出Apache能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-15T01:46:56.807Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20180403151057554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180403151217498?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180403151541385?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180403162346201?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-09-16T11:06:03.462Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta name="twitter:title" content="Java并发编程入门与高并发面试（一）：详细讲解 - 网站性能测试工具Apache Bench">
+<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、Apache Bench 简介Apache Bench是Apache 服务器附带的工具，专门用来执行网站服务器的运行效能，特别是针对Apache 网站服务器。原本用来检测Apache网站能够提供的效能，特别是能看出Apache能">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180403151057554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
 
@@ -133,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map.html"/>
+  <link rel="canonical" href="http://yoursite.com/高并发/Java并发编程入门与高并发面试（一）：详细讲解-网站性能测试工具Apache-Bench.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map | 不正经斯基的博客</title>
+  <title>Java并发编程入门与高并发面试（一）：详细讲解 - 网站性能测试工具Apache Bench | 尘世间一迷途小程序猿</title>
   
 
 
@@ -176,7 +182,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">不正经斯基的博客</span>
+        <span class="site-title">尘世间一迷途小程序猿</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -307,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/高并发/Java并发编程入门与高并发面试（一）：详细讲解-网站性能测试工具Apache-Bench.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -316,7 +322,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不正经斯基的博客">
+      <meta itemprop="name" content="尘世间一迷途小程序猿">
     </span>
 
     
@@ -324,7 +330,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map</h2>
+          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（一）：详细讲解 - 网站性能测试工具Apache Bench</h2>
         
 
         <div class="post-meta">
@@ -336,7 +342,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:19+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T21:12:07+08:00">
                 2018-09-14
               </time>
             
@@ -352,8 +358,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:46:56+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-16T19:06:03+08:00">
+                2018-09-16
               </time>
             
           </span>
@@ -416,60 +422,275 @@
       
         <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
 <hr>
-<ul>
-<li>概述<ul>
-<li><ul>
-<li>ArrayList –&gt; CopyOnWriteArrayList</li>
-<li>HashSet –&gt; CopyOnWriteArraySet</li>
-<li>TreeSet –&gt; ConcurrentSkipListSet</li>
-<li>HashMap –&gt; ConcurrentHashMap</li>
-<li>TreeMap –&gt; ConcurrentSkipListMap</li>
-<li>安全共享对象策略</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<h3 id="1、Apache-Bench-简介"><a href="#1、Apache-Bench-简介" class="headerlink" title="1、Apache Bench 简介"></a>1、Apache Bench 简介</h3><p>Apache Bench是Apache 服务器附带的工具，专门用来执行网站服务器的运行效能，特别是针对Apache 网站服务器。原本用来检测Apache网站能够提供的效能，特别是能看出Apache能提供每秒能送出多少网页。</p>
 <a id="more"></a>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Java并发容器JUC是三个单词的缩写。是JDK下面的一个包名。即Java.util.concurrency。<br>上一节我们介绍了ArrayList、HashMap、HashSet对应的同步容器保证其线程安全，这节我们介绍一下其对应的并发容器。</p>
-<h5 id="ArrayList-–-gt-CopyOnWriteArrayList"><a href="#ArrayList-–-gt-CopyOnWriteArrayList" class="headerlink" title="ArrayList –&gt; CopyOnWriteArrayList"></a>ArrayList –&gt; CopyOnWriteArrayList</h5><p>CopyOnWriteArrayList 写操作时复制，当有新元素添加到集合中时，从原有的数组中拷贝一份出来，然后在新的数组上作写操作，将原来的数组指向新的数组。整个数组的add操作都是在锁的保护下进行的，防止并发时复制多份副本。读操作是在原数组中进行，不需要加锁</p>
-<ul>
-<li>缺点：<br>1.写操作时复制消耗内存，如果元素比较多时候，容易导致young gc 和full gc。<br>2.不能用于实时读的场景.由于复制和add操作等需要时间，故读取时可能读到旧值。<br>能做到最终一致性，但无法满足实时性的要求，更适合读多写少的场景。<br>如果无法知道数组有多大，或者add,set操作有多少，慎用此类,在大量的复制副本的过程中很容易出错。</li>
-<li>设计思想：<br>1.读写分离<br>2.最终一致性<br>3.使用时另外开辟空间，防止并发冲突</li>
-<li>源码分析</li>
+<h3 id="2、Apache-Bench下载"><a href="#2、Apache-Bench下载" class="headerlink" title="2、Apache Bench下载"></a>2、Apache Bench下载</h3><p>我们到网站的官网去下载Apache服务器<br>下载地址：<a href="https://www.apachelounge.com/download/" target="_blank" rel="noopener">Apache服务器下载地址</a><br><img src="https://img-blog.csdn.net/20180403151057554?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>下载成功后直接进行解压，无需安装即可使用（仅针对于ApacheBench而言）。<br><img src="https://img-blog.csdn.net/20180403151217498?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h3 id="3、简单的Apache-Bench使用方法"><a href="#3、简单的Apache-Bench使用方法" class="headerlink" title="3、简单的Apache Bench使用方法"></a>3、简单的Apache Bench使用方法</h3><ul>
+<li>我们打开命令行界面，从命令行界面进入Apache Bench的解压路径下，进入后访问bin文件夹。<br><img src="https://img-blog.csdn.net/20180403151541385?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></li>
+<li>进入后我们输入基础的测试命令对接口进行测试（例如<a href="http://localhost:8080/test" target="_blank" rel="noopener">http://localhost:8080/test</a>）</li>
+<li><code>ab -n 1000 -c 50 http://localhost:8080/test</code></li>
+<li>这段命令的含义是对于上述接口进行1000次测试，在同一时间内允许50个并发请求，执行结果如下：<br><img src="https://img-blog.csdn.net/20180403162346201?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public CopyOnWriteArrayList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    Object[] elements;//使用对象数组来承载数据</span><br><span class="line">    if (c.getClass() == CopyOnWriteArrayList.class)</span><br><span class="line">        elements = ((CopyOnWriteArrayList&lt;?&gt;)c).getArray();</span><br><span class="line">    else &#123;</span><br><span class="line">        elements = c.toArray();</span><br><span class="line">        // c.toArray might (incorrectly) not return Object[] (see 6260652)</span><br><span class="line">        if (elements.getClass() != Object[].class)</span><br><span class="line">            elements = Arrays.copyOf(elements, elements.length, Object[].class);</span><br><span class="line">    &#125;</span><br><span class="line">    setArray(elements);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加数据方法</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    final ReentrantLock lock = this.lock;//使用重入锁，保证线程安全</span><br><span class="line">    lock.lock();</span><br><span class="line">    try &#123;</span><br><span class="line">        Object[] elements = getArray();//获取当前数组数据</span><br><span class="line">        int len = elements.length;</span><br><span class="line">        Object[] newElements = Arrays.copyOf(elements, len + 1);//复制当前数组并且扩容+1</span><br><span class="line">        newElements[len] = e;//将要添加的数据放入新数组</span><br><span class="line">        setArray(newElements);//将原来的数组指向新的数组</span><br><span class="line">        return true;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//获取数据方法，与普通的get没什么差别</span><br><span class="line">private E get(Object[] a, int index) &#123;</span><br><span class="line">    return (E) a[index];</span><br><span class="line">&#125;12345678910111213141516171819202122232425262728293031323334</span><br></pre></td></tr></table></figure>
-<h5 id="HashSet-–-gt-CopyOnWriteArraySet"><a href="#HashSet-–-gt-CopyOnWriteArraySet" class="headerlink" title="HashSet –&gt; CopyOnWriteArraySet"></a>HashSet –&gt; CopyOnWriteArraySet</h5><ul>
-<li>它是线程安全的，底层实现使用的是CopyOnWriteArrayList，因此它也适用于大小很小的set集合，只读操作远大于可变操作。因为他需要copy整个数组，所以包括add、remove、set它的开销相对于大一些。</li>
-<li>迭代器不支持可变的remove操作。使用迭代器遍历的时候速度很快，而且不会与其他线程发生冲突。</li>
-<li>源码分析：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public CopyOnWriteArraySet() &#123;</span><br><span class="line">    al = new CopyOnWriteArrayList&lt;E&gt;();//底层使用CopyOnWriteArrayList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加元素方法，基本实现原理与CopyOnWriteArrayList相同</span><br><span class="line">private boolean addIfAbsent(E e, Object[] snapshot) &#123;</span><br><span class="line">    final ReentrantLock lock = this.lock;</span><br><span class="line">    lock.lock();</span><br><span class="line">    try &#123;</span><br><span class="line">        Object[] current = getArray();</span><br><span class="line">        int len = current.length;</span><br><span class="line">        if (snapshot != current) &#123;//添加了元素去重操作</span><br><span class="line">            // Optimize for lost race to another addXXX operation</span><br><span class="line">            int common = Math.min(snapshot.length, len);</span><br><span class="line">            for (int i = 0; i &lt; common; i++)</span><br><span class="line">                if (current[i] != snapshot[i] &amp;&amp; eq(e, current[i]))</span><br><span class="line">                    return false;</span><br><span class="line">            if (indexOf(e, current, common, len) &gt;= 0)</span><br><span class="line">                    return false;</span><br><span class="line">        &#125;</span><br><span class="line">        Object[] newElements = Arrays.copyOf(current, len + 1);</span><br><span class="line">        newElements[len] = e;</span><br><span class="line">        setArray(newElements);</span><br><span class="line">        return true;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;1234567891011121314151617181920212223242526272829</span><br></pre></td></tr></table></figure>
-<h5 id="TreeSet-–-gt-ConcurrentSkipListSet"><a href="#TreeSet-–-gt-ConcurrentSkipListSet" class="headerlink" title="TreeSet –&gt; ConcurrentSkipListSet"></a>TreeSet –&gt; ConcurrentSkipListSet</h5><p>它是JDK6新增的类，同TreeSet一样支持自然排序，并且可以在构造的时候自己定义比较器。</p>
-<ul>
-<li>同其他set集合，是基于map集合的（基于ConcurrentSkipListMap），在多线程环境下，里面的contains、add、remove操作都是线程安全的。</li>
-<li>多个线程可以安全的并发的执行插入、移除、和访问操作。但是对于批量操作addAll、removeAll、retainAll和containsAll并不能保证以原子方式执行，原因是addAll、removeAll、retainAll底层调用的还是contains、add、remove方法，只能保证每一次的执行是原子性的，代表在单一执行操纵时不会被打断，但是不能保证每一次批量操作都不会被打断。在使用批量操作时，还是需要手动加上同步操作的。</li>
-<li>不允许使用null元素的，它无法可靠的将参数及返回值与不存在的元素区分开来。</li>
-<li>源码分析：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//构造方法</span><br><span class="line">public ConcurrentSkipListSet() &#123;</span><br><span class="line">    m = new ConcurrentSkipListMap&lt;E,Object&gt;();//使用ConcurrentSkipListMap实现</span><br><span class="line">&#125;1234</span><br></pre></td></tr></table></figure>
-<h5 id="HashMap-–-gt-ConcurrentHashMap"><a href="#HashMap-–-gt-ConcurrentHashMap" class="headerlink" title="HashMap –&gt; ConcurrentHashMap"></a>HashMap –&gt; ConcurrentHashMap</h5><ul>
-<li>不允许空值，在实际的应用中除了少数的插入操作和删除操作外，绝大多数我们使用map都是读取操作。而且读操作大多数都是成功的。基于这个前提，它针对读操作做了大量的优化。因此这个类在高并发环境下有特别好的表现。</li>
-<li>ConcurrentHashMap作为Concurrent一族，其有着高效地并发操作，相比Hashtable的笨重，ConcurrentHashMap则更胜一筹了。</li>
-<li>在1.8版本以前，ConcurrentHashMap采用分段锁的概念，使锁更加细化，但是1.8已经改变了这种思路，而是利用CAS+Synchronized来保证并发更新的安全，当然底层采用数组+链表+红黑树的存储结构。</li>
-<li>源码分析：推荐参考chenssy的博文：<a href="https://blog.csdn.net/chenssy/article/details/73521950" target="_blank" rel="noopener">J.U.C之Java并发容器：ConcurrentHashMap</a></li>
-</ul>
-<h5 id="TreeMap-–-gt-ConcurrentSkipListMap"><a href="#TreeMap-–-gt-ConcurrentSkipListMap" class="headerlink" title="TreeMap –&gt; ConcurrentSkipListMap"></a>TreeMap –&gt; ConcurrentSkipListMap</h5><ul>
-<li>底层实现采用SkipList跳表</li>
-<li>曾经有人用ConcurrentHashMap与ConcurrentSkipListMap做性能测试，在4个线程1.6W的数据条件下，前者的数据存取速度是后者的4倍左右。但是后者有几个前者不能比拟的优点：<br>1、Key是有序的<br>2、支持更高的并发，存储时间与线程数无关</li>
-</ul>
-<h5 id="安全共享对象策略"><a href="#安全共享对象策略" class="headerlink" title="安全共享对象策略"></a>安全共享对象策略</h5><ul>
-<li>线程限制：一个被线程限制的对象，由线程独占，并且只能被占有它的线程修改</li>
-<li>共享只读：一个共享只读的U帝乡，在没有额外同步的情况下，可以被多个线程并发访问，但是任何线程都不能修改它</li>
-<li>线程安全对象：一个线程安全的对象或者容器，在内部通过同步机制来保障线程安全，多以其他线程无需额外的同步就可以通过公共接口随意访问他</li>
-<li>被守护对象：被守护对象只能通过获取特定的锁来访问。</li>
-</ul>
-<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/79947616" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/79947616</a></p>
+<h3 id="4、测试结果讲解"><a href="#4、测试结果讲解" class="headerlink" title="4、测试结果讲解"></a>4、测试结果讲解</h3><p>（1）测试指令参数说明：<br>Usage: ab [options][]hostname[:port]/path&gt;<br>我们上述的测试指令中，options为测试指令参数，其全部指参数说明如下：</p>
+<p>Options are:（英文水平太烂，凑活看吧）</p>
+<table>
+<thead>
+<tr>
+<th>参数编码（-？）</th>
+<th>参数名</th>
+<th>参数说明</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>requests</td>
+<td>Number of requests to perform</td>
+<td>总请求数</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>concurrency</td>
+<td>Number of multiple requests to make at a time</td>
+<td>并发数量</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>timelimit</td>
+<td>Seconds to max. to spend on benchmarkin ,This implies -n 50000</td>
+<td>测试时长最大秒数</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>timeout</td>
+<td>Seconds to max. wait for each response, Default is 30 seconds</td>
+<td>每次请求等待响应的最长时间，默认30秒</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>windowsize</td>
+<td>Size of TCP send/receive buffer, in bytes</td>
+<td>TCP发送\接收缓存大小（单位bytes）</td>
+</tr>
+<tr>
+<td>-B</td>
+<td>address</td>
+<td>Address to bind to when making outgoing connections</td>
+<td>发送连接时绑定的地址</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>postfile</td>
+<td>File containing data to POST. Remember also to set -T</td>
+<td>以POST方法发送文件，必须同时使用-T参数</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>putfile</td>
+<td>File containing data to PUT. Remember also to set -T</td>
+<td>以PUT方法发送文件，必须同时使用-T参数</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>content-type</td>
+<td>Content-type header to use for POST/PUT data, eg., ‘application/x-www-form-urlencoded’, Default is ‘text/plain’</td>
+<td>使用POST\PUT方式时的Content-Type头，例如：’application/x-www-form-urlencoded’，默认：’text/plain’</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>verbosity</td>
+<td>How much troubleshooting info to print</td>
+<td>设置显示信息的详细程度 – 4或更大值会显示头信息， 3或更大值可以显示响应代码(404, 200等), 2或更大值可以显示警告和其他信息。 -V 显示版本号并退出</td>
+</tr>
+<tr>
+<td>-w</td>
+<td></td>
+<td>Print out results in HTML tables</td>
+<td>以HTML表的格式输出结果。默认时，它是白色背景的两列宽度的一张表</td>
+</tr>
+<tr>
+<td>-i</td>
+<td></td>
+<td>Use HEAD instead of GET</td>
+<td>使用HEAD请求</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>attributes</td>
+<td>String to insert as table attributes</td>
+<td>插入字符串作为表格属性</td>
+</tr>
+<tr>
+<td>-y</td>
+<td>attributes</td>
+<td>String to insert as tr attributes</td>
+<td>插入字符串作为tr属性</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>attributes</td>
+<td>String to insert as td or th attributes</td>
+<td>插入字符串作为th属性</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>attribute</td>
+<td>Add cookie, eg. ‘Apache=1234’. (repeatable)</td>
+<td>添加cookie，可重复</td>
+</tr>
+<tr>
+<td>-H</td>
+<td>attribute</td>
+<td>Add Arbitrary header line, eg. ‘Accept-Encoding: gzip’, Inserted after all normal header lines. (repeatable)</td>
+<td>添加任意的头信息，可重复</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>attribute</td>
+<td>Add Basic WWW Authentication, the attributes ,are a colon separated username and password.</td>
+<td>添加基础的www认证、属性，是一个以冒号分割的账号与密码</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>attribute</td>
+<td>Add Basic Proxy Authentication, the attributes ,are a colon separated username and password.</td>
+<td>添加基本的代理身份验证、属性，是一个以冒号分隔的用户名和密码。</td>
+</tr>
+<tr>
+<td>-X</td>
+<td>proxy:port</td>
+<td>Proxyserver and port number to use</td>
+<td>使用的代理服务和对应端口号</td>
+</tr>
+<tr>
+<td>-V</td>
+<td></td>
+<td>Print version number and exit</td>
+<td>直接输出版本号退出</td>
+</tr>
+<tr>
+<td>-k</td>
+<td></td>
+<td>Use HTTP KeepAlive feature</td>
+<td>使用Http KeepAlice特性</td>
+</tr>
+<tr>
+<td>-d</td>
+<td></td>
+<td>Do not show percentiles served table.</td>
+<td></td>
+</tr>
+<tr>
+<td>-S</td>
+<td></td>
+<td>Do not show confidence estimators and warnings.</td>
+<td>不显示confidence estimators和警告</td>
+</tr>
+<tr>
+<td>-q</td>
+<td></td>
+<td>Do not show progress when doing more than 150 requests</td>
+<td>当超过150个请求的时候不显示进程</td>
+</tr>
+<tr>
+<td>-l</td>
+<td></td>
+<td>Accept variable document length (use this for dynamic pages)</td>
+<td>接受可变文档长度(用于动态页面)</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>filename</td>
+<td>Output collected data to gnuplot format file.</td>
+<td>以gnuplot格式文件输出收集的数据。</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>filename</td>
+<td>Output CSV file with percentages served</td>
+<td>以CSV文件的方式输出命中的服务</td>
+</tr>
+<tr>
+<td>-r</td>
+<td></td>
+<td>Don’t exit on socket receive errors.</td>
+<td>返回error时不要终端socket</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>method</td>
+<td>Method name</td>
+<td>方法名</td>
+</tr>
+<tr>
+<td>-h</td>
+<td></td>
+<td>Display usage information (this message)</td>
+<td>显示使用信息</td>
+</tr>
+</tbody>
+</table>
+<p>（2）返回结果的说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Document Path</td>
+<td>测试页面</td>
+</tr>
+<tr>
+<td>Document Length</td>
+<td>页面大小</td>
+</tr>
+<tr>
+<td>Concurrency Level</td>
+<td>并发量</td>
+</tr>
+<tr>
+<td>Time taken for tests</td>
+<td>整个测试持续的时间</td>
+</tr>
+<tr>
+<td>Complete requests</td>
+<td>完成的请求数量</td>
+</tr>
+<tr>
+<td>Failed requests</td>
+<td>失败的请求数量</td>
+</tr>
+<tr>
+<td>Total transferred</td>
+<td>所有请求的响应数据的长度总和，包括每个http响应数据的头信息和正文数据的长度，这里不包括http请求数据的长度。仅仅为WEB服务器流向用户PC的应用层数据总长度</td>
+</tr>
+<tr>
+<td>HTML transferred</td>
+<td>所有请求的响应数据中<strong>正文数据</strong>的总和，数量上 = Total transferred - 响应数据头信息的长度</td>
+</tr>
+<tr>
+<td>Requests per second</td>
+<td><strong>吞吐率</strong>,相当于LR中的每秒事务数，后面括号中的mean表示这是一个平均值</td>
+</tr>
+<tr>
+<td>Time per request</td>
+<td><strong>用户平均请求等待时间</strong>,相当于LR中的平均事务响应时间，后面括号中的mean表示这是一个平均值</td>
+</tr>
+<tr>
+<td>Time per request</td>
+<td><strong>服务器平均请求等待时间</strong>,每个连接请求实际运行时间的平均值</td>
+</tr>
+<tr>
+<td>Transfer rate</td>
+<td>（单位时间内从服务器获取的数据长度）平均每秒网络上的流量，可以帮助排除是否存在网络流量过大导致响应时间延长的问题。计算公式：（Total transferred : Time taken for tests）</td>
+</tr>
+</tbody>
+</table>
+<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/79806358" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/79806358</a></p>
 
       
     </div>
@@ -484,7 +705,7 @@
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>谢谢你请我吃糖果！</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>打赏</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -514,6 +735,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Apache/" rel="tag"># Apache</a>
+          
+            <a href="/tags/高并发/" rel="tag"># 高并发</a>
+          
+        </div>
+      
 
       
       
@@ -523,18 +752,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Java并发编程入门与高并发面试（八）：线程不安全类、同步容器.html" rel="next" title="Java并发编程入门与高并发面试（八）：线程不安全类、同步容器">
-                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（八）：线程不安全类、同步容器
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap.html" rel="prev" title="Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap">
-                Java并发编程入门与高并发面试（十）：HashMap与ConcurrentHashMap <i class="fa fa-chevron-right"></i>
+              <a href="/高并发/Java并发编程入门与高并发面试（二）：高并发相关基础知识-MESI-JMM.html" rel="prev" title="Java并发编程入门与高并发面试（二）：高并发相关基础知识 - MESI - JMM">
+                Java并发编程入门与高并发面试（二）：高并发相关基础知识 - MESI - JMM <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -669,7 +894,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayList-–-gt-CopyOnWriteArrayList"><span class="nav-number">1.0.1.</span> <span class="nav-text">ArrayList –&gt; CopyOnWriteArrayList</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashSet-–-gt-CopyOnWriteArraySet"><span class="nav-number">1.0.2.</span> <span class="nav-text">HashSet –&gt; CopyOnWriteArraySet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeSet-–-gt-ConcurrentSkipListSet"><span class="nav-number">1.0.3.</span> <span class="nav-text">TreeSet –&gt; ConcurrentSkipListSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap-–-gt-ConcurrentHashMap"><span class="nav-number">1.0.4.</span> <span class="nav-text">HashMap –&gt; ConcurrentHashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeMap-–-gt-ConcurrentSkipListMap"><span class="nav-number">1.0.5.</span> <span class="nav-text">TreeMap –&gt; ConcurrentSkipListMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安全共享对象策略"><span class="nav-number">1.0.6.</span> <span class="nav-text">安全共享对象策略</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Apache-Bench-简介"><span class="nav-number">1.</span> <span class="nav-text">1、Apache Bench 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Apache-Bench下载"><span class="nav-number">2.</span> <span class="nav-text">2、Apache Bench下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、简单的Apache-Bench使用方法"><span class="nav-number">3.</span> <span class="nav-text">3、简单的Apache Bench使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、测试结果讲解"><span class="nav-number">4.</span> <span class="nav-text">4、测试结果讲解</span></a></li></ol></div>
             
 
           </div>

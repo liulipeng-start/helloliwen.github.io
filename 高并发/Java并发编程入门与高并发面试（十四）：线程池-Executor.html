@@ -94,21 +94,24 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  什么是死锁？通俗的说，死锁就是两个或者多个线程，相互占用对方需要的资源，而都不进行释放，导致彼此之间都相互等待对方释放资源，产生了无限制等待的现象。死锁一旦发生，如果没有外力介入，这种等待将永远存在，从而对程序产生严重影响。用来描述">
+<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   new Thread的弊端  线程池的好处  线程池类图  线程池核心类-ThreadPoolExecutor  使用Executor创建线程池">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java并发编程入门与高并发面试（十五）：线程死锁">
-<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（十五）：线程死锁.html">
-<meta property="og:site_name" content="不正经斯基的博客">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  什么是死锁？通俗的说，死锁就是两个或者多个线程，相互占用对方需要的资源，而都不进行释放，导致彼此之间都相互等待对方释放资源，产生了无限制等待的现象。死锁一旦发生，如果没有外力介入，这种等待将永远存在，从而对程序产生严重影响。用来描述">
+<meta property="og:title" content="Java并发编程入门与高并发面试（十四）：线程池 Executor">
+<meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（十四）：线程池-Executor.html">
+<meta property="og:site_name" content="尘世间一迷途小程序猿">
+<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   new Thread的弊端  线程池的好处  线程池类图  线程池核心类-ThreadPoolExecutor  使用Executor创建线程池">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdn.net/20180508114816478?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20180508115133940?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20180508115247704?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T08:10:26.391Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20180505135807405?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180505142542206?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180505141614527?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/201805051421294?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180505143434499?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180505144730122?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-09-15T08:08:20.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java并发编程入门与高并发面试（十五）：线程死锁">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  什么是死锁？通俗的说，死锁就是两个或者多个线程，相互占用对方需要的资源，而都不进行释放，导致彼此之间都相互等待对方释放资源，产生了无限制等待的现象。死锁一旦发生，如果没有外力介入，这种等待将永远存在，从而对程序产生严重影响。用来描述">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180508114816478?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta name="twitter:title" content="Java并发编程入门与高并发面试（十四）：线程池 Executor">
+<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   new Thread的弊端  线程池的好处  线程池类图  线程池核心类-ThreadPoolExecutor  使用Executor创建线程池">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180505135807405?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
 
@@ -137,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（十五）：线程死锁.html"/>
+  <link rel="canonical" href="http://yoursite.com/高并发/Java并发编程入门与高并发面试（十四）：线程池-Executor.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（十五）：线程死锁 | 不正经斯基的博客</title>
+  <title>Java并发编程入门与高并发面试（十四）：线程池 Executor | 尘世间一迷途小程序猿</title>
   
 
 
@@ -180,7 +183,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">不正经斯基的博客</span>
+        <span class="site-title">尘世间一迷途小程序猿</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -311,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（十五）：线程死锁.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/高并发/Java并发编程入门与高并发面试（十四）：线程池-Executor.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -320,7 +323,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不正经斯基的博客">
+      <meta itemprop="name" content="尘世间一迷途小程序猿">
     </span>
 
     
@@ -328,7 +331,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（十五）：线程死锁</h2>
+          <h2 class="post-title" itemprop="name headline">Java并发编程入门与高并发面试（十四）：线程池 Executor</h2>
         
 
         <div class="post-meta">
@@ -340,7 +343,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:33+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T22:30:28+08:00">
                 2018-09-14
               </time>
             
@@ -356,7 +359,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T16:10:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T16:08:20+08:00">
                 2018-09-15
               </time>
             
@@ -420,34 +423,138 @@
       
         <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
 <hr>
-<h3 id="什么是死锁？"><a href="#什么是死锁？" class="headerlink" title="什么是死锁？"></a>什么是死锁？</h3><p>通俗的说，死锁就是两个或者多个线程，相互占用对方需要的资源，而都不进行释放，导致彼此之间都相互等待对方释放资源，产生了无限制等待的现象。死锁一旦发生，如果没有外力介入，这种等待将永远存在，从而对程序产生严重影响。<br>用来描述死锁的问题最有名的场景就是“哲学家就餐问题”。哲学家就餐问题可以这样表述：假设有五位哲学家围坐在一张圆形餐桌旁，做以下两件事之一：吃饭或者思考。吃东西的时候他们就停止思考，思考的时候也停止吃东西。餐桌中间有一大碗意大利面，每两个哲学家之间有一只餐叉。因为只用一只餐叉很难吃到意大利面，所以假设哲学家必须用两只餐叉吃东西。他们只能使用自己左右手边的那两只餐。哲学家从来不交谈，这就跟危险，可能产生死锁，每个哲学家都拿着左手的餐叉永远等右边的餐叉（或者相反）….</p>
-<a id="more"></a>
-<h3 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h3><ul>
-<li>互斥条件：进程对锁分配的资源进行排他性使用</li>
-<li>请求和保持条件：线程已经保持了一个资源，但是又提出了其他请求，而该资源已被其他线程占用</li>
-<li>不剥夺条件：在使用时不能被剥夺，只能自己用完释放</li>
-<li>环路等待条件：资源调用是一个环形的链</li>
-</ul>
-<h3 id="死锁示例"><a href="#死锁示例" class="headerlink" title="死锁示例"></a>死锁示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">@Slf4j</span><br><span class="line">public class DeadLock implements Runnable &#123;</span><br><span class="line">    public int flag = 1;</span><br><span class="line">    //静态对象是类的所有对象共享的</span><br><span class="line">    private static Object o1 = new Object(), o2 = new Object();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        log.info(&quot;flag:&#123;&#125;&quot;, flag);</span><br><span class="line">        if (flag == 1) &#123;</span><br><span class="line">            synchronized (o1) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(500);</span><br><span class="line">                &#125; catch (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                synchronized (o2) &#123;</span><br><span class="line">                    log.info(&quot;1&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flag == 0) &#123;</span><br><span class="line">            synchronized (o2) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(500);</span><br><span class="line">                &#125; catch (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                synchronized (o1) &#123;</span><br><span class="line">                    log.info(&quot;0&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        DeadLock td1 = new DeadLock();</span><br><span class="line">        DeadLock td2 = new DeadLock();</span><br><span class="line">        td1.flag = 1;</span><br><span class="line">        td2.flag = 0;</span><br><span class="line">        //td1,td2都处于可执行状态，但JVM线程调度先执行哪个线程是不确定的。</span><br><span class="line">        //td2的run()可能在td1的run()之前运行</span><br><span class="line">        new Thread(td1).start();</span><br><span class="line">        new Thread(td2).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;12345678910111213141516171819202122232425262728293031323334353637383940414243444546</span><br></pre></td></tr></table></figure>
-<p>上述代码出现死锁原因：</p>
 <ul>
-<li>当DeadLock类的对象flag==1时（td1），先锁定o1,睡眠500毫秒</li>
-<li>而td1在睡眠的时候另一个flag==0的对象（td2）线程启动，先锁定o2,睡眠500毫秒</li>
-<li>td1睡眠结束后需要锁定o2才能继续执行，而此时o2已被td2锁定；</li>
-<li>td2睡眠结束后需要锁定o1才能继续执行，而此时o1已被td1锁定；</li>
-<li>td1、td2相互等待，都需要得到对方锁定的资源才能继续执行，从而死锁。</li>
+<li><p>new Thread的弊端</p>
+</li>
+<li><p>线程池的好处</p>
+</li>
+<li><p>线程池类图</p>
+</li>
+<li><p>线程池核心类-ThreadPoolExecutor</p>
+</li>
+<li><p>使用Executor创建线程池</p>
+<a id="more"></a>
+</li>
 </ul>
-<h3 id="确认死锁"><a href="#确认死锁" class="headerlink" title="确认死锁"></a>确认死锁</h3><p>在真实的环境中，我们发现程序无法执行，并且CPU占用为0，这样就有理由怀疑产生了死锁，但是光怀疑是不行的，我们需要一个实际的验证方法。接下来我们使用jdk提供的工具来检测是否真正发生了死锁。<br>运行上述的代码，并在windows系统中使用cmd进入控制台，输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps1</span><br></pre></td></tr></table></figure>
-<p>可见控制台输出：我们上边运行的类的类名以及对应的进程ID<br><img src="https://img-blog.csdn.net/20180508114816478?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>接下来使用命令获取进程对应线程的堆栈信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack 9284 1</span><br></pre></td></tr></table></figure>
-<p>分析堆栈信息（提取有用的部分）<br><img src="https://img-blog.csdn.net/20180508115133940?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>两个线程都进行了加锁操作（如上图）<br><img src="https://img-blog.csdn.net/20180508115247704?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>系统发现了一个Java-level的线程死锁。ok，确认无疑是发生了死锁现象。</p>
-<h3 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h3><ul>
-<li>注意加锁顺序（这个很好理解，就像上边的例子）</li>
-<li>加锁时限（超过时限放弃加锁）<br>实现方式–使用重入锁。关于重入锁可以见我之前的博客：<a href="https://blog.csdn.net/jesonjoke/article/details/80058631" target="_blank" rel="noopener">并发容器J.U.C – AQS组件 锁：ReentrantLock、ReentrantReadWriteLock、StempedLock</a></li>
-<li>死锁检测（较难，就像分析上边的线程情况）</li>
+<h3 id="new-Thread的弊端"><a href="#new-Thread的弊端" class="headerlink" title="new Thread的弊端"></a>new Thread的弊端</h3><ul>
+<li>每次new Thread 新建对象，性能差</li>
+<li>线程缺乏统一管理，可能无限制的新建线程，相互竞争，可能占用过多的系统资源导致死机或者OOM（out of memory 内存溢出），这种问题的原因不是因为单纯的new一个Thread，而是可能因为程序的bug或者设计上的缺陷导致不断new Thread造成的。</li>
+<li>缺少更多功能，如更多执行、定期执行、线程中断。</li>
 </ul>
-<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/80233899" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/80233899</a></p>
+<h3 id="线程池的好处"><a href="#线程池的好处" class="headerlink" title="线程池的好处"></a>线程池的好处</h3><ul>
+<li>重用存在的线程，减少对象创建、消亡的开销，性能好</li>
+<li>可有效控制最大并发线程数，提高系统资源利用率，同时可以避免过多资源竞争，避免阻塞。</li>
+<li>提供定时执行、定期执行、单线程、并发数控制等功能。</li>
+</ul>
+<h3 id="线程池类图"><a href="#线程池类图" class="headerlink" title="线程池类图"></a>线程池类图</h3><p><img src="https://img-blog.csdn.net/20180505135807405?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>在线程池的类图中，我们最常使用的是最下边的Executors,用它来创建线程池使用线程。那么在上边的类图中，包含了一个Executor框架，它是一个根据一组执行策略的调用调度执行和控制异步任务的框架，目的是提供一种将任务提交与任务如何运行分离开的机制。它包含了三个executor接口：</p>
+<ul>
+<li>Executor:运行新任务的简单接口</li>
+<li>ExecutorService：扩展了Executor，添加了用来管理执行器生命周期和任务生命周期的方法</li>
+<li>ScheduleExcutorService：扩展了ExecutorService，支持Future和定期执行任务</li>
+</ul>
+<h3 id="线程池核心类-ThreadPoolExecutor"><a href="#线程池核心类-ThreadPoolExecutor" class="headerlink" title="线程池核心类-ThreadPoolExecutor"></a>线程池核心类-ThreadPoolExecutor</h3><p>参数说明：ThreadPoolExecutor一共有七个参数，这七个参数配合起来，构成了线程池强大的功能。</p>
+<ul>
+<li>corePoolSize：核心线程数量</li>
+<li>maximumPoolSize：线程最大线程数</li>
+<li>workQueue：阻塞队列，存储等待执行的任务，很重要，会对线程池运行过程产生重大影响</li>
+</ul>
+<blockquote>
+<p>当我们提交一个新的任务到线程池，线程池会根据当前池中正在运行的线程数量来决定该任务的处理方式。处理方式有三种：<br>1、直接切换（SynchronusQueue）<br>2、无界队列（LinkedBlockingQueue）能够创建的最大线程数为corePoolSize,这时maximumPoolSize就不会起作用了。当线程池中所有的核心线程都是运行状态的时候，新的任务提交就会放入等待队列中。<br>3、有界队列（ArrayBlockingQueue）最大maximumPoolSize，能够降低资源消耗，但是这种方式使得线程池对线程调度变的更困难。因为线程池与队列容量都是有限的。所以想让线程池的吞吐率和处理任务达到一个合理的范围，又想使我们的线程调度相对简单，并且还尽可能降低资源的消耗，我们就需要合理的限制这两个数量<br>分配技巧： [如果想降低资源的消耗包括降低cpu使用率、操作系统资源的消耗、上下文切换的开销等等，可以设置一个较大的队列容量和较小的线程池容量，这样会降低线程池的吞吐量。如果我们提交的任务经常发生阻塞，我们可以调整maximumPoolSize。如果我们的队列容量较小，我们需要把线程池大小设置的大一些，这样cpu的使用率相对来说会高一些。但是如果线程池的容量设置的过大，提高任务的数量过多的时候，并发量会增加，那么线程之间的调度就是一个需要考虑的问题。这样反而可能会降低处理任务的吞吐量。]</p>
+</blockquote>
+<ul>
+<li>keepAliveTime：线程没有任务执行时最多保持多久时间终止（当线程中的线程数量大于corePoolSize的时候，如果这时没有新的任务提交核心线程外的线程不会立即销毁，而是等待，直到超过keepAliveTime）</li>
+<li>unit：keepAliveTime的时间单位</li>
+<li>threadFactory：线程工厂，用来创建线程，有一个默认的工场来创建线程，这样新创建出来的线程有相同的优先级，是非守护线程、设置好了名称）</li>
+<li>rejectHandler：当拒绝处理任务时(阻塞队列满)的策略（AbortPolicy默认策略直接抛出异常、CallerRunsPolicy用调用者所在的线程执行任务、DiscardOldestPolicy丢弃队列中最靠前的任务并执行当前任务、DiscardPolicy直接丢弃当前任务）<br><img src="https://img-blog.csdn.net/20180505142542206?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></li>
+</ul>
+<blockquote>
+<p>corePoolSize、maximumPoolSize、workQueue 三者关系：如果运行的线程数小于corePoolSize的时候，直接创建新线程来处理任务。即使线程池中的其他线程是空闲的。如果运行中的线程数大于corePoolSize且小于maximumPoolSize时，那么只有当workQueue满的时候才创建新的线程去处理任务。如果corePoolSize与maximumPoolSize是相同的，那么创建的线程池大小是固定的。这时有新任务提交，当workQueue未满时，就把请求放入workQueue中。等待空线程从workQueue取出任务。如果workQueue此时也满了，那么就使用另外的拒绝策略参数去执行拒绝策略。</p>
+</blockquote>
+<p>初始化方法：由七个参数组合成四个初始化方法<br><img src="https://img-blog.csdn.net/20180505141614527?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>其他方法：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>execute()</td>
+<td>提交任务，交给线程池执行</td>
+</tr>
+<tr>
+<td>2</td>
+<td>submit()</td>
+<td>提交任务，能够返回执行结果 execute+Future</td>
+</tr>
+<tr>
+<td>3</td>
+<td>shutdown()</td>
+<td>关闭线程池，等待任务都执行完</td>
+</tr>
+<tr>
+<td>4</td>
+<td>shutdownNow()</td>
+<td>关闭线程池，不等待任务执行完</td>
+</tr>
+<tr>
+<td>5</td>
+<td>getTaskCount()</td>
+<td>线程池已执行和未执行的任务总数</td>
+</tr>
+<tr>
+<td>6</td>
+<td>getCompleteTaskCount()</td>
+<td>已完成的任务数量</td>
+</tr>
+<tr>
+<td>7</td>
+<td>getPoolSize()</td>
+<td>线程池当前的线程数量</td>
+</tr>
+<tr>
+<td>8</td>
+<td>getActiveCount()</td>
+<td>当前线程池中正在执行任务的线程数量</td>
+</tr>
+</tbody>
+</table>
+<p>线程池生命周期：<br><img src="https://img-blog.csdn.net/201805051421294?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<ul>
+<li>running：能接受新提交的任务，也能处理阻塞队列中的任务</li>
+<li>shutdown：不能处理新的任务，但是能继续处理阻塞队列中任务</li>
+<li>stop：不能接收新的任务，也不处理队列中的任务</li>
+<li>tidying：如果所有的任务都已经终止了，这时有效线程数为0</li>
+<li>terminated：最终状态</li>
+</ul>
+<h3 id="使用Executor创建线程池"><a href="#使用Executor创建线程池" class="headerlink" title="使用Executor创建线程池"></a>使用Executor创建线程池</h3><p>使用Executor可以创建四种线程池：分别对应上边提到的四种线程池初始化方法</p>
+<ul>
+<li>1、Executors.newCachedThreadPool<br>创建一个可缓存的线程池，如果线程池的长度超过了处理的需要，可以灵活回收空闲线程。如果没有可回收的就新建线程。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//源码：</span><br><span class="line">public static ExecutorService newCachedThreadPool() &#123;</span><br><span class="line">    return new ThreadPoolExecutor(0, Integer.MAX_VALUE,</span><br><span class="line">                                  60L, TimeUnit.SECONDS,</span><br><span class="line">                                  new SynchronousQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;123456</span><br><span class="line">//使用方法：</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        final int index = i;</span><br><span class="line">        executorService.execute(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                log.info(&quot;task:&#123;&#125;&quot;, index);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    executorService.shutdown();</span><br><span class="line">&#125;1234567891011121314</span><br></pre></td></tr></table></figure>
+<p>值得注意的一点是，newCachedThreadPool的返回值是ExecutorService类型，该类型只包含基础的线程池方法，但却不包含线程监控相关方法，因此在使用返回值为ExecutorService的线程池类型创建新线程时要考虑到具体情况。<br><img src="https://img-blog.csdn.net/20180505143434499?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<ul>
+<li>2、newFixedThreadPool<br>定长线程池，可以线程现成的最大并发数，超出在队列等待</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//源码：</span><br><span class="line">public static ExecutorService newFixedThreadPool(int nThreads) &#123;</span><br><span class="line">    return new ThreadPoolExecutor(nThreads, nThreads,</span><br><span class="line">                                  0L, TimeUnit.MILLISECONDS,</span><br><span class="line">                                  new LinkedBlockingQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;123456</span><br><span class="line">//使用方法：</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ExecutorService executorService = Executors.newFixedThreadPool(3);</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        final int index = i;</span><br><span class="line">        executorService.execute(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                log.info(&quot;task:&#123;&#125;&quot;, index);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    executorService.shutdown();</span><br><span class="line">&#125;1234567891011121314</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3、newSingleThreadExecutor<br>单线程化的线程池，用唯一的一个共用线程执行任务，保证所有任务按指定顺序执行（FIFO、优先级…）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//源码</span><br><span class="line">public static ExecutorService newSingleThreadExecutor() &#123;</span><br><span class="line">    return new FinalizableDelegatedExecutorService</span><br><span class="line">        (new ThreadPoolExecutor(1, 1,</span><br><span class="line">                                0L, TimeUnit.MILLISECONDS,</span><br><span class="line">                                new LinkedBlockingQueue&lt;Runnable&gt;()));</span><br><span class="line">&#125;1234567</span><br><span class="line">//使用方法：</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ExecutorService executorService = Executors.newSingleThreadExecutor();</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        final int index = i;</span><br><span class="line">        executorService.execute(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                log.info(&quot;task:&#123;&#125;&quot;, index);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    executorService.shutdown();</span><br><span class="line">&#125;1234567891011121314</span><br></pre></td></tr></table></figure>
+<ul>
+<li>4、newScheduledThreadPool<br>定长线程池，支持定时和周期任务执行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//源码：</span><br><span class="line">public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize) &#123;</span><br><span class="line">    return new ScheduledThreadPoolExecutor(corePoolSize);</span><br><span class="line">&#125;</span><br><span class="line">public ScheduledThreadPoolExecutor(int corePoolSize) &#123;</span><br><span class="line">    super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS,//此处super指的是ThreadPoolExecutor</span><br><span class="line">          new DelayedWorkQueue());</span><br><span class="line">&#125;12345678</span><br><span class="line">//基础使用方法：</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);</span><br><span class="line">    executorService.schedule(new Runnable() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            log.warn(&quot;schedule run&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, 3, TimeUnit.SECONDS);//延迟3秒执行</span><br><span class="line">    executorService.shutdown();</span><br><span class="line">&#125;</span><br><span class="line">123456789101112</span><br></pre></td></tr></table></figure>
+<p>ScheduledExecutorService提供了三种方法可以使用：<br><img src="https://img-blog.csdn.net/20180505144730122?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>scheduleAtFixedRate：以指定的速率执行任务<br>scheduleWithFixedDelay：以指定的延迟执行任务<br>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">executorService.scheduleAtFixedRate(new Runnable() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        log.warn(&quot;schedule run&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, 1, 3, TimeUnit.SECONDS);//延迟一秒后每隔3秒执行123456</span><br></pre></td></tr></table></figure>
+<p>小扩展：延迟执行任务的操作，java中还有Timer类同样可以实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Timer timer = new Timer();</span><br><span class="line">timer.schedule(new TimerTask() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        log.warn(&quot;timer run&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, new Date(), 5 * 1000);</span><br></pre></td></tr></table></figure>
+<p>经作者授权转载，原文地址：<a href="https://blog.csdn.net/jesonjoke/article/details/80202114" target="_blank" rel="noopener">https://blog.csdn.net/jesonjoke/article/details/80202114</a></p>
 
       
     </div>
@@ -462,7 +569,7 @@
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>谢谢你请我吃糖果！</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>打赏</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -501,8 +608,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Java并发编程入门与高并发面试（十四）：线程池-Executor.html" rel="next" title="Java并发编程入门与高并发面试（十四）：线程池 Executor">
-                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（十四）：线程池 Executor
+              <a href="/高并发/Java并发编程入门与高并发面试（十三）：并发容器J-U-C-组件FutureTask、ForkJoin、BlockingQueue.html" rel="next" title="Java并发编程入门与高并发面试（十三）：并发容器J.U.C -- 组件FutureTask、ForkJoin、BlockingQueue">
+                <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（十三）：并发容器J.U.C -- 组件FutureTask、ForkJoin、BlockingQueue
               </a>
             
           </div>
@@ -510,6 +617,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/高并发/Java并发编程入门与高并发面试（十五）：线程死锁.html" rel="prev" title="Java并发编程入门与高并发面试（十五）：线程死锁">
+                Java并发编程入门与高并发面试（十五）：线程死锁 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -643,7 +754,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是死锁？"><span class="nav-number">1.</span> <span class="nav-text">什么是死锁？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁产生的必要条件"><span class="nav-number">2.</span> <span class="nav-text">死锁产生的必要条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁示例"><span class="nav-number">3.</span> <span class="nav-text">死锁示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确认死锁"><span class="nav-number">4.</span> <span class="nav-text">确认死锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免死锁"><span class="nav-number">5.</span> <span class="nav-text">避免死锁</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-Thread的弊端"><span class="nav-number">1.</span> <span class="nav-text">new Thread的弊端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的好处"><span class="nav-number">2.</span> <span class="nav-text">线程池的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池类图"><span class="nav-number">3.</span> <span class="nav-text">线程池类图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池核心类-ThreadPoolExecutor"><span class="nav-number">4.</span> <span class="nav-text">线程池核心类-ThreadPoolExecutor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Executor创建线程池"><span class="nav-number">5.</span> <span class="nav-text">使用Executor创建线程池</span></a></li></ol></div>
             
 
           </div>

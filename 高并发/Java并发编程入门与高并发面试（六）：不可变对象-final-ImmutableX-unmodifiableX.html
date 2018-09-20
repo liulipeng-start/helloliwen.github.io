@@ -97,8 +97,8 @@
 <meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  概念1、不可变对象有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：  对象创建一个其状态不能修改  对象所有域都是final类型  对象是正确创建的(在对象创建期间，this引用没有逸出)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX">
-<meta property="og:url" content="http://yoursite.com/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html">
-<meta property="og:site_name" content="不正经斯基的博客">
+<meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html">
+<meta property="og:site_name" content="尘世间一迷途小程序猿">
 <meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  概念1、不可变对象有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：  对象创建一个其状态不能修改  对象所有域都是final类型  对象是正确创建的(在对象创建期间，this引用没有逸出)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180411153701945?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html"/>
+  <link rel="canonical" href="http://yoursite.com/高并发/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html"/>
 
 
 
 
 
-  <title>Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX | 不正经斯基的博客</title>
+  <title>Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX | 尘世间一迷途小程序猿</title>
   
 
 
@@ -183,7 +183,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">不正经斯基的博客</span>
+        <span class="site-title">尘世间一迷途小程序猿</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/高并发/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Wen">
@@ -323,7 +323,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不正经斯基的博客">
+      <meta itemprop="name" content="尘世间一迷途小程序猿">
     </span>
 
     
@@ -473,7 +473,7 @@
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>谢谢你请我吃糖果！</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>打赏</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -512,7 +512,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式.html" rel="next" title="Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式">
+              <a href="/高并发/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式.html" rel="next" title="Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式">
                 <i class="fa fa-chevron-left"></i> Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式
               </a>
             
@@ -522,7 +522,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Java并发编程入门与高并发面试（七）：线程封闭-ThreadLocal.html" rel="prev" title="Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal">
+              <a href="/高并发/Java并发编程入门与高并发面试（七）：线程封闭-ThreadLocal.html" rel="prev" title="Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal">
                 Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal <i class="fa fa-chevron-right"></i>
               </a>
             
