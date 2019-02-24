@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta name="description" content="摘要：本文介绍并发容器JUC(Java.util.concurrency)：集合和Map中线程安全的替代类。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（九）：并发容器-J-U-C-线程安全的集合与Map.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta property="og:description" content="摘要：本文介绍并发容器JUC(Java.util.concurrency)：集合和Map中线程安全的替代类。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-15T01:46:56.807Z">
+<meta property="og:updated_time" content="2019-02-24T12:39:39.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（九）：并发容器 J.U.C - 线程安全的集合与Map">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   概述  ArrayList –&amp;gt; CopyOnWriteArrayList HashSet –&amp;gt; CopyOnWriteArraySet TreeSet –&amp;gt; ConcurrentSkipListSet Hash">
+<meta name="twitter:description" content="摘要：本文介绍并发容器JUC(Java.util.concurrency)：集合和Map中线程安全的替代类。">
 
 
 
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:46:56+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:39:39+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -414,7 +414,8 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：本文介绍并发容器JUC(Java.util.concurrency)：集合和Map中线程安全的替代类。</p>
+<a id="more"></a>
 <hr>
 <ul>
 <li>概述<ul>
@@ -430,7 +431,6 @@
 </ul>
 </li>
 </ul>
-<a id="more"></a>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Java并发容器JUC是三个单词的缩写。是JDK下面的一个包名。即Java.util.concurrency。<br>上一节我们介绍了ArrayList、HashMap、HashSet对应的同步容器保证其线程安全，这节我们介绍一下其对应的并发容器。</p>
 <h5 id="ArrayList-–-gt-CopyOnWriteArrayList"><a href="#ArrayList-–-gt-CopyOnWriteArrayList" class="headerlink" title="ArrayList –&gt; CopyOnWriteArrayList"></a>ArrayList –&gt; CopyOnWriteArrayList</h5><p>CopyOnWriteArrayList 写操作时复制，当有新元素添加到集合中时，从原有的数组中拷贝一份出来，然后在新的数组上作写操作，将原来的数组指向新的数组。整个数组的add操作都是在锁的保护下进行的，防止并发时复制多份副本。读操作是在原数组中进行，不需要加锁</p>
 <ul>
@@ -692,7 +692,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

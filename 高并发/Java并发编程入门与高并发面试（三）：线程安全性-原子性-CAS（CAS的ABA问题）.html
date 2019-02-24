@@ -94,22 +94,22 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  线程安全性线程安全性   线程安全？ 线程安全性？ 原子性 Atomic包中的类与CAS： AtomicInteger AtomicLong 与 LongAdder AtomicBoolean AtomicIntegerFieldU">
+<meta name="description" content="摘要：本文介绍线程的安全性，原子性，java.lang.Number包下的类与CAS操作，synchronized锁，和原子性操作各方法间的对比。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（三）：线程安全性-原子性-CAS（CAS的ABA问题）">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（三）：线程安全性-原子性-CAS（CAS的ABA问题）.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  线程安全性线程安全性   线程安全？ 线程安全性？ 原子性 Atomic包中的类与CAS： AtomicInteger AtomicLong 与 LongAdder AtomicBoolean AtomicIntegerFieldU">
+<meta property="og:description" content="摘要：本文介绍线程的安全性，原子性，java.lang.Number包下的类与CAS操作，synchronized锁，和原子性操作各方法间的对比。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180407184050321?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180408093154905?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180408093507839?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180408094528467?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180408100038341?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T01:28:09.002Z">
+<meta property="og:updated_time" content="2019-02-24T12:26:18.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（三）：线程安全性-原子性-CAS（CAS的ABA问题）">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  线程安全性线程安全性   线程安全？ 线程安全性？ 原子性 Atomic包中的类与CAS： AtomicInteger AtomicLong 与 LongAdder AtomicBoolean AtomicIntegerFieldU">
+<meta name="twitter:description" content="摘要：本文介绍线程的安全性，原子性，java.lang.Number包下的类与CAS操作，synchronized锁，和原子性操作各方法间的对比。">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180407184050321?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:28:09+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:26:18+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -420,9 +420,10 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：本文介绍线程的安全性，原子性，java.lang.Number包下的类与CAS操作，synchronized锁，和原子性操作各方法间的对比。</p>
+<a id="more"></a>
 <hr>
-<h1 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h1><p>线程安全性</p>
+<p>线程安全性</p>
 <ul>
 <li><ul>
 <li>线程安全？</li>
@@ -450,7 +451,6 @@
 </ul>
 </li>
 </ul>
-<a id="more"></a>
 <h3 id="线程安全？"><a href="#线程安全？" class="headerlink" title="线程安全？"></a>线程安全？</h3><p>当多个线程访问某个类时，不管运行时环境采用<strong>何种调度方式</strong>或者这些进程将如何交替执行，并且在主调代码中<strong>不需要任何额外的同步或协同</strong>，这个类都能表现出<strong>正确的行为</strong>，那么就称这个类是线程安全的。</p>
 <h3 id="线程安全性？"><a href="#线程安全性？" class="headerlink" title="线程安全性？"></a>线程安全性？</h3><p>线程安全性主要体现在三个方面：原子性、可见性、有序性</p>
 <ul>
@@ -722,7 +722,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程安全性"><span class="nav-number">1.</span> <span class="nav-text">线程安全性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全？"><span class="nav-number">1.0.1.</span> <span class="nav-text">线程安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全性？"><span class="nav-number">1.0.2.</span> <span class="nav-text">线程安全性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子性"><span class="nav-number">1.0.3.</span> <span class="nav-text">原子性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Atomic包中的类与CAS："><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Atomic包中的类与CAS：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicInteger"><span class="nav-number">1.0.3.1.1.</span> <span class="nav-text">AtomicInteger</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicLong-与-LongAdder"><span class="nav-number">1.0.3.1.2.</span> <span class="nav-text">AtomicLong 与 LongAdder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicBoolean"><span class="nav-number">1.0.3.1.3.</span> <span class="nav-text">AtomicBoolean</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicIntegerFieldUpdater"><span class="nav-number">1.0.3.1.4.</span> <span class="nav-text">AtomicIntegerFieldUpdater</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicStampReference与CAS的ABA问题"><span class="nav-number">1.0.3.1.5.</span> <span class="nav-text">AtomicStampReference与CAS的ABA问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicLongArray"><span class="nav-number">1.0.3.1.6.</span> <span class="nav-text">AtomicLongArray</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-修饰一个代码块"><span class="nav-number">1.0.3.2.1.</span> <span class="nav-text">synchronized 修饰一个代码块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-修饰一个方法"><span class="nav-number">1.0.3.2.2.</span> <span class="nav-text">synchronized 修饰一个方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-修饰一个静态方法"><span class="nav-number">1.0.3.2.3.</span> <span class="nav-text">synchronized 修饰一个静态方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-修饰一个类"><span class="nav-number">1.0.3.2.4.</span> <span class="nav-text">synchronized 修饰一个类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原子性操作各方法间的对比"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">原子性操作各方法间的对比</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全？"><span class="nav-number">1.</span> <span class="nav-text">线程安全？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全性？"><span class="nav-number">2.</span> <span class="nav-text">线程安全性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子性"><span class="nav-number">3.</span> <span class="nav-text">原子性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Atomic包中的类与CAS："><span class="nav-number">3.1.</span> <span class="nav-text">Atomic包中的类与CAS：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicInteger"><span class="nav-number">3.1.1.</span> <span class="nav-text">AtomicInteger</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicLong-与-LongAdder"><span class="nav-number">3.1.2.</span> <span class="nav-text">AtomicLong 与 LongAdder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicBoolean"><span class="nav-number">3.1.3.</span> <span class="nav-text">AtomicBoolean</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicIntegerFieldUpdater"><span class="nav-number">3.1.4.</span> <span class="nav-text">AtomicIntegerFieldUpdater</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicStampReference与CAS的ABA问题"><span class="nav-number">3.1.5.</span> <span class="nav-text">AtomicStampReference与CAS的ABA问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AtomicLongArray"><span class="nav-number">3.1.6.</span> <span class="nav-text">AtomicLongArray</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized"><span class="nav-number">3.2.</span> <span class="nav-text">synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-修饰一个代码块"><span class="nav-number">3.2.1.</span> <span class="nav-text">synchronized 修饰一个代码块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-修饰一个方法"><span class="nav-number">3.2.2.</span> <span class="nav-text">synchronized 修饰一个方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-修饰一个静态方法"><span class="nav-number">3.2.3.</span> <span class="nav-text">synchronized 修饰一个静态方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-修饰一个类"><span class="nav-number">3.2.4.</span> <span class="nav-text">synchronized 修饰一个类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原子性操作各方法间的对比"><span class="nav-number">3.3.</span> <span class="nav-text">原子性操作各方法间的对比</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -745,7 +745,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="概念 发布对象 对象逸出   代码演示 不安全发布对象 对象逸出   安全发布对象示例（多种单例模式演示） 1、懒汉式（最简式） 2、懒汉式（synchronized） 3、双重同步锁模式【先入坑再出坑】 4、饿汉式（最简式） 5、饿汉式（静态块初始化） 6、枚举式">
+<meta name="description" content="摘要：本文介绍安全发布对象的概念，代码演示，对象逃逸与多种单例模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="概念 发布对象 对象逸出   代码演示 不安全发布对象 对象逸出   安全发布对象示例（多种单例模式演示） 1、懒汉式（最简式） 2、懒汉式（synchronized） 3、双重同步锁模式【先入坑再出坑】 4、饿汉式（最简式） 5、饿汉式（静态块初始化） 6、枚举式">
+<meta property="og:description" content="摘要：本文介绍安全发布对象的概念，代码演示，对象逃逸与多种单例模式">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180409165630129?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T08:25:40.511Z">
+<meta property="og:updated_time" content="2019-02-24T12:26:49.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（五）：安全发布对象与多种单例模式">
-<meta name="twitter:description" content="概念 发布对象 对象逸出   代码演示 不安全发布对象 对象逸出   安全发布对象示例（多种单例模式演示） 1、懒汉式（最简式） 2、懒汉式（synchronized） 3、双重同步锁模式【先入坑再出坑】 4、饿汉式（最简式） 5、饿汉式（静态块初始化） 6、枚举式">
+<meta name="twitter:description" content="摘要：本文介绍安全发布对象的概念，代码演示，对象逃逸与多种单例模式">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180409165630129?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T16:25:40+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:26:49+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -416,7 +416,10 @@
       
 
       
-        <ul>
+        <p>摘要：本文介绍安全发布对象的概念，代码演示，对象逃逸与多种单例模式</p>
+<a id="more"></a>
+<hr>
+<ul>
 <li>概念<ul>
 <li>发布对象</li>
 <li>对象逸出</li>
@@ -437,7 +440,6 @@
 </ul>
 </li>
 </ul>
-<a id="more"></a>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h5 id="发布对象"><a href="#发布对象" class="headerlink" title="发布对象"></a>发布对象</h5><p>使一个对象能够被当前范围之外的代码所使用。<br>在我们的日常开发中，我们经常要发布一些对象，比如通过类的非私有方法返回对象的引用，或者通过公有静态变量发布对象。</p>
 <h5 id="对象逸出"><a href="#对象逸出" class="headerlink" title="对象逸出"></a>对象逸出</h5><p>一种错误的发布。当一个对象还没有构造完成时，就使它被其他线程所见。</p>
 <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h5 id="不安全发布对象"><a href="#不安全发布对象" class="headerlink" title="不安全发布对象"></a>不安全发布对象</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class UnsafePublish &#123;</span><br><span class="line"></span><br><span class="line">    private String[] states = &#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;;</span><br><span class="line"></span><br><span class="line">    //类的非私有方法，返回私有对象的引用</span><br><span class="line">    public String[] getStates() &#123;</span><br><span class="line">        return states;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        UnsafePublish unsafePublish = new UnsafePublish();</span><br><span class="line">        log.info(&quot;&#123;&#125;&quot;, Arrays.toString(unsafePublish.getStates()));</span><br><span class="line"></span><br><span class="line">        unsafePublish.getStates()[0] = &quot;d&quot;;</span><br><span class="line">        log.info(&quot;&#123;&#125;&quot;, Arrays.toString(unsafePublish.getStates()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;1234567891011121314151617</span><br></pre></td></tr></table></figure>
@@ -709,7 +711,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

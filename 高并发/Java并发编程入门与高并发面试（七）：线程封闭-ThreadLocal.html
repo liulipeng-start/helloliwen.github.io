@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、什么是线程封闭？它其实就是把对象封装到一个线程里，只有一个线程能看到这个对象，那么这个对象就算不是线程安全的，也不会出现任何线程安全方面的问题。 线程封闭技术有一个常见的应用：">
+<meta name="description" content="摘要：本文介绍什么是线程封闭，线程封闭的种类，Springboot框架中使用ThreadLocal。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（七）：线程封闭-ThreadLocal.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、什么是线程封闭？它其实就是把对象封装到一个线程里，只有一个线程能看到这个对象，那么这个对象就算不是线程安全的，也不会出现任何线程安全方面的问题。 线程封闭技术有一个常见的应用：">
+<meta property="og:description" content="摘要：本文介绍什么是线程封闭，线程封闭的种类，Springboot框架中使用ThreadLocal。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180411204833840?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180411203503274?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180411203545536?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T01:44:11.528Z">
+<meta property="og:updated_time" content="2019-02-24T12:25:06.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（七）：线程封闭 - ThreadLocal">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  1、什么是线程封闭？它其实就是把对象封装到一个线程里，只有一个线程能看到这个对象，那么这个对象就算不是线程安全的，也不会出现任何线程安全方面的问题。 线程封闭技术有一个常见的应用：">
+<meta name="twitter:description" content="摘要：本文介绍什么是线程封闭，线程封闭的种类，Springboot框架中使用ThreadLocal。">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180411204833840?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:44:11+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:25:06+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -418,11 +418,11 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：本文介绍什么是线程封闭，线程封闭的种类，Springboot框架中使用ThreadLocal。</p>
+<a id="more"></a>
 <hr>
 <h4 id="1、什么是线程封闭？"><a href="#1、什么是线程封闭？" class="headerlink" title="1、什么是线程封闭？"></a>1、什么是线程封闭？</h4><p>它其实就是把对象封装到一个线程里，只有一个线程能看到这个对象，那么这个对象就算不是线程安全的，也不会出现任何线程安全方面的问题。</p>
 <p>线程封闭技术有一个常见的应用：</p>
-<a id="more"></a>
 <blockquote>
 <p>数据库连接对应jdbc的Connection对象，Connection对象在实现的时候并没有对线程安全做太多的处理，jdbc的规范里也没有要求Connection对象必须是线程安全的。<br>实际在服务器应用程序中，线程从连接池获取了一个Connection对象，使用完再把Connection对象返回给连接池，由于大多数请求都是由单线程采用同步的方式来处理的，并且在Connection对象返回之前，连接池不会将它分配给其他线程。因此这种连接管理模式处理请求时隐含的将Connection对象封闭在线程里面，这样我们使用的connection对象虽然本身不是线程安全的，但是它通过线程封闭也做到了线程安全。</p>
 </blockquote>
@@ -670,7 +670,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

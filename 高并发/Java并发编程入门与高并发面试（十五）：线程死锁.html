@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  什么是死锁？通俗的说，死锁就是两个或者多个线程，相互占用对方需要的资源，而都不进行释放，导致彼此之间都相互等待对方释放资源，产生了无限制等待的现象。死锁一旦发生，如果没有外力介入，这种等待将永远存在，从而对程序产生严重影响。用来描述">
+<meta name="description" content="摘要：如题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（十五）：线程死锁">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（十五）：线程死锁.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  什么是死锁？通俗的说，死锁就是两个或者多个线程，相互占用对方需要的资源，而都不进行释放，导致彼此之间都相互等待对方释放资源，产生了无限制等待的现象。死锁一旦发生，如果没有外力介入，这种等待将永远存在，从而对程序产生严重影响。用来描述">
+<meta property="og:description" content="摘要：如题。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180508114816478?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180508115133940?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180508115247704?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T08:10:26.391Z">
+<meta property="og:updated_time" content="2019-02-24T12:48:59.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（十五）：线程死锁">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  什么是死锁？通俗的说，死锁就是两个或者多个线程，相互占用对方需要的资源，而都不进行释放，导致彼此之间都相互等待对方释放资源，产生了无限制等待的现象。死锁一旦发生，如果没有外力介入，这种等待将永远存在，从而对程序产生严重影响。用来描述">
+<meta name="twitter:description" content="摘要：如题。">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180508114816478?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T16:10:26+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:48:59+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -418,10 +418,10 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：如题。</p>
+<a id="more"></a>
 <hr>
 <h3 id="什么是死锁？"><a href="#什么是死锁？" class="headerlink" title="什么是死锁？"></a>什么是死锁？</h3><p>通俗的说，死锁就是两个或者多个线程，相互占用对方需要的资源，而都不进行释放，导致彼此之间都相互等待对方释放资源，产生了无限制等待的现象。死锁一旦发生，如果没有外力介入，这种等待将永远存在，从而对程序产生严重影响。<br>用来描述死锁的问题最有名的场景就是“哲学家就餐问题”。哲学家就餐问题可以这样表述：假设有五位哲学家围坐在一张圆形餐桌旁，做以下两件事之一：吃饭或者思考。吃东西的时候他们就停止思考，思考的时候也停止吃东西。餐桌中间有一大碗意大利面，每两个哲学家之间有一只餐叉。因为只用一只餐叉很难吃到意大利面，所以假设哲学家必须用两只餐叉吃东西。他们只能使用自己左右手边的那两只餐。哲学家从来不交谈，这就跟危险，可能产生死锁，每个哲学家都拿着左手的餐叉永远等右边的餐叉（或者相反）….</p>
-<a id="more"></a>
 <h3 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h3><ul>
 <li>互斥条件：进程对锁分配的资源进行排他性使用</li>
 <li>请求和保持条件：线程已经保持了一个资源，但是又提出了其他请求，而该资源已被其他线程占用</li>
@@ -666,7 +666,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   new Thread的弊端  线程池的好处  线程池类图  线程池核心类-ThreadPoolExecutor  使用Executor创建线程池">
+<meta name="description" content="摘要：本文介绍线程池的好处、类图和核心类——ThreadPoolExecutor，以及使用Executor创建线程池。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（十四）：线程池 Executor">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（十四）：线程池-Executor.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   new Thread的弊端  线程池的好处  线程池类图  线程池核心类-ThreadPoolExecutor  使用Executor创建线程池">
+<meta property="og:description" content="摘要：本文介绍线程池的好处、类图和核心类——ThreadPoolExecutor，以及使用Executor创建线程池。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180505135807405?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180505142542206?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
@@ -107,10 +107,10 @@
 <meta property="og:image" content="https://img-blog.csdn.net/201805051421294?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180505143434499?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180505144730122?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T08:08:20.020Z">
+<meta property="og:updated_time" content="2019-02-24T12:48:31.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（十四）：线程池 Executor">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   new Thread的弊端  线程池的好处  线程池类图  线程池核心类-ThreadPoolExecutor  使用Executor创建线程池">
+<meta name="twitter:description" content="摘要：本文介绍线程池的好处、类图和核心类——ThreadPoolExecutor，以及使用Executor创建线程池。">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180505135807405?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T16:08:20+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:48:31+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -421,7 +421,8 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：本文介绍线程池的好处、类图和核心类——ThreadPoolExecutor，以及使用Executor创建线程池。</p>
+<a id="more"></a>
 <hr>
 <ul>
 <li><p>new Thread的弊端</p>
@@ -433,7 +434,6 @@
 <li><p>线程池核心类-ThreadPoolExecutor</p>
 </li>
 <li><p>使用Executor创建线程池</p>
-<a id="more"></a>
 </li>
 </ul>
 <h3 id="new-Thread的弊端"><a href="#new-Thread的弊端" class="headerlink" title="new Thread的弊端"></a>new Thread的弊端</h3><ul>
@@ -777,7 +777,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

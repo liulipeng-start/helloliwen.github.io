@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  概念1、不可变对象有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：  对象创建一个其状态不能修改  对象所有域都是final类型  对象是正确创建的(在对象创建期间，this引用没有逸出)">
+<meta name="description" content="摘要：不可变对象一定是线程安全的，但是线程安全的对象不一定是不可变对象。本文介绍不可变对象的概率，如何创建一个不可变对象，final关键字，Java:unmodifiable相关方法和Google的Guava。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（六）：不可变对象-final-ImmutableX-unmodifiableX.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  概念1、不可变对象有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：  对象创建一个其状态不能修改  对象所有域都是final类型  对象是正确创建的(在对象创建期间，this引用没有逸出)">
+<meta property="og:description" content="摘要：不可变对象一定是线程安全的，但是线程安全的对象不一定是不可变对象。本文介绍不可变对象的概率，如何创建一个不可变对象，final关键字，Java:unmodifiable相关方法和Google的Guava。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180411153701945?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/2018041115395523?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
@@ -107,10 +107,10 @@
 <meta property="og:image" content="https://img-blog.csdn.net/20180411162003137?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180411162457565?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180411165721456?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T01:42:47.425Z">
+<meta property="og:updated_time" content="2019-02-24T12:27:04.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（六）：不可变对象 -final -ImmutableX -unmodifiableX">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  概念1、不可变对象有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：  对象创建一个其状态不能修改  对象所有域都是final类型  对象是正确创建的(在对象创建期间，this引用没有逸出)">
+<meta name="twitter:description" content="摘要：不可变对象一定是线程安全的，但是线程安全的对象不一定是不可变对象。本文介绍不可变对象的概率，如何创建一个不可变对象，final关键字，Java:unmodifiable相关方法和Google的Guava。">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180411153701945?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T09:42:47+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:27:04+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -421,16 +421,16 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：不可变对象一定是线程安全的，但是线程安全的对象不一定是不可变对象。本文介绍不可变对象的概率，如何创建一个不可变对象，final关键字，Java:unmodifiable相关方法和Google的Guava。</p>
+<a id="more"></a>
 <hr>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h4 id="1、不可变对象"><a href="#1、不可变对象" class="headerlink" title="1、不可变对象"></a>1、不可变对象</h4><p>有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：</p>
+<h4 id="1、不可变对象"><a href="#1、不可变对象" class="headerlink" title="1、不可变对象"></a>1、不可变对象</h4><p>有一种对象只要它发布了就是安全的，它就是不可变对象。一个不可变对象需要满足的条件：</p>
 <ul>
 <li><p>对象创建一个其状态不能修改</p>
 </li>
 <li><p>对象所有域都是final类型</p>
 </li>
 <li><p>对象是正确创建的(在对象创建期间，this引用没有逸出)</p>
-<a id="more"></a>
 </li>
 </ul>
 <h4 id="2、创建一个不可变对象的方法"><a href="#2、创建一个不可变对象的方法" class="headerlink" title="2、创建一个不可变对象的方法"></a>2、创建一个不可变对象的方法</h4><p>（1）自己定义<br>这里可以采用的方式包括：<br>1、将类声明为final，这样它就不能被继承。<br>2、将所有的成员声明为私有的，这样就不允许直接访问这些成员。<br>3、对变量不提供set方法，将所有可变的成员声明为final，这样就只能赋值一次。通过构造器初始化所有成员进行深度拷贝。<br>4、在get方法中不直接返回对象的本身，而是克隆对象，返回对象的拷贝。</p>
@@ -658,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、不可变对象"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、创建一个不可变对象的方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、创建一个不可变对象的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、final关键字"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、final关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Java-unmodifiable相关方法"><span class="nav-number">1.0.4.</span> <span class="nav-text">4、Java:unmodifiable相关方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、Guava-Immutable相关类"><span class="nav-number">1.0.5.</span> <span class="nav-text">5、Guava:Immutable相关类</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、不可变对象"><span class="nav-number">1.</span> <span class="nav-text">1、不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、创建一个不可变对象的方法"><span class="nav-number">2.</span> <span class="nav-text">2、创建一个不可变对象的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、final关键字"><span class="nav-number">3.</span> <span class="nav-text">3、final关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、Java-unmodifiable相关方法"><span class="nav-number">4.</span> <span class="nav-text">4、Java:unmodifiable相关方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、Guava-Immutable相关类"><span class="nav-number">5.</span> <span class="nav-text">5、Guava:Immutable相关类</span></a></li></ol></div>
             
 
           </div>
@@ -681,7 +681,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

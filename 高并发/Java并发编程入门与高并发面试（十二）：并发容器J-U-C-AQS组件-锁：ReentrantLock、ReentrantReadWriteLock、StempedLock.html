@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   ReentrantLock   ReentrantLock与synchronized的区别 ReentrantLock独有的功能 要放弃synchronized？ 如何使用ReentrantLock？ 内置函数（部分） Condi">
+<meta name="description" content="摘要：本文介绍重入锁(ReentrantLock)、读写锁（ReentrantReadWriteLock）、票据锁（StempedLock）以及如何选择锁。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（十二）：并发容器J.U.C -- AQS组件 锁：ReentrantLock、ReentrantReadWriteLock、StempedLock">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（十二）：并发容器J-U-C-AQS组件-锁：ReentrantLock、ReentrantReadWriteLock、StempedLock.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   ReentrantLock   ReentrantLock与synchronized的区别 ReentrantLock独有的功能 要放弃synchronized？ 如何使用ReentrantLock？ 内置函数（部分） Condi">
+<meta property="og:description" content="摘要：本文介绍重入锁(ReentrantLock)、读写锁（ReentrantReadWriteLock）、票据锁（StempedLock）以及如何选择锁。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-15T08:01:46.448Z">
+<meta property="og:updated_time" content="2019-02-24T12:46:03.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（十二）：并发容器J.U.C -- AQS组件 锁：ReentrantLock、ReentrantReadWriteLock、StempedLock">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   ReentrantLock   ReentrantLock与synchronized的区别 ReentrantLock独有的功能 要放弃synchronized？ 如何使用ReentrantLock？ 内置函数（部分） Condi">
+<meta name="twitter:description" content="摘要：本文介绍重入锁(ReentrantLock)、读写锁（ReentrantReadWriteLock）、票据锁（StempedLock）以及如何选择锁。">
 
 
 
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T16:01:46+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:46:03+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -414,7 +414,8 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：本文介绍重入锁(ReentrantLock)、读写锁（ReentrantReadWriteLock）、票据锁（StempedLock）以及如何选择锁。</p>
+<a id="more"></a>
 <hr>
 <ul>
 <li><p>ReentrantLock</p>
@@ -435,7 +436,6 @@
 <li><p>票据锁：StempedLock</p>
 </li>
 <li><p>如何选择锁？</p>
-<a id="more"></a>
 </li>
 </ul>
 <h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p>java中有两类锁，一类是Synchronized，而另一类就是J.U.C中提供的锁。ReentrantLock与Synchronized都是可重入锁，本质上都是lock与unlock的操作。接下来我们介绍三种J.U.C中的锁，其中 ReentrantLock使用synchronized与之比对介绍。</p>
@@ -708,7 +708,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="高并发相关基础知识特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  高并发相关基础知识0、工具1、基础概念2、CPU多级缓存3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)4、乱序执行优化5、JAVA 内存模型(JMM)6、Java内存模型-">
+<meta name="description" content="摘要：本文介绍高并发的工具、基础概念、CPU多级缓存、缓存一致性原则、CPU的乱序执行优化、JMM、JMM的同步操作、同步规则以及并发的优势与风险。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（二）：高并发相关基础知识 - MESI - JMM">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（二）：高并发相关基础知识-MESI-JMM.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="高并发相关基础知识特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  高并发相关基础知识0、工具1、基础概念2、CPU多级缓存3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)4、乱序执行优化5、JAVA 内存模型(JMM)6、Java内存模型-">
+<meta property="og:description" content="摘要：本文介绍高并发的工具、基础概念、CPU多级缓存、缓存一致性原则、CPU的乱序执行优化、JMM、JMM的同步操作、同步规则以及并发的优势与风险。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/upload-image/high-concurrency2-1.png">
 <meta property="og:image" content="http://yoursite.com/upload-image/high-concurrency2-2.png">
@@ -111,10 +111,10 @@
 <meta property="og:image" content="http://yoursite.com/upload-image/high-concurrency2-8.png">
 <meta property="og:image" content="http://yoursite.com/upload-image/high-concurrency2-9.png">
 <meta property="og:image" content="http://yoursite.com/upload-image/high-concurrency2-10.png">
-<meta property="og:updated_time" content="2018-09-30T14:44:03.383Z">
+<meta property="og:updated_time" content="2019-02-24T12:26:02.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（二）：高并发相关基础知识 - MESI - JMM">
-<meta name="twitter:description" content="高并发相关基础知识特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案  高并发相关基础知识0、工具1、基础概念2、CPU多级缓存3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)4、乱序执行优化5、JAVA 内存模型(JMM)6、Java内存模型-">
+<meta name="twitter:description" content="摘要：本文介绍高并发的工具、基础概念、CPU多级缓存、缓存一致性原则、CPU的乱序执行优化、JMM、JMM的同步操作、同步规则以及并发的优势与风险。">
 <meta name="twitter:image" content="http://yoursite.com/upload-image/high-concurrency2-1.png">
 
 
@@ -363,8 +363,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-30T22:44:03+08:00">
-                2018-09-30
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:26:02+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -425,10 +425,10 @@
       
 
       
-        <h1 id="高并发相关基础知识"><a href="#高并发相关基础知识" class="headerlink" title="高并发相关基础知识"></a>高并发相关基础知识</h1><p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：本文介绍高并发的工具、基础概念、CPU多级缓存、缓存一致性原则、CPU的乱序执行优化、JMM、JMM的同步操作、同步规则以及并发的优势与风险。</p>
+<a id="more"></a>
 <hr>
 <p>高并发相关基础知识<br>0、工具<br>1、基础概念<br>2、CPU多级缓存<br>3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)<br>4、乱序执行优化<br>5、JAVA 内存模型(JMM)<br>6、Java内存模型-同步八种操作<br>7、Java内存模型-同步规则<br>8、并发的优势与风险</p>
-<a id="more"></a>
 <h3 id="0、工具"><a href="#0、工具" class="headerlink" title="0、工具"></a>0、工具</h3><ul>
 <li><p>Apache Bench(AB) :Apache附带的工具，测试网站性能 — <a href="https://blog.csdn.net/jesonjoke/article/details/79806358" target="_blank" rel="noopener">ApacheBench安装及使用方法</a></p>
 </li>
@@ -733,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#高并发相关基础知识"><span class="nav-number">1.</span> <span class="nav-text">高并发相关基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0、工具"><span class="nav-number">1.0.1.</span> <span class="nav-text">0、工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、基础概念"><span class="nav-number">1.0.2.</span> <span class="nav-text">1、基础概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、CPU多级缓存"><span class="nav-number">1.0.3.</span> <span class="nav-text">2、CPU多级缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、缓存一致性-MESI-Modify-Exclusive-Share-Invalid"><span class="nav-number">1.0.4.</span> <span class="nav-text">3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、乱序执行优化"><span class="nav-number">1.0.5.</span> <span class="nav-text">4、乱序执行优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、JAVA-内存模型-JMM"><span class="nav-number">1.0.6.</span> <span class="nav-text">5、JAVA 内存模型(JMM)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、Java内存模型-同步八种操作"><span class="nav-number">1.0.7.</span> <span class="nav-text">6、Java内存模型-同步八种操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、Java内存模型-同步规则"><span class="nav-number">1.0.8.</span> <span class="nav-text">7、Java内存模型-同步规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、并发的优势与风险"><span class="nav-number">1.0.9.</span> <span class="nav-text">8、并发的优势与风险</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0、工具"><span class="nav-number">1.</span> <span class="nav-text">0、工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、基础概念"><span class="nav-number">2.</span> <span class="nav-text">1、基础概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、CPU多级缓存"><span class="nav-number">3.</span> <span class="nav-text">2、CPU多级缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、缓存一致性-MESI-Modify-Exclusive-Share-Invalid"><span class="nav-number">4.</span> <span class="nav-text">3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、乱序执行优化"><span class="nav-number">5.</span> <span class="nav-text">4、乱序执行优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、JAVA-内存模型-JMM"><span class="nav-number">6.</span> <span class="nav-text">5、JAVA 内存模型(JMM)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、Java内存模型-同步八种操作"><span class="nav-number">7.</span> <span class="nav-text">6、Java内存模型-同步八种操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、Java内存模型-同步规则"><span class="nav-number">8.</span> <span class="nav-text">7、Java内存模型-同步规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、并发的优势与风险"><span class="nav-number">9.</span> <span class="nav-text">8、并发的优势与风险</span></a></li></ol></div>
             
 
           </div>
@@ -756,7 +756,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

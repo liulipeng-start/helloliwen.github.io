@@ -94,22 +94,22 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案    FutureTask  Runnable与Callable对比 Future接口 FutureTask     ForkJoin  局限性： 框架核心： 使用方式：（模拟加和运算）     BlockingQueue阻塞队列">
+<meta name="description" content="摘要：本文介绍组件FutureTask、ForkJoin、BlockingQueue阻塞队列。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（十三）：并发容器J.U.C -- 组件FutureTask、ForkJoin、BlockingQueue">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（十三）：并发容器J-U-C-组件FutureTask、ForkJoin、BlockingQueue.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案    FutureTask  Runnable与Callable对比 Future接口 FutureTask     ForkJoin  局限性： 框架核心： 使用方式：（模拟加和运算）     BlockingQueue阻塞队列">
+<meta property="og:description" content="摘要：本文介绍组件FutureTask、ForkJoin、BlockingQueue阻塞队列。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180502170850681?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180502170946350?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180502173012969?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180502175723970?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/2018050217591747?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T08:07:07.013Z">
+<meta property="og:updated_time" content="2019-02-24T12:47:03.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（十三）：并发容器J.U.C -- 组件FutureTask、ForkJoin、BlockingQueue">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案    FutureTask  Runnable与Callable对比 Future接口 FutureTask     ForkJoin  局限性： 框架核心： 使用方式：（模拟加和运算）     BlockingQueue阻塞队列">
+<meta name="twitter:description" content="摘要：本文介绍组件FutureTask、ForkJoin、BlockingQueue阻塞队列。">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180502170850681?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T16:07:07+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:47:03+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -420,7 +420,8 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：本文介绍组件FutureTask、ForkJoin、BlockingQueue阻塞队列。</p>
+<a id="more"></a>
 <hr>
 <ul>
 <li><ul>
@@ -450,7 +451,6 @@
 <li><p>四套方法：</p>
 </li>
 <li><p>实现类：</p>
-<a id="more"></a>
 </li>
 </ul>
 </li>
@@ -735,7 +735,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
+<meta name="description" content="摘要：本文介绍AQS。AQS全名：AbstractQueuedSynchronizer，是并发容器J.U.C（java.lang.concurrent）下locks包内的一个类。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier">
 <meta property="og:url" content="http://yoursite.com/高并发/Java并发编程入门与高并发面试（十一）：并发容器J-U-C-AQS组件CountDownLatch、Semaphore、CyclicBarrier.html">
 <meta property="og:site_name" content="尘世间一迷途小程序猿">
-<meta property="og:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
+<meta property="og:description" content="摘要：本文介绍AQS。AQS全名：AbstractQueuedSynchronizer，是并发容器J.U.C（java.lang.concurrent）下locks包内的一个类。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180423191843274?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180423234242640?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-09-15T07:59:52.550Z">
+<meta property="og:updated_time" content="2019-02-24T12:49:25.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程入门与高并发面试（十一）：并发容器J.U.C -- AQS组件CountDownLatch、Semaphore、CyclicBarrier">
-<meta name="twitter:description" content="特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。jimin老师课程地址：Java并发编程与高并发解决方案   AQS简介  AQS设计思想  AQS的大致实现思路  AQS组件：CountDownLatch  AQS组件：Semaphore  AQS组件：CyclicBarrier">
+<meta name="twitter:description" content="摘要：本文介绍AQS。AQS全名：AbstractQueuedSynchronizer，是并发容器J.U.C（java.lang.concurrent）下locks包内的一个类。">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-15T15:59:52+08:00">
-                2018-09-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-24T20:49:25+08:00">
+                2019-02-24
               </time>
             
           </span>
@@ -418,7 +418,8 @@
       
 
       
-        <p>特别感谢：慕课网jimin老师的《Java并发编程与高并发解决方案》课程，以下知识点多数来自老师的课程内容。<br><strong>jimin</strong>老师课程地址：<a href="https://coding.imooc.com/class/195.html" target="_blank" rel="noopener">Java并发编程与高并发解决方案</a></p>
+        <p>摘要：本文介绍AQS。AQS全名：AbstractQueuedSynchronizer，是并发容器J.U.C（java.lang.concurrent）下locks包内的一个类。</p>
+<a id="more"></a>
 <hr>
 <ul>
 <li><p>AQS简介</p>
@@ -432,7 +433,6 @@
 <li><p>AQS组件：Semaphore</p>
 </li>
 <li><p>AQS组件：CyclicBarrier</p>
-<a id="more"></a>
 </li>
 </ul>
 <h3 id="AQS简介"><a href="#AQS简介" class="headerlink" title="AQS简介"></a>AQS简介</h3><p>AQS全名：AbstractQueuedSynchronizer，是并发容器J.U.C（java.lang.concurrent）下locks包内的一个类。它实现了一个<strong>FIFO</strong>(FirstIn、FisrtOut先进先出)的队列。底层实现的数据结构是一个<strong>双向列表</strong>。<br><img src="https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br><strong>Sync queue</strong>：同步队列，是一个双向列表。包括head节点和tail节点。head节点主要用作后续的调度。<br><strong>Condition queue</strong>：非必须，单向列表。当程序中存在cindition的时候才会存在此列表。</p>
@@ -694,7 +694,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
