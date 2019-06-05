@@ -34,9 +34,9 @@ description:
 
 ​		至于其他平台的评论，参看这篇文章：[程序员可以选择哪些平台写技术博客？](<https://mp.weixin.qq.com/s?src=11×tamp=1559567191&ver=1646&signature=M8olE56Lf0LYxFyo5e5mClnfNlP0dHG04YgH-pTO1AIe3r5Ao7RSccXBVIn1PAATEhuniqA-Nr2cI*XCQEdrQ6SzjtrtFBmZv8G7vmOs8lOr9Ip4gG9gJLqapMh2SXk6&new=1>)，如果提示无法访问，使用[搜狗微信](https://weixin.sogou.com/)平台搜索文章。
 
-### 三、平台搭建
+###  三、平台搭建
 
-####1.关于Hexo、Node.js
+#### 1.关于Hexo、Node.js
 
 **Hexo的工作机制**
 

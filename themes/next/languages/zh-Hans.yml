@@ -87,3 +87,4 @@ symbol:
   comma: '， '
   period: '。 '
   colon: '：'
+  anglebracket: '> '
