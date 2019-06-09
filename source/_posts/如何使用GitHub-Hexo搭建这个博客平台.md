@@ -210,9 +210,7 @@ origin https://github.com/someaccount/someproject.git (push)
 
 如果是以上的结果那么说明此项目是使用https协议进行访问的（如果地址是git开头则表示是git协议）
 
-你可以登陆你的github，就像本文开头的图例，你在上面可以看到你的ssh协议相应的url，类似：
-
- ![img](https://images2015.cnblogs.com/blog/1160195/201705/1160195-20170512120555144-795931549.png)
+你可以登陆你的github，就像本文开头的图例，你在上面可以看到你的ssh协议相应的url。
 
 复制此ssh链接，然后使用命令 git remote set-url 来调整你的url。
 
@@ -272,6 +270,29 @@ hexo g #生成 或 hexo generate
 hexo s #启动本地服务器 或者 hexo server，这一步之后就可以通过http://localhost:4000查看了
 ~~~
 
+（5）更新hexo
+
+~~~shell
+npm update -g hexo
+~~~
+
+（6）Windows下npm安装Hexo失败的解放方案
+
+因为国外源网速不好的原因，安装hexo失败，可以采用如下方案：
+
+```shell
+# 添加淘宝源
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+# nrm类似包管理器
+cnpm install nrm -g
+nrm ls
+# 使用淘宝
+nrm use taobao
+npm install -g hexo-cli
+```
+
+参考：[(node.js)使用淘宝镜像安装hexo失败](<http://www.codes51.com/itwd/1327882.html>)
+
 #### 2.安装主题
 
 （1）安装主题NexT（当然还有很多其他主题，可以去选择自己喜欢的主题：[官方主题](https://hexo.io/themes/)，本人选择NexT）
@@ -294,6 +315,14 @@ hexo/_config.yml
 
 ~~~shell
 language: zh-Hans
+~~~
+
+（4）更新主题
+
+cd 到主题文件夹，执行命令（需要隐藏的.git文件夹没有被删除）
+
+~~~shell
+git pull
 ~~~
 
 #### 3.创建博客及常用命令
@@ -335,8 +364,6 @@ hexo cl && hexo g && gulp && hexo d
 hexo s -g #生成并本地预览
 hexo d -g #生成并上传
 ~~~
-
-
 
 #### 4.部署
 
@@ -384,16 +411,90 @@ hexo cl && hexo g && hexo d
 
 ### 五、Hexo配置
 
-#### 1.设置头像及网站的icon
+#### 1.基本信息配置
 
-首先把图片放在**hexo/source/images**目录下，并修改配置文件**hexo/themes/next/_config.yml**
+基本信息包括：博客标题、作者、描述、语言等等。打开**_config.yml**，找到Site模块
+
+```
+title: 标题
+subtitle: 副标题
+description: 描述
+author: 作者
+language: 语言（简体中文是zh-Hans）
+timezone: 网站时区（Hexo 默认使用您电脑的时区，不用写）
+```
+
+其他配置可参考[站点配置](<https://hexo.io/zh-cn/docs/configuration.html>)
+
+#### 2.设置头像及网站的icon
+
+首先把图片放在**source/images**目录下，并修改配置文件**themes/next/_config.yml**
 
 ~~~shell
 avatar: /images/avatar.jpg
 favicon: /images/favicon32.ico
 ~~~
 
-#### 2.添加标签页面
+#### 3.Next主题样式设置
+
+我们百里挑一选择了Next主题，不过Next主题还有4种风格供我们选择，打开 **themes/next/_config.yml** 找到Scheme Settings
+
+```
+# ---------------------------------------------------------------
+# Scheme Settings
+# ---------------------------------------------------------------
+
+# Schemes
+#scheme: Muse
+#scheme: Mist
+scheme: Pisces
+#scheme: Gemini
+```
+
+4种风格大同小异，本人用的是Pisces风格，你们可以选择自己喜欢的风格。
+
+#### 4.菜单设置
+
+刚开始默认的菜单只有首页和归档两个，修改菜单设置文件： **themes/next/_config.yml**
+
+```
+menu:
+  home: / || home                          //首页
+  archives: /archives/ || archive          //归档
+  categories: /categories/ || th           //分类
+  tags: /tags/ || tags                     //标签
+  #about: /about/ || user                  //关于
+  #schedule: /schedule/ || calendar        //日程表
+  #sitemap: /sitemap.xml || sitemap        //站点地图
+  #commonweal: /404/ || heartbeat          //公益404
+```
+
+需要哪个菜单取消注释就好了。关于后面的格式，以`archives: /archives/ || archive`为例：
+`||` 之前的`/archives/`表示标题“归档”，关于标题文字可以去`themes/next/languages/zh-Hans.yml`中参考或修改。
+`||`之后的`archive`表示图标，可以去[Font Awesome](https://link.jianshu.com/?t=http%3A%2F%2Ffontawesome.io%2Ficons%2F)中查看或修改，Next主题所有的图标都来自Font Awesome。
+
+#### 5.侧栏设置
+
+侧栏设置包括：侧栏位置、侧栏显示与否、文章间距、返回顶部按钮等等。打开 **themes/next/_config.yml** 找到`sidebar`字段
+
+```
+sidebar:
+# Sidebar Position - 侧栏位置（只对Pisces | Gemini两种风格有效）
+  position: left        //靠左放置
+  #position: right      //靠右放置
+
+# Sidebar Display - 侧栏显示时机（只对Muse | Mist两种风格有效）
+  #display: post        //默认行为，在文章页面（拥有目录列表）时显示
+  display: always       //在所有页面中都显示
+  #display: hide        //在所有页面中都隐藏（可以手动展开）
+  #display: remove      //完全移除
+
+  offset: 12            //文章间距（只对Pisces | Gemini两种风格有效）
+  b2t: false            //返回顶部按钮（只对Pisces | Gemini两种风格有效）
+  scrollpercent: true   //返回顶部按钮的百分比
+```
+
+#### 6.添加标签页面
 
 新建页面：
 
@@ -405,6 +506,8 @@ favicon: /images/favicon32.ico
 
   ```
   ---
+  title: tags
+  date: 2018-09-12 10:30:31
   type: "tags"
   comments: false
   ---
@@ -417,18 +520,754 @@ favicon: /images/favicon32.ico
   	tags: /tags
   ```
 
+#### 7.添加分类页面
 
+新建页面：
+
+  ```
+  hexo new page categories
+  ```
+
+设置页面（编辑 **source/categories/index.md**）：
+
+  ```
+  ---
+  title: categories
+  date: 2018-09-12 10:32:08
+  type: "categories"
+  ---
+  ```
+
+修改菜单（编辑 **themes/next/_config.yml**）：
+
+  ```
+  menu:
+    categories: /categories/
+  ```
+
+使用：
+
+~~~xml
+---
+title: jQuery对表单的操作及更多应用
+date: 2017-05-26 12:12:57
+categories: 
+	- web前端 #一级分类
+	- jQuery #二级分类
+---
+~~~
+
+scaffolds目录下，是新建页面的模板，执行新建命令时，是根据这里的模板页来完成的，所以可以在这里根据你
+
+自己的需求添加一些默认值。打开scaffolds/post.md文件，在tages:上面加入categories:，保存后，之后执行
+
+`hexo new 文章名`命令生成的文件，页面里就有`categories:`项了。
+
+~~~
+title: {{ title }}
+date: {{ date }}
+categories: 
+tags: 
+keywords: 
+description: 
+~~~
+
+#### 8.修改二级分类符号
+
+二级分类使用
+
+```markdown
+categories: 
+- 笔记
+- 题解
+- t
+```
+
+**themes\next\layout\_macro\post.swig**
+
+~~~
+{% if cat_length > 1 and loop.index !== cat_length %}
+    {{ __('symbol.comma') }}
+{% endif %}
+~~~
+
+__('symbol.comma')就是二级分类所使用的符号，具体定义在**themes\next\languages\zh-Hans.yml**
+
+~~~
+symbol:
+  comma: '， '
+  period: '。 '
+  colon: '：'
+~~~
+
+#### 9.站内搜索功能
+
+- hexo-generator-searchdb
+
+安装 hexo-generator-searchdb，在站点的根目录下执行以下命令：
+
+```
+$ npm install hexo-generator-searchdb --save
+```
+
+编辑站点配置文件，新增以下内容到任意位置：
+
+```
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+```
+
+- hexo-generator-search
+
+安装 hexo-generator-search 插件
+
+```shell
+$ npm install hexo-generator-search –save
+```
+
+配置站点文件_config.yml:
+
+```
+# 站内搜索
+search:
+    path: search.xml
+    field: post
+```
+
+配置主题文件_config.yml:
+
+```
+local_search:
+    enable: true
+```
+
+#### 10.修改字体大小和字体
+
+- 字体大小
+
+修改文件：**\themes\next\source\css\ _variables\base.styl**
+
+~~~shell
+$font-size-base
+~~~
+
+- 字体
+
+全局字体：**\themes\next\_config.yml**
+
+~~~shell
+family: Lato
+~~~
+
+字体文件：**\themes\next\source\css\_variables\base.styl**
+
+~~~shell
+$font-family-chinese = "PingFang SC", "Microsoft YaHei"
+$font-family-base = $font-family-chinese, sans-serif
+$font-family-base = get_font_family('global'), $font-family-chinese, sans-serif if get_font_family('global')
+~~~
+
+参考：[Hexo博客之改字体](http://prozhuchen.github.io/2015/10/05/Hexo_blog_7/)
+
+#### 11.设置文章字体的颜色、大小
+
+如果想设置某一句的颜色或大小，只需用html语法写出来就行了
+
+```html
+接下来就是见证奇迹的时刻
+<font color="#FF0000"> 我可以设置这一句的颜色哈哈 </font> 
+<font size=6> 我还可以设置这一句的大小嘻嘻 </font> 
+<font size=5 color="#FF0000"> 我甚至可以设置这一句的颜色和大小呵呵</font> 
+```
+
+#### 12.文字居中显示
+
+```html
+<center>这一行需要居中</center>
+```
+
+#### 13.显示文章更新时间
+
+在文章列表中我们一般都能看的文章的发布时间。对于一些文章来说，比如涉及到文章中的内容过期，或者软件的
+
+升级等等，我们都会进行一些修改。这种情况下，我们就像把文章的更新日期也显示处理，也能让读者看的我们写
+
+的之前的文章也是有更新的，不会过时的。
+
+**显示更新日期**
+
+在 `Next` 主题下添加显示更新时间非常简单，找到**themes/next/_config.yml**的 `post_meta`部分：
+
+```
+# Post meta display settings
+post_meta:
+  item_text: true
+  created_at: true
+  updated_at: false
+  categories: true
+```
+
+将 `updated_at: false` 修改为 `updated_at: true` 即可。通过 `hexo s -g` 预览，可以看到已经自动添加上
+
+了更新日期。
+
+**自定义显示更新日期**
+
+对于某些特殊的文章，我们也想能够自定义这个更新的日期。当然，更改起来也非常的简单，Hexo默认就支持更
+
+新日期的配置。在每一篇文章的 `Front-matter` 部分，只要添加 `updated` 参数即可。
+
+```
+---
+date: 2017-05-24 22:07:58
+updated: 2017-12-01 10:35:18
+---
+```
+
+#### 14.去掉文章目录标题的自动编号
+
+我们自己写文章的时候一般都会自己带上标题编号，但是默认的主题会给我们带上编号，很是别扭，如何去掉呢？
+打开**themes/next/_config.yml**，找到
+
+```shell
+# Table Of Contents in the Sidebar
+toc:
+  enable: true
+
+  # Automatically add list number to toc.
+  number: false
+
+  # If true, all words will placed on next lines if header width longer then sidebar width.
+  wrap: false
+```
+
+#### 15.使用gulp压缩资源
+
+在站点执行以下命令
+
+```shell
+$ npm install gulp -g
+$ npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify gulp-imagemin --save
+```
+
+然后查看gulp的安装版本
+
+```shell
+$ gulp -v
+CLI version: 2.2.0
+Local version: 4.0.2
+```
+
+如果gulp是3.X的版本，由于函数的写法不同，所以以前的部分博客使用了以下写法，导致报错：
+
+```shell
+// 执行 gulp 命令时执行的任务
+gulp.task('default', [
+    'minify-html', 'minify-css', 'minify-js'
+]);
+```
+
+错误：AssertionError: Task function must be specified。
+
+gulp4.x本部请在在博客根目录新建**gulpfile.js**文件来编写gulp task对应的函数：
+
+```js
+var gulp = require('gulp');
+var minifycss = require('gulp-minify-css');
+var uglify = require('gulp-uglify');
+var htmlmin = require('gulp-htmlmin');
+var htmlclean = require('gulp-htmlclean');
+var imagemin = require('gulp-imagemin');
+
+// 压缩html
+gulp.task('minify-html', function() {
+    return gulp.src('./public/**/*.html')
+        .pipe(htmlclean())
+        .pipe(htmlmin({
+            removeComments: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
+        }))
+        .pipe(gulp.dest('./public'))
+});
+// 压缩css
+gulp.task('minify-css', function() {
+    return gulp.src('./public/**/*.css')
+        .pipe(minifycss({
+            compatibility: 'ie8'
+        }))
+        .pipe(gulp.dest('./public'));
+});
+// 压缩js
+gulp.task('minify-js', function() {
+    return gulp.src('./public/js/**/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('./public'));
+});
+// 压缩图片
+gulp.task('minify-images', function() {
+    return gulp.src('./public/images/**/*.*')
+        .pipe(imagemin(
+        [imagemin.gifsicle({'optimizationLevel': 3}),
+        imagemin.jpegtran({'progressive': true}),
+        imagemin.optipng({'optimizationLevel': 7}),
+        imagemin.svgo()],
+        {'verbose': true}))
+        .pipe(gulp.dest('./public/images'))
+});
+// 默认任务
+gulp.task('default', gulp.parallel(
+    'minify-html','minify-css','minify-js','minify-images'
+));
+```
+
+其中：`gulp.parallel()`是gulp4中的新写法。
+
+生成博文是执行 hexo g && gulp 就会根据 gulpfile.js 中的配置，对 public 目录中的静态资源文件进行压缩。
 
 参考：
 
+[运行gulp项目报错：AssertionError: Task function must be specified。](<https://www.jianshu.com/p/c30ff8592421>)
+
+[利用gulp对Hexo博客压缩并一键之部署](<https://www.jakehu.me/2018/hexo-gulp/>)
+
+[hexo 优化之——使用 gulp 压缩资源](<https://todebug.com/use-gulp-with-hexo/>)
+
+#### 16.设置一键部署
+
+在package.json中加入如下script
+
+```js
+"scripts": {
+
+  "push": "hexo cl && hexo g && gulp && hexo d"
+
+}
+```
+
+然后在部署的时候只需要运行
+
+```shell
+$ npm run push
+```
+
+#### 17.文章置顶
+
+Hexo博客中，默认的情况是按照时间倒序来排列的，即新发布的文章排在前面。虽然有一种很简单的方法，就是
+
+更改文章的发布时间到一个“未来”的时间点，这样虽然能让文章一直置顶，但是给人的体验和感觉是非常不好的。
+
+今天介绍一种非常简单而且体验上也非常好的方法。
+
+**安装node插件**
+
+```
+$ npm uninstall hexo-generator-index --save
+$ npm install hexo-generator-index-pin-top --save
+```
+
+**添加标记**
+
+在需要置顶的文章的 `Front-matter` 中加上 `top: true`（top 的值可以是 true，也可以是 n，n 越大代表级别越高） 即可。比如：
+
+```
+---
+top: true
+---
+```
+
+**设置置顶标志**
+
+打开：**/themes/next/layout/_macro/post.swig**目录下的文件，定位到 `<div class="post-meta">` 标签下，插入如下代码：
+
+```
+{% if post.top %}
+  <i class="fa fa-thumb-tack"></i>
+  <font color=7D26CD>置顶</font>
+  <span class="post-meta-divider">|</span>
+{% endif %}
+```
+
+#### 18.鼠标点击小红心的设置
+
+将 [love.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js) 文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**文
+
+件， 在文件的后面、标签之前添加以下代码：
+
+```
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+```
+
+#### 19.背景的设置
+
+将 [particle.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/particle.js)文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**
+
+文件， 在文件的后面、标签之前添加以下代码：
+
+```
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+```
+
+#### 20.开启阅读进度记录
+
+**themes/next/_config.yml**
+
+~~~shell
+# Automatically scroll page to section which is under <!-- more --> mark.
+# 自动将页面滚动到<!-- more -->标记下的地方。
+scroll_to_more: true
+
+# Automatically saving scroll position on each post/page in cookies.
+# 自动保存每篇文章或页面上一次滚动的地方。
+save_scroll: true
+
+# Automatically excerpt description in homepage as preamble text.
+# 自动在首页对文章进行摘要描述作为前言文本。
+excerpt_description: true
+
+# Automatically Excerpt. Not recommend.
+# Please use <!-- more --> in the post to control excerpt accurately.
+# 不推荐使用自动摘要。
+# 请在文章中使用<!-- more -->标志来精确控制摘要长度。
+auto_excerpt:
+  enable: true
+  length: 200
+~~~
+
+#### 21.添加文章字数统计
+
+一般为了让读者大概估计阅读文章的时间，有的文章在头部会显示总的字数统计。
+
+**启用字数统计**
+
+首先安装一个依赖插件：
+
+```
+npm i --save hexo-wordcount
+```
+
+然后修改**themes/next/_config.yml**中的 `post_wordcount` 部分：
+
+```
+# Post wordcount display settings
+# Dependencies: https://github.com/willin/hexo-wordcount
+post_wordcount:
+  item_text: true    	//底部是否显示“总字数”字样
+  wordcount: false   	//文章字数统计
+  min2read: false    	//文章预计阅读时长（分钟）
+  totalcount: false  	//网站总字数，位于底部
+  separated_meta: true 	//是否将文章的字数统计信息换行显示
+```
+
+#### 22.使用LeanCloud添加文章阅读次数统计
+
+参考：[为NexT主题添加文章阅读量统计功能](https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html#配置LeanCloud)
+
+#### 23.添加站点访问次数统计
+
+站点访问计数有名的就是[不蒜子 - 极简网页计数器](<https://busuanzi.ibruce.info/>)，使用起来非常方便。
+
+1、安装脚本。打开 **themes/next/layout/_partial/footer.swig**，添加脚本：
+
+```
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+```
+
+ 2、显示站点总访问量
+
+**themes/next/layout/_partial/footer.swig**
+
+要显示站点总访问量，复制以下代码添加到你需要显示的位置。有两种算法可选：
+
+算法a：pv的方式，单个用户连续点击n篇文章，记录n次访问量。
+
+```
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+```
+
+算法b：uv的方式，单个用户连续点击n篇文章，只记录1次访客数。
+
+```
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+```
+
+3、显示单页面访问量
+
+要显示每篇文章的访问量，复制以下代码添加到你需要显示的位置。
+
+算法：pv的方式，单个用户点击1篇文章，本篇文章记录1次阅读量。
+
+```
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+```
+
+备注：代码中文字是可以修改的，只要保留id正确即可。
+
+#### 24.绑定域名
+
 [使用hexo+github搭建免费个人博客详细教程](<https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html>)
 
-[我是如何利用Github Pages搭建起我的博客，细数一路的坑](https://www.cnblogs.com/jackyroc/p/7681938.html)
+#### 25.SEO优化
+
+SEO优化对于网站是否能被搜索引擎快速收录有很大帮助，因此适当做一些SEO还是有必要的。但是请注意，因为
+
+github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域
+
+名。
+
+**添加 sitemap 插件**
+
+安装 hexo-generator-sitemap 插件：
+
+```
+npm install hexo-generator-sitemap --save
+npm install hexo-generator-baidu-sitemap --save
+```
+
+配置（编辑 **_config.yml**）：
+
+```
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+```
+
+注意：这个地方的空格要符合语法规范！
+
+- 提交sitemap。参考next主题官方解答：[添加 Google Webmaster tools 验证](https://github.com/iissnan/hexo-theme-next/wiki/添加-Google-Webmaster-tools-验证)
+
+- 配置成功后，hexo编译时会在hexo站点根目录生成sitemap.xml和baidusitemap.xml。其中sitemap.xml适
+
+  合提交给谷歌搜素引擎，baidusitemap.xml适合提交百度搜索引擎。
+
+- 其次，在robots.txt中添加下面的一段代码：
+
+  ```
+  Sitemap: <your-domain-name>/sitemap.xml
+  Sitemap: <your-domain-name>/baidusitemap.xml
+  ```
+
+- 参考这篇文章[hexo干货系列：（六）hexo提交搜索引擎（百度+谷歌）](http://www.cnblogs.com/tengj/p/5357879.html) 提交sitemap.xml
+
+**添加蜘蛛协议 robots.txt**
+
+新建 **source/robots.txt**：
+
+```
+User-agent: *
+Disallow: /CNAME
+Disallow: /README
+
+Allow: /
+Allow: /about/
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+
+Allow: /css/
+Allow: /images/
+Allow: /js/
+Allow: /lib/
+
+Sitemap: <your-domain-name>/sitemap.xml
+```
+
+**Hexo NexT主题首页title的优化**
+
+更改文件：**\themes\next\layout\index.swig**，将下面代码
+
+```
+{% block title %} {{ config.title }} {% endblock %}
+```
+
+改成
+
+```
+{% block title %} {{ config.title }} - {{ theme.description }} {% endblock %}
+```
+
+这时候你的首页标题会更符合`网站名称 - 网站描述`这习惯。
+
+进阶，做了[seo](http://www.arao.me/tags/seo/)优化，把关键词也显示在Title标题里，可改成
+
+```
+{% block title %} {{ theme.keywords }} - {{ config.title }} - {{ theme.description }} {% endblock %}
+```
+
+注意：别堆砌关键字，整个标题一般不超过80个字符，可以通过chinaz的seo综合查询检查。
+
+#### 26.添加链接持久化
+
+​		SEO搜索引擎优化认为，网站的最佳结构是**用户从首页点击三次就可以到达任何一个页面**，但是我们使用
+
+hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，这样的url结构很不利于SEO，
+
+爬虫就会经常爬不到我们的文章，于是，我们可以将url直接改成sitename/title的形式，并且title最好是用英文。
+
+​		hexo 默认的链接是http://xxx.yy.com/2013/07/14/hello-world这种类型的，这源于站点配置文件config.yml
+
+里的配置: permalink: :year/:month/:day/:title/。这种默认配置的缺点就是当我们创建的博文名包含中文的名的时
+
+候，url 链接地址经常会变成一串很长的难以理解的字符串，不利于博文的链接分享，以及搜索引擎搜索，另外就
+
+是年月日都会有分隔符。我们可以让 url 链接持久化来解决这个问。
+
+（1）安装hexo-abbrlink插件
+
+~~~shell
+$ npm install hexo-abbrlink –save
+~~~
+
+（2）修改站点配置文件**_config.yml**：permalink: post/:abbrlink.html
+
+添加 abbrlink:
+
+~~~shell
+permalink: post/:abbrlink.html  # :year/:month/:day/:title/     # 文章的永久链接格式
+permalink_defaults:     # 永久链接中个部分的默认值
+# abbrlink config 需安装插件hexo-abbrlink
+abbrlink:
+  alg: crc32  # 算法： crc16(default) and crc32
+  rep: hex    # 进制： dec(default) and hex
+~~~
+
+#### 27.添加评论系统
+
+[Hexo博客(14)添加来必力评论系统](<http://masikkk.com/article/hexo-14-livere-comment/>)
+
+#### 28.开启打赏功能
+
+编辑 **themes/next/_config.yml**：
+
+```
+reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
+wechatpay: /images/wechatpay.jpg
+alipay: /images/alipay.jpg
+```
+
+### 六、其他
+
+#### 1.自己安装插件一览
+
+~~~shell
+$ npm list --depth 0
+hexo-site@0.0.0 D:\java\hexo
++-- gulp@4.0.2
++-- gulp-htmlclean@2.7.22
++-- gulp-htmlmin@5.0.1
++-- gulp-imagemin@5.0.3
++-- gulp-minify-css@1.2.4
++-- gulp-uglify@3.0.2
++-- hexo@3.7.1
++-- hexo-abbrlink@2.0.5
++-- hexo-deployer-git@0.3.1
++-- hexo-generator-archive@0.1.5
++-- hexo-generator-baidu-sitemap@0.1.5
++-- hexo-generator-category@0.1.3
++-- hexo-generator-index@0.2.1
++-- hexo-generator-index-pin-top@0.2.2
++-- hexo-generator-searchdb@1.0.8
++-- hexo-generator-sitemap@1.2.0
++-- hexo-generator-tag@0.2.0
++-- hexo-renderer-ejs@0.3.1
++-- hexo-renderer-marked@0.3.2
++-- hexo-renderer-stylus@0.3.3
+`-- hexo-server@0.3.3
+~~~
+
+更新插件
+
+~~~shell
+npm update
+~~~
+
+#### 2.关于npm
+
+npm小知识
+
+npm（node package manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）
+
+使用npm安装插件：`npm install <name> [g] [--save -dev]`
+
+- `<name>`:node 插件名称
+- `-g`:全局安装，会在node安装的根目录下载对应的包，在计算机的任何文件都可以使用该插件，默认的node安装目录是：`C:\Users\Administrator\AppData\Roaming\npm`;如果不带该属性，将会安装在当前目录，下载安装包的位置是当前目录的`node_modules`文件夹
+- `--save`：将配置信息保存在node项目配置文件`package.json`中
+- `-dev`：保存至`package.json`的devDependencies节点，如果没有该属性，该插件将会被保存至dependencies节点，devDependencies和dependencies有什么区别呢？其实从名字就应该可以看出来两者的区别，devDependencies中dev是development（开发）的缩写，dependencies是依赖的意思。所以 dependencies 是程序正常运行所需要安装的依赖，而devDependencies是开发所需要的依赖，比如一些单元测试的包~
+- 为什么要保存至package.json？因为我们使用node的时候需要很多的包，所以我们将我们的配置信息，也就是我们需要包的名称等其他信息保存至一个文件中，如果说其他开发者就可以直接使用一个命令就可以安装和我们相同的配置，这个命令就是`npm install`，就可以下载`package.json` 下所有需要的包。`npm install --production`则只下载dependencies下的包
+
+使用npm卸载插件：`npm unstall <name> [-g] [--save-dev]`
+
+- 在npm中要卸载插件不是将文件夹删除就可以了，因为你的配置信息还在package中，所以要使用`npm unstall <name> [-g] [--save-dev]` 命令
+- 删除全部插件:`rimraf node_modules`（首先你需要先安装rimraf 插件）
+
+更新npm插件：`npm update <name> [g] [--save-dev]`
+
+使用cnpm
+
+什么是cnpm呢，大家都知道，由于不可描述原因，我们访问国外的资源有时候的速度，大家懂的，所以淘宝除了一个npm镜像，服务器就在中国。c可以理解为China（应该可以这样理解吧）,cnpm使用方法和npm完全相同，只需将npm全部换成cnpm就可以。本文都是使用的npm，如果想要尝试cnpmde的麻烦自行替换~
+
+> 这是一个完整 npmjs.org 镜像，你可以用此代替官方版本(只读)，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。
+
+cnpm 官网地址：[npm.taobao.org；](https://link.juejin.im?target=http%3A%2F%2Fnpm.taobao.org；)
+安装命令为`npm install cnpm -g --registry=https://registry.npm.taobao.org`
+
+> 注意：安装完后最好查看其版本号`cnpm -v`或关闭命令提示符重新打开，安装完直接使用有可能会出现错误；
+
+#### 3.参考
+
+* 官网
+
+[Hexo](<https://hexo.io/zh-cn/>)
+
+[NexT](<http://theme-next.iissnan.com/>)
+
+- 博客搭建
 
 [git使用ssh密钥](http://liujinkai.com/2015/09/18/git-use-ssh/?utm_source=tuicool&utm_medium=referral)
 
 [github设置添加SSH](https://www.cnblogs.com/ayseeing/p/3572582.html)
 
+[使用hexo+github搭建免费个人博客详细教程](<https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html>)
+
+[我是如何利用Github Pages搭建起我的博客，细数一路的坑](https://www.cnblogs.com/jackyroc/p/7681938.html)
+
+[Hexo搭建博客教程](https://thief.one/2017/03/03/Hexo搭建博客教程/)
+
+* 主题配置
+
+[Hexo 使用入门](http://cqwdc.com/post/1476ebdb.html)
+
+[Hexo的Next主题详细配置](<https://www.jianshu.com/p/3a05351a37dc>)
+
+[动动手指，NexT主题与Hexo更搭哦（基础篇）](<http://www.arao.me/2015/hexo-next-theme-optimize-base/>)
+
+[hexo之next主题优化整理](<http://michael728.github.io/2015/11/30/hexo-next-optimize/>)
+
+* SEO优化
+
+[动动手指，不限于NexT主题的Hexo优化（SEO篇）](<http://www.arao.me/2015/hexo-next-theme-optimize-seo/>)
+
+[hexo高阶教程：SEO优化、代码同时托管github和coding、多终端编辑hexo博客、使用gulp压缩你的代码、增加七牛图床](<https://juejin.im/post/590b451a0ce46300588c43a0>)
+
+- Markdow语法
+
 [Markdown——入门指南](<https://www.jianshu.com/p/1e402922ee32/>)
 
 [Markdown语法汇总](<https://www.jianshu.com/p/45faddb1526d>)
+
+<center style="font-weight:bold">（完）</center>
+

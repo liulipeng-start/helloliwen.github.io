@@ -20,6 +20,12 @@
   </a>
 </div>
 {% endif %}
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    view<span id="busuanzi_value_site_pv"></span>times
+</span>
+
 <!--
 <div style="text-align: center;">
 	 <a href='http://www.miitbeian.gov.cn/' target="_blank" rel="external nofollow">湘ICP备18019139号</a> 

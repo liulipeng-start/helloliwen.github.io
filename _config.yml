@@ -18,7 +18,7 @@ root: /
 # permalink: :category/:title.html
 # permalink_defaults:
 # :year/:month/:day/:title/   文章的永久链接格式
-permalink: article/:abbrlink.html  
+permalink: :abbrlink.html  
 permalink_defaults:     # 永久链接中个部分的默认值
 # abbrlink config 需安装插件hexo-abbrlink
 abbrlink:
@@ -91,4 +91,6 @@ deploy:
   type: git
   repository: git@github.com:helloliwen/helloliwen.github.io.git
   branch: master
-
+  
+sitemap:
+  path: sitemap.xml
