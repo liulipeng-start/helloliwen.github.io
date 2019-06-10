@@ -4,8 +4,8 @@ categories: hexo
 abbrlink: 62ffb8b5
 date: 2019-06-03 20:47:42
 tags:
-keywords:
-description:
+keywords: hexo,hexo安装部署,hexo主题配置,SEO优化
+description: 本文介绍为什么要写博客以及使用的博客平台和Hexo安装部署、Hexo主题配置信息等
 ---
 
 ### 一、为什么要写博客
@@ -42,19 +42,9 @@ description:
 
 **Hexo的工作机制**
 
-​	   由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动
+​	   由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。
 
-态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是
-
-将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面
-
-提交到github。
-
-​	    Hexo基于Node.js，将/source文件夹下的资源(文章、图片、模板)，按照预定的配置文件，转换成静态页面
-
-放置到/public目录下。如果需要预览或者部署，hexo会把public作为web目录处理。具体的细节可以通过实践接
-
-下来的步骤，来逐渐明晓。
+​	    Hexo基于Node.js，将/source文件夹下的资源(文章、图片、模板)，按照预定的配置文件，转换成静态页面放置到/public目录下。如果需要预览或者部署，hexo会把public作为web目录处理。具体的细节可以通过实践接下来的步骤，来逐渐明晓。
 
 **Hexo 特点**
 
@@ -85,11 +75,7 @@ description:
 - 构建：从编写的原始内容生成可发布的最终内容
 - 发布：让待发布的内容对读者可见
 
-依托于博客平台（如博客园、新浪博客等）发布内容的用户只需要关注编写部分，但要搭建一个独立的个人博客则
-
-以上三方面都需要关心。幸运的是，现在有大量的工具帮助我们简化这个过程：丰富的 Markup 语言简化了编
-
-写；强大的静态站点生成器简化了构建；友好的托管平台简化了发布。
+依托于博客平台（如博客园、新浪博客等）发布内容的用户只需要关注编写部分，但要搭建一个独立的个人博客则以上三方面都需要关心。幸运的是，现在有大量的工具帮助我们简化这个过程：丰富的 Markup 语言简化了编写；强大的静态站点生成器简化了构建；友好的托管平台简化了发布。
 
 这个博客的诞生也得益于这些工具：
 
@@ -112,9 +98,7 @@ description:
 
 （4）注意事项
 
-​		很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避
-
-免不必要的问题，建议全部使用git bash来执行；
+​		很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；
 
 ​		hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；
 
@@ -151,20 +135,14 @@ git支持https和git两种传输协议。相应的，github分享链接时会有
 
 首先需要检查你电脑是否已经有 SSH key 
 
-​		运行 git Bash 客户端，输入如下命令，看一下有没有id_rsa和id_rsa.pub(或者是id_dsa和id_dsa.pub之类成
-
-对的文件)，有 .pub 后缀的文件就是公钥，另一个文件则是密钥。假如没有这些文件，甚至连 .ssh 目录都没有，
-
-可以用 ssh-keygen 来创建。
+​		运行 git Bash 客户端，输入如下命令，看一下有没有id_rsa和id_rsa.pub(或者是id_dsa和id_dsa.pub之类成对的文件)，有 .pub 后缀的文件就是公钥，另一个文件则是密钥。假如没有这些文件，甚至连 .ssh 目录都没有，可以用 ssh-keygen 来创建。
 
 ```shell
 $ cd ~/.ssh
 $ ls
 ```
 
-（2）创建一个 SSH key，直接按Enter就行。然后，会提示你输入密码，如下(建议输一个，安全一点，当然不输
-
-也行，应该不会有人闲的无聊冒充你去修改你的代码)：
+（2）创建一个 SSH key，直接按Enter就行。然后，会提示你输入密码，如下(建议输一个，安全一点，当然不输也行，应该不会有人闲的无聊冒充你去修改你的代码)：
 
 ```shell
 $ ssh-keygen -t rsa -C "your_email@example.com"
@@ -178,9 +156,7 @@ $ ssh-keygen -t rsa -C "your_email@example.com"
 $ cat ~/.ssh/id_rsa.pub
 ```
 
-（2）登陆你的github帐户。点击你的头像，然后 `Settings -> 左栏点击 SSH and GPG keys -> 点击 New `
-
-`SSH key`
+（2）登陆你的github帐户。点击你的头像，然后 `Settings -> 左栏点击 SSH and GPG keys -> 点击 New SSH key`
 
 （3）然后你复制上面的公钥内容，粘贴进“Key”文本域内。 title域，自己随便起个名字。
 
@@ -208,9 +184,7 @@ origin https://github.com/someaccount/someproject.git (fetch)
 origin https://github.com/someaccount/someproject.git (push)
 ```
 
-如果是以上的结果那么说明此项目是使用https协议进行访问的（如果地址是git开头则表示是git协议）
-
-你可以登陆你的github，就像本文开头的图例，你在上面可以看到你的ssh协议相应的url。
+如果是以上的结果那么说明此项目是使用https协议进行访问的（如果地址是git开头则表示是git协议），你可以登陆你的github，就像本文开头的图例，你在上面可以看到你的ssh协议相应的url。
 
 复制此ssh链接，然后使用命令 git remote set-url 来调整你的url。
 
@@ -236,7 +210,7 @@ git remote set-url origin git@github.com:someaccount/someproject.git
 
 创建成功后，默认会在你这个仓库里生成一些示例页面，以后你的网站所有代码都是放在这个仓库里啦。
 
-![](https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153553099-864426472.png)
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g3vvgg8qtyj20rs0hgjrq.jpg)
 
 ### 四、Hexo博客安装使用
 
@@ -350,11 +324,12 @@ hexo new page "my-second-blog"
 hexo cl = hexo clean	# 清除缓存
 hexo n = hexo new		# 新建文章
 hexo g = hexo generate	# 生成静态页面至public目录
-hexo g && gulp  		# 会根据 gulpfile.js 中的配置，对 public 目录中的静态资源文件进行压缩。
 hexo s = hexo server	# 启动服务
 hexo d = hexo deploy	# 部署到GitHub
 hexo h = hexo help  	# 查看帮助
 hexo v = hexo version  	#查看Hexo的版本
+#会根据gulpfile.js中的配置，对public目录中的静态资源文件进行压缩。
+hexo g && gulp
 ~~~
 
 组合命令：
@@ -367,9 +342,7 @@ hexo d -g #生成并上传
 
 #### 4.部署
 
-上传之前：在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份
-
-一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉。
+上传之前：在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉。
 
 首先安装扩展文件
 
@@ -691,11 +664,7 @@ $font-family-base = get_font_family('global'), $font-family-chinese, sans-serif 
 
 #### 13.显示文章更新时间
 
-在文章列表中我们一般都能看的文章的发布时间。对于一些文章来说，比如涉及到文章中的内容过期，或者软件的
-
-升级等等，我们都会进行一些修改。这种情况下，我们就像把文章的更新日期也显示处理，也能让读者看的我们写
-
-的之前的文章也是有更新的，不会过时的。
+在文章列表中我们一般都能看的文章的发布时间。对于一些文章来说，比如涉及到文章中的内容过期，或者软件的升级等等，我们都会进行一些修改。这种情况下，我们就像把文章的更新日期也显示处理，也能让读者看的我们写的之前的文章也是有更新的，不会过时的。
 
 **显示更新日期**
 
@@ -710,15 +679,11 @@ post_meta:
   categories: true
 ```
 
-将 `updated_at: false` 修改为 `updated_at: true` 即可。通过 `hexo s -g` 预览，可以看到已经自动添加上
-
-了更新日期。
+将 `updated_at: false` 修改为 `updated_at: true` 即可。通过 `hexo s -g` 预览，可以看到已经自动添加上了更新日期。
 
 **自定义显示更新日期**
 
-对于某些特殊的文章，我们也想能够自定义这个更新的日期。当然，更改起来也非常的简单，Hexo默认就支持更
-
-新日期的配置。在每一篇文章的 `Front-matter` 部分，只要添加 `updated` 参数即可。
+对于某些特殊的文章，我们也想能够自定义这个更新的日期。当然，更改起来也非常的简单，Hexo默认就支持更新日期的配置。在每一篇文章的 `Front-matter` 部分，只要添加 `updated` 参数即可。
 
 ```
 ---
@@ -857,11 +822,7 @@ $ npm run push
 
 #### 17.文章置顶
 
-Hexo博客中，默认的情况是按照时间倒序来排列的，即新发布的文章排在前面。虽然有一种很简单的方法，就是
-
-更改文章的发布时间到一个“未来”的时间点，这样虽然能让文章一直置顶，但是给人的体验和感觉是非常不好的。
-
-今天介绍一种非常简单而且体验上也非常好的方法。
+Hexo博客中，默认的情况是按照时间倒序来排列的，即新发布的文章排在前面。虽然有一种很简单的方法，就是更改文章的发布时间到一个“未来”的时间点，这样虽然能让文章一直置顶，但是给人的体验和感觉是非常不好的。今天介绍一种非常简单而且体验上也非常好的方法。
 
 **安装node插件**
 
@@ -894,9 +855,7 @@ top: true
 
 #### 18.鼠标点击小红心的设置
 
-将 [love.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js) 文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**文
-
-件， 在文件的后面、标签之前添加以下代码：
+将 [love.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js) 文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**文件， 在文件的后面、标签之前添加以下代码：
 
 ```
 <!-- 页面点击小红心 -->
@@ -905,9 +864,7 @@ top: true
 
 #### 19.背景的设置
 
-将 [particle.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/particle.js)文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**
-
-文件， 在文件的后面、标签之前添加以下代码：
+将 [particle.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/particle.js)文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**文件， 在文件的后面、标签之前添加以下代码：
 
 ```
 <!-- 背景动画 -->
@@ -1022,11 +979,15 @@ post_wordcount:
 
 #### 25.SEO优化
 
-SEO优化对于网站是否能被搜索引擎快速收录有很大帮助，因此适当做一些SEO还是有必要的。但是请注意，因为
+SEO优化对于网站是否能被搜索引擎快速收录有很大帮助，因此适当做一些SEO还是有必要的。但是请注意，因为github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域名。谷歌对此没有限制。
 
-github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域
+**首先修改站点URL**
 
-名。
+**_config.yml**
+
+~~~shell
+url: https://helloliwen.github.io
+~~~
 
 **添加 sitemap 插件**
 
@@ -1061,7 +1022,7 @@ baidusitemap:
   Sitemap: <your-domain-name>/baidusitemap.xml
   ```
 
-- 参考这篇文章[hexo干货系列：（六）hexo提交搜索引擎（百度+谷歌）](http://www.cnblogs.com/tengj/p/5357879.html) 提交sitemap.xml
+- 参考这篇文章：[hexo干货系列：（六）hexo提交搜索引擎（百度+谷歌）](http://www.cnblogs.com/tengj/p/5357879.html) 提交sitemap.xml
 
 **添加蜘蛛协议 robots.txt**
 
@@ -1110,21 +1071,42 @@ Sitemap: <your-domain-name>/sitemap.xml
 
 注意：别堆砌关键字，整个标题一般不超过80个字符，可以通过chinaz的seo综合查询检查。
 
+**其他SEO优化**
+
+SEO优化应该说是一个收益延迟的行为，可能你做的优化短期内看不到什么效果，但是一定要坚持，SEO优化也是有很深的可以研究的东西，从我们最初的网站设计，和最基础的标签的选择都有很大的关系，网站设计就如我们刚刚说的，要让用户点击三次可以到达网站的任何一个页面，要增加高质量的外链，增加相关推荐（比如说我们经常见到右侧本站的最高阅读的排名列表），然后就是给每一个页面加上keyword和描述在代码中，我们应该写出能让浏览器识别的语义化HTML，这样有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；并且对外链设置nofollow标签，避免spider爬着爬着就爬出去了（减少网站的跳出率），并且我们要尽量在一些比较大的网站增加我们站点的曝光率，因为spider会经常访问大站，比如我们在掘金等技术社区发表文章中带有我们的站点，这样spider是很有可能爬到我们中的站点的，so....
+
+- 网站**外链**的推广度、数量和质量
+
+- 网站的**内链**足够强大
+
+- 网站的**原创**质量
+
+- 网站的**年龄**时间
+
+- 网站的**更新频率**（更新次数越多越好）
+
+- 网站的**服务器**
+
+- 网站的**流量**：流量越高网站的权重越高
+
+- 网站的**关键词排名**：关键词排名越靠前，网站的权重越高
+
+- 网站的**收录**数量：网站百度收录数量越多，网站百度权重越高
+
+- 网站的浏览量及深度：**用户体验**越好，网站的百度权重越高
+
+参考：
+
+[HEXO SEO 高级优化](http://www.langzi.fun/HEXO-SEO 高级优化.html)
+
+[hexo高阶教程：SEO优化、代码同时托管github和coding、多终端编辑hexo博客、使用gulp压缩你的代码、增加七牛图床](<https://juejin.im/post/590b451a0ce46300588c43a0>)
+
+
 #### 26.添加链接持久化
 
-​		SEO搜索引擎优化认为，网站的最佳结构是**用户从首页点击三次就可以到达任何一个页面**，但是我们使用
+​		SEO搜索引擎优化认为，网站的最佳结构是**用户从首页点击三次就可以到达任何一个页面**，但是我们使用hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，这样的url结构很不利于SEO，爬虫就会经常爬不到我们的文章，于是，我们可以将url直接改成sitename/title的形式，并且title最好是用英文。
 
-hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，这样的url结构很不利于SEO，
-
-爬虫就会经常爬不到我们的文章，于是，我们可以将url直接改成sitename/title的形式，并且title最好是用英文。
-
-​		hexo 默认的链接是http://xxx.yy.com/2013/07/14/hello-world这种类型的，这源于站点配置文件config.yml
-
-里的配置: permalink: :year/:month/:day/:title/。这种默认配置的缺点就是当我们创建的博文名包含中文的名的时
-
-候，url 链接地址经常会变成一串很长的难以理解的字符串，不利于博文的链接分享，以及搜索引擎搜索，另外就
-
-是年月日都会有分隔符。我们可以让 url 链接持久化来解决这个问。
+​		hexo 默认的链接是http://xxx.yy.com/2013/07/14/hello-world这种类型的，这源于站点配置文件config.yml里的配置: permalink: :year/:month/:day/:title/。这种默认配置的缺点就是当我们创建的博文名包含中文的名的时候，url 链接地址经常会变成一串很长的难以理解的字符串，不利于博文的链接分享，以及搜索引擎搜索，另外就是年月日都会有分隔符。我们可以让 url 链接持久化来解决这个问。
 
 （1）安装hexo-abbrlink插件
 
@@ -1199,9 +1181,7 @@ npm update
 
 npm小知识
 
-npm（node package manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）
-
-使用npm安装插件：`npm install <name> [g] [--save -dev]`
+npm（node package manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）。使用npm安装插件：`npm install <name> [g] [--save -dev]`
 
 - `<name>`:node 插件名称
 - `-g`:全局安装，会在node安装的根目录下载对应的包，在计算机的任何文件都可以使用该插件，默认的node安装目录是：`C:\Users\Administrator\AppData\Roaming\npm`;如果不带该属性，将会安装在当前目录，下载安装包的位置是当前目录的`node_modules`文件夹
@@ -1259,9 +1239,9 @@ cnpm 官网地址：[npm.taobao.org；](https://link.juejin.im?target=http%3A%2F
 
 * SEO优化
 
-[动动手指，不限于NexT主题的Hexo优化（SEO篇）](<http://www.arao.me/2015/hexo-next-theme-optimize-seo/>)
+[让Google搜索到搭建在Github Pages上的博客](<https://jactor-sue.github.io/zh-CN/how-blog-on-githubpages-can-be-searched-by-google/>)
 
-[hexo高阶教程：SEO优化、代码同时托管github和coding、多终端编辑hexo博客、使用gulp压缩你的代码、增加七牛图床](<https://juejin.im/post/590b451a0ce46300588c43a0>)
+[动动手指，不限于NexT主题的Hexo优化（SEO篇）](<http://www.arao.me/2015/hexo-next-theme-optimize-seo/>)
 
 - Markdow语法
 

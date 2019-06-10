@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://helloliwen.github.io
 root: /
 # permalink: :category/:title.html
 # permalink_defaults:
@@ -94,3 +94,10 @@ deploy:
   
 sitemap:
   path: sitemap.xml
+
+google_site_verification: 3_IU8QYN7ZX8ohZtDd7g_6zN3154jWW7GDJMLJ8TzSQ
+
+nofollow:
+    enable: true
+    exclude:
+    - helloliwen.github.io

@@ -2,11 +2,12 @@
 User-agent: *
 Disallow: /CNAME
 Disallow: /README
+Disallow: /vendors/
+Disallow: /categories/
 
 Allow: /
 Allow: /about/
 Allow: /archives/
-Allow: /categories/
 Allow: /tags/
 
 Allow: /css/
@@ -14,4 +15,5 @@ Allow: /images/
 Allow: /js/
 Allow: /lib/
 
+Sitemap: https://helloliwen.github.io/sitemap.xml
 Sitemap: https://helloliwen.github.io/sitemap.xml

@@ -5,7 +5,7 @@
 # Put your favicon.ico into `hexo-site/source/` directory.
 favicon: /images/favicon32.ico
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "Java, 算法, 博客, Hexo, NexT"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
