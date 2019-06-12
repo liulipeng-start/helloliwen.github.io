@@ -218,8 +218,8 @@ git remote set-url origin git@github.com:someaccount/someproject.git
 
 （1）首先需要知道两个配置文件，需要特别注意的地方是，冒号后面必须有一个空格，否则可能会出问题。
 
-- Hexo配置文件，这里面是全局配置：**hexo/_config.yml**
-- 主题配置：**hexo/themes/next/_config.yml**
+- Hexo配置文件：**hexo/_config.yml**
+- NeXT主题配置：**hexo/themes/next/_config.yml**
 
 （2）安装hexo
 

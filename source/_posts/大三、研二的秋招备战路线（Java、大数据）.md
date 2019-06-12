@@ -239,7 +239,7 @@ Javase、集合源码、JVM、多线程、IO等
 
 
 
-**Java：**
+#### Java
 
 Java散列表，树对应的容器类，hashmap如何解决冲突
 
@@ -291,7 +291,7 @@ JDK1.8新特性
 
 
 
-**JVM：**
+#### JVM
 
 JVM内存布局
 
@@ -321,7 +321,7 @@ Minor GC安全检查
 
 
 
-**Java集合：**
+#### Java集合
 
 排序算法比较
 
@@ -343,7 +343,7 @@ hashmap的初始容量为什么设置为16？
 
 
 
-**并发编程：**
+#### 并发编程
 
 锁分段技术、ConcurrentHashMap、扩容
 
@@ -379,7 +379,7 @@ volatile能保证有序性吗？
 
 
 
-**Zookeeper：**
+#### Zookeeper
 
 Dubbo简介及以Zookeeper为注册中心
 
@@ -404,7 +404,8 @@ Zookeeper底层实现数据一致性
 Zookeeper在yarn框架中如何实现避免脑裂的?
 
 
-**大数据：**
+
+#### 大数据
 
 Kylin：
 
@@ -426,7 +427,7 @@ Cube的构建过程
 
 
 
-**Hive：**
+#### Hive
 
 Hive内部表与外部表的区别
 
@@ -464,7 +465,7 @@ Hive优化常用手段
 
 
 
-**Storm：**
+#### Storm
 
 Storm的可靠性如何实现？包括spout和bolt两部分
 
@@ -482,7 +483,7 @@ Storm怎么完成对单词的计数？
 
 
 
-**Spark：**
+#### Spark
 
 Spark的运行模式
 
@@ -528,7 +529,7 @@ Spark的基本工作流程
 
 
 
-**Hadoop：**
+#### Hadoop
 
 MR的Shuffle过程
 
@@ -558,7 +559,7 @@ HDFS写入过程客户端奔溃怎么处理？（租约恢复）
 
 
 
-**kafka：**
+#### Kafka
 
 kafka介绍
 
@@ -570,7 +571,7 @@ kafka消息持久化和顺序读写？
 
 
 
-**网络：**
+#### 网络
 
 简述TCP和UDP的区别
 
@@ -588,7 +589,7 @@ kafka消息持久化和顺序读写？
 
 
 
-**剑指offer常问：**
+#### 剑指offer常问
 
 字符串转换成整数
 
