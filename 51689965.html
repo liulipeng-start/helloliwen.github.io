@@ -1,0 +1,316 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><meta name="google-site-verification" content="3_IU8QYN7ZX8ohZtDd7g_6zN3154jWW7GDJMLJ8TzSQ"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="google-site-verification" content="3_IU8QYN7ZX8ohZtDd7g_6zN3154jWW7GDJMLJ8TzSQ"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css"><meta name="keywords" content="链表"><link rel="shortcut icon" type="image/x-icon" href="/images/favicon32.ico?v=5.1.2"><meta name="description" content="复制含有随机指针节点的链表"><meta name="keywords" content="链表"><meta property="og:type" content="article"><meta property="og:title" content="【链表】打卡8：复制含有随机指针节点的链表"><meta property="og:url" content="https://helloliwen.github.io/51689965.html"><meta property="og:site_name" content="日拱一卒 不期速成"><meta property="og:description" content="复制含有随机指针节点的链表"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g45ktn53clj20ny0bwgls.jpg"><meta property="og:updated_time" content="2019-06-18T14:00:53.906Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【链表】打卡8：复制含有随机指针节点的链表"><meta name="twitter:description" content="复制含有随机指针节点的链表"><meta name="twitter:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g45ktn53clj20ny0bwgls.jpg"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",sidebar:{position:"left",display:"post",offset:12,offset_float:12,b2t:!1,scrollpercent:!0,onmobile:!1},fancybox:!0,tabs:!0,motion:!0,duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="https://helloliwen.github.io/51689965.html"><title>【链表】打卡8：复制含有随机指针节点的链表 | 日拱一卒 不期速成</title></head><body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">日拱一卒 不期速成</span><span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">循序渐进 一击中的</h1></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> 首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> 归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> 标签</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br> 搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://helloliwen.github.io/51689965.html"><span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="Li Wen"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="日拱一卒 不期速成"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">【链表】打卡8：复制含有随机指针节点的链表</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-18T16:26:34+08:00">2019-06-18</time> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">更新于</span> <time title="更新于" itemprop="dateModified" datetime="2019-06-18T22:00:53+08:00">2019-06-18</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法与数据结构/" itemprop="url" rel="index"><span itemprop="name">算法与数据结构</span></a></span> > <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法与数据结构/链表/" itemprop="url" rel="index"><span itemprop="name">链表</span></a></span></span> <span id="/51689965.html" class="leancloud_visitors" data-flag-title="【链表】打卡8：复制含有随机指针节点的链表"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span> <span class="post-meta-item-text">阅读次数</span><span class="leancloud-visitors-count"></span></span><div class="post-description"> 复制含有随机指针节点的链表</div></div></header><div class="post-body" itemprop="articleBody"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>以专题的形式更新刷题贴，欢迎跟我一起学习刷题，相信我，你的坚持，绝对会有意想不到的收获。每道题会提供简单的解答，如果你有更优雅的做法，欢迎提供指点，谢谢。</p><a id="more"></a><p><strong>【题目描述】</strong></p><p>一种特殊的链表节点类描述如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NodeRand</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> value; </span><br><span class="line">	<span class="keyword">public</span> NodeRand next;</span><br><span class="line">	<span class="keyword">public</span> NodeRand rand;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NodeRand</span><span class="params">(<span class="keyword">int</span> data)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value = data;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>NodeRand类中的value是节点值，next指针和正常单链表中next指针的意义一样，都指向下一个节点，rand指针是NodeRand类中新增的指针，这个指针可能指向链表中的任意一个节点，也可能指向null。 给定一个由NodeRand节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表中所有结构的复制，并返回复制的新链表的头节点。例如：链表1-&gt;2-&gt;3-&gt;null，假如1的rand指针指向3，2的rand指针指向null，3的rand指针指向1。复制后的链表应该也是这种结构，比如，1’-&gt;2’-&gt;3’-&gt;null，1’的rand指针指向3’，2’的rand指针指向null，3’的rand指针指向1’，最后返回1’。</p><p><strong>【要求】</strong></p><p>如果链表的长度为 N, 时间复杂度达到 O(N)。</p><p>进阶：不使用额外的数据结构，只用有限几个变量，且在时间复杂度为 O(N)内完成原问题要实现的函数。</p><p><strong>【难度】</strong></p><p>尉：★★☆☆</p><h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p><strong>方法一</strong>：使用额外的存储空间</p><p>这道题的难点在于我们需要定位好随机指针，一个比较简单的解法就是把原节点与复制的节点关联起来，可以使用哈希表把他们关联起来。</p><p>首先把副节点全部创建出来，然后把原节点与对应的副节点用哈希表关联起来。关联的时候原节点作为key，副节点作为value。例如对于链表 1-&gt;2-&gt;3-&gt;null。创建副节点 1’, 2’, 3’。然后用哈希表关联起来：</p><table><thead><tr><th style="text-align:left">key</th><th style="text-align:left">value</th></tr></thead><tbody><tr><td style="text-align:left">NodeRand_1</td><td style="text-align:left">NodeRand_1’</td></tr><tr><td style="text-align:left">NodeRand_2</td><td style="text-align:left">NodeRand_2’</td></tr><tr><td style="text-align:left">NodeRand_3</td><td style="text-align:left">NodeRand_3’</td></tr></tbody></table><p>之后再把所有副节点连接成一个链表。在连接的时候，我们可以通过哈希表很容易找到对应的随机节点。</p><p><strong>代码如下</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用哈希表关联原节点与复制的节点</span></span><br><span class="line"><span class="comment">//时间复杂度为 O(n), 空间复杂度也为 O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> NodeRand <span class="title">copyListWithRand</span><span class="params">(NodeRand head)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    Map&lt;NodeRand, NodeRand&gt; map = <span class="keyword">new</span> HashMap&lt;NodeRand, NodeRand&gt;();</span><br><span class="line">    NodeRand cur = head;</span><br><span class="line">    <span class="comment">//首先创建全部副节点</span></span><br><span class="line">    <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">        map.put(cur, <span class="keyword">new</span> NodeRand(cur.value));</span><br><span class="line">        cur = cur.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//把副节点串起来</span></span><br><span class="line">    cur = head;</span><br><span class="line">    <span class="keyword">while</span>(cur!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        map.get(cur).next = map.get(cur.next);</span><br><span class="line">        map.get(cur).rand = map.get(cur.rand);</span><br><span class="line">        cur = cur.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map.get(head);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这种方法的时间复杂度为 O(n), 空间复杂度也为 O(n)。</p><p><strong>方法2</strong></p><p>其实我们也可以不需要哈希表来辅助，也就是说 ，我们是可以做到空间复杂度为 O(1)的，我们可以把复制的副节点插入到原链表中去，这样也能把原节点与副节点进行关联，进而定位到随机节点。例如，对于链表 1-&gt;2-&gt;3-&gt;null。首先生成副节点 1’, 2’, 3’。然后把副节点插入到原节点的相邻位置，即把原链表变成 1-&gt;1’-&gt;2-&gt;2’-&gt;3-&gt;3’-&gt;null。</p><p>这样我们也可以在连接副节点的时候，找到相应的随机节点。例如 1 的随机节点是 3，则 1’ 的随机节点是 3’。显然，1节点的随机节点的下一个节点就是 1’的随机节点。具体代码如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//空间复杂度O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> NodeRand <span class="title">copyListWithRand2</span><span class="params">(NodeRand head)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    NodeRand cur = head;</span><br><span class="line">    NodeRand next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">//创建并插入节点</span></span><br><span class="line">    <span class="keyword">while</span>(cur!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        next = cur.next;</span><br><span class="line">        NodeRand copyNode = <span class="keyword">new</span> NodeRand(cur.value);</span><br><span class="line">        cur.next = copyNode;</span><br><span class="line">        copyNode.next = next;</span><br><span class="line">        cur = next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//再把复制的节点取出来连接起来</span></span><br><span class="line">    cur = head;</span><br><span class="line">    next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">        next = cur.next.next;<span class="comment">//使用next托管原链表的下一个节点</span></span><br><span class="line">        cur.next.next = next != <span class="keyword">null</span> ? next.next : <span class="keyword">null</span>;<span class="comment">//注意空节点判断</span></span><br><span class="line">        cur.next.rand = cur.rand != <span class="keyword">null</span> ? cur.rand.next : <span class="keyword">null</span>;</span><br><span class="line">        cur = next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>采用这种方法的时候，由于随机节点有可能是空指针，随意写代码的时候要注意。</p><p><img src="http://ww1.sinaimg.cn/large/75a4a8eegy1g45ktn53clj20ny0bwgls.jpg" alt=""></p><h2 id="问题拓展"><a href="#问题拓展" class="headerlink" title="问题拓展"></a>问题拓展</h2><p><strong>思考</strong>：如果是有两个随机指针呢？又该如何处理呢？三个呢？</p><p>提醒：别想太多了，保持清醒。</p><p>来源：<a href="https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&amp;mid=2247485168&amp;idx=2&amp;sn=930d2bcd88140805ed152e67d2ff789b&amp;chksm=ce404d24f937c432e1c8a4bce8ab1df613b660892a50eaacee5fa1305248f3a404b1b2bed978&amp;scene=21#wechat_redirect" rel="external nofollow noopener noreferrer" target="_blank">苦逼的码农（ID:di201805）</a></p><p>参考：<a href="https://blog.csdn.net/zhxin606a/article/details/88853917" rel="external nofollow noopener noreferrer" target="_blank">算法练习day10——190328（根据指定值划分单链表、复制含有rand指针节点的链表、两个单链表相交）</a></p><center style="font-weight:700">（完）</center></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div>谢谢你请我吃糖果！</div> <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'> <span>打赏</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"> <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Li Wen WeChat Pay"><p>WeChat Pay</p></div><div id="alipay" style="display:inline-block"> <img id="alipay_qr" src="/images/alipay.jpg" alt="Li Wen Alipay"><p>Alipay</p></div></div></div></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/c17971a9.html" rel="next" title="【链表】打卡7：将单向链表按某值划分成左边小，中间相等，右边大的形式"><i class="fa fa-chevron-left"></i> 【链表】打卡7：将单向链表按某值划分成左边小，中间相等，右边大的形式</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview"> 站点概览</li></ul><section class="site-overview sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Li Wen"><p class="site-author-name" itemprop="name">Li Wen</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">5</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">2</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题拓展"><span class="nav-text">问题拓展</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright"> &copy; 2018 - <span itemprop="copyrightYear">2019</span><span class="with-love"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">Li Wen</span></div><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span id="busuanzi_container_site_pv" style="display:none">总访问量<span id="busuanzi_value_site_pv"></span>次</span></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script><script>AV.initialize("SPzBLDOtApJdFECrSy1n6jz9-gzGzoHsz","k23N5iMyBA9E0yXbjl8PoaWo")</script><script>function showTime(e){var t=new AV.Query(e),c=[],u=$(".leancloud_visitors");u.each(function(){c.push($(this).attr("id").trim())}),t.containedIn("url",c),t.find().done(function(e){var t=".leancloud-visitors-count";if(0!==e.length){for(var n=0;n<e.length;n++){var o=e[n],i=o.get("url"),s=o.get("time"),r=document.getElementById(i);$(r).find(t).text(s)}for(n=0;n<c.length;n++){i=c[n],r=document.getElementById(i);var l=$(r).find(t);""==l.text()&&l.text(0)}}else u.find(t).text(0)}).fail(function(e,t){console.log("Error: "+t.code+" "+t.message)})}function addCount(i){var e=$(".leancloud_visitors"),s=e.attr("id").trim(),r=e.attr("data-flag-title").trim(),t=new AV.Query(i);t.equalTo("url",s),t.find({success:function(e){if(0<e.length){var t=e[0];t.fetchWhenSave(!0),t.increment("time"),t.save(null,{success:function(e){$(document.getElementById(s)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to save Visitor num, with error message: "+t.message)}})}else{var n=new i,o=new AV.ACL;o.setPublicReadAccess(!0),o.setPublicWriteAccess(!0),n.setACL(o),n.set("title",r),n.set("url",s),n.set("time",1),n.save(null,{success:function(e){$(document.getElementById(s)).find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to create")}})}},error:function(e){console.log("Error:"+e.code+" "+e.message)}})}$(function(){var e=AV.Object.extend("Counter");1==$(".leancloud_visitors").length?addCount(e):1<$(".post-title-link").length&&showTime(e)})</script><script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.2"></script><script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.2"></script></body></html>
