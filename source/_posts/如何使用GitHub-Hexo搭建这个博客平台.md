@@ -10,7 +10,7 @@ description: 本文介绍为什么要写博客以及使用的博客平台和Hexo
 
 ### 一、为什么要写博客
 
-​		**当自己主动学习，主动思考其效率和对个人的提升无疑是高于被动接受的。然而使你提高最大的是主动说出自己认知，把自己的知识和理解传达给他人，这种方式是对你提升无疑是最显著的。**
+　　**当自己主动学习，主动思考其效率和对个人的提升无疑是高于被动接受的。然而使你提高最大的是主动说出自己认知，把自己的知识和理解传达给他人，这种方式是对你提升无疑是最显著的。**
 
 <!--more-->
 
@@ -18,23 +18,23 @@ description: 本文介绍为什么要写博客以及使用的博客平台和Hexo
 
 <font color="red">对自己狠一点，开始写作吧。</font>
 
-​		自己心里觉得对一个技术点已经掌握了，但是当我试图给别人讲述的时候，发现并不能轻松自如、深入浅出地讲出来，这就说明了一个问题：自以为掌握了，其实并没有真正掌握。
+　　自己心里觉得对一个技术点已经掌握了，但是当我试图给别人讲述的时候，发现并不能轻松自如、深入浅出地讲出来，这就说明了一个问题：自以为掌握了，其实并没有真正掌握。
 
-​		为什么要有这门技术、这门技术解决了什么问题，然后才是这门技术是怎么使用的。
+　　为什么要有这门技术、这门技术解决了什么问题，然后才是这门技术是怎么使用的。
 
-​		整理资料和思考的过程是很珍贵的，只有这样才能把信息变成自身的知识。不写出来，很容易放弃深度思考。
+　　整理资料和思考的过程是很珍贵的，只有这样才能把信息变成自身的知识。不写出来，很容易放弃深度思考。
 
-​		我们已经进入了一个碎片化的时代，我们的大脑已经养成了碎片化的习惯，一天不看碎片化的信息就觉得不舒服，这样下去会慢慢的丧失深度思考的能力。写作会逼着你去思考，梳理知识体系，防止自己被碎片化所填满。
+　　我们已经进入了一个碎片化的时代，我们的大脑已经养成了碎片化的习惯，一天不看碎片化的信息就觉得不舒服，这样下去会慢慢的丧失深度思考的能力。写作会逼着你去思考，梳理知识体系，防止自己被碎片化所填满。
 
-​		最后，能够坚持的人才更有可能成功！
+　　最后，能够坚持的人才更有可能成功！
 
-​		[为什么你要写博客？——陈素封](https://zhuanlan.zhihu.com/p/19743861?columnSlug=cnfeat)
+　　[为什么你要写博客？——陈素封](https://zhuanlan.zhihu.com/p/19743861?columnSlug=cnfeat)
 
 ### 二、为什么使用GitHub+Hexo
 
-​		我很喜欢掘金的风格，里面也有很多大牛，但是因为没有文章分类，只好作罢。CSDN是很多人的入门博客，但是不屏蔽广告完全没法看。简书也不错，但是个人感觉总少点技术氛围。其他博客平台没有使用过，不作评论。至于为什么选择GitHub+Hexo，可能出于成就感吧，而且给我的感觉完全像一张白纸可以在上面任意发挥，而且文章有分类、没有广告、风格很简约，喜欢，所以选择这个平台。
+　　我很喜欢掘金的风格，里面也有很多大牛，但是因为没有文章分类，只好作罢。CSDN是很多人的入门博客，但是不屏蔽广告完全没法看。简书也不错，但是个人感觉总少点技术氛围。其他博客平台没有使用过，不作评论。至于为什么选择GitHub+Hexo，可能出于成就感吧，而且给我的感觉完全像一张白纸可以在上面任意发挥，而且文章有分类、没有广告、风格很简约，喜欢，所以选择这个平台。
 
-​		至于其他平台的评论，参看这篇文章：[程序员可以选择哪些平台写技术博客？](<https://mp.weixin.qq.com/s?src=11×tamp=1559567191&ver=1646&signature=M8olE56Lf0LYxFyo5e5mClnfNlP0dHG04YgH-pTO1AIe3r5Ao7RSccXBVIn1PAATEhuniqA-Nr2cI*XCQEdrQ6SzjtrtFBmZv8G7vmOs8lOr9Ip4gG9gJLqapMh2SXk6&new=1>)，如果提示无法访问，使用[搜狗微信](https://weixin.sogou.com/)平台搜索文章。
+　　至于其他平台的评论，参看这篇文章：[程序员可以选择哪些平台写技术博客？](<https://mp.weixin.qq.com/s?src=11×tamp=1559567191&ver=1646&signature=M8olE56Lf0LYxFyo5e5mClnfNlP0dHG04YgH-pTO1AIe3r5Ao7RSccXBVIn1PAATEhuniqA-Nr2cI*XCQEdrQ6SzjtrtFBmZv8G7vmOs8lOr9Ip4gG9gJLqapMh2SXk6&new=1>)，如果提示无法访问，使用[搜狗微信](https://weixin.sogou.com/)平台搜索文章。
 
 ### 三、准备环境
 
@@ -42,9 +42,9 @@ description: 本文介绍为什么要写博客以及使用的博客平台和Hexo
 
 **Hexo的工作机制**
 
-​	   由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。
+　　由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。
 
-​	    Hexo基于Node.js，将/source文件夹下的资源(文章、图片、模板)，按照预定的配置文件，转换成静态页面放置到/public目录下。如果需要预览或者部署，hexo会把public作为web目录处理。具体的细节可以通过实践接下来的步骤，来逐渐明晓。
+　　Hexo基于Node.js，将/source文件夹下的资源(文章、图片、模板)，按照预定的配置文件，转换成静态页面放置到/public目录下。如果需要预览或者部署，hexo会把public作为web目录处理。具体的细节可以通过实践接下来的步骤，来逐渐明晓。
 
 **Hexo 特点**
 
@@ -54,7 +54,7 @@ description: 本文介绍为什么要写博客以及使用的博客平台和Hexo
 4. 插件丰富: 丰富的插件可以满足你的各种需求
 
 **Node.js**
-        Node.js是一个基于Chrome V8引擎的JavaScript运行环境，为我们的Hexo提供js脚本的运行环境。而npm则
+　　Node.js是一个基于Chrome V8引擎的JavaScript运行环境，为我们的Hexo提供js脚本的运行环境。而npm则
 
 是一个JavaScript的包管理工具。主流的很多语言都会有自己的包管理器，Hexo官网教程中使用的是npm。
 
@@ -75,7 +75,7 @@ description: 本文介绍为什么要写博客以及使用的博客平台和Hexo
 - 构建：从编写的原始内容生成可发布的最终内容
 - 发布：让待发布的内容对读者可见
 
-依托于博客平台（如博客园、新浪博客等）发布内容的用户只需要关注编写部分，但要搭建一个独立的个人博客则以上三方面都需要关心。幸运的是，现在有大量的工具帮助我们简化这个过程：丰富的 Markup 语言简化了编写；强大的静态站点生成器简化了构建；友好的托管平台简化了发布。
+　　依托于博客平台（如博客园、新浪博客等）发布内容的用户只需要关注编写部分，但要搭建一个独立的个人博客则以上三方面都需要关心。幸运的是，现在有大量的工具帮助我们简化这个过程：丰富的 Markup 语言简化了编写；强大的静态站点生成器简化了构建；友好的托管平台简化了发布。
 
 这个博客的诞生也得益于这些工具：
 
@@ -98,11 +98,11 @@ description: 本文介绍为什么要写博客以及使用的博客平台和Hexo
 
 （4）注意事项
 
-​		很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；
+　　很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；
 
-​		hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；
+　　hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；
 
-​		hexo有2种`_config.yml`文件，一个是根目录下的全局的`_config.yml`，一个是各个`theme`下的。
+　　hexo有2种`_config.yml`文件，一个是根目录下的全局的`_config.yml`，一个是各个`theme`下的。
 
 #### 3.设置使用ssh提交到Github Pages
 
@@ -123,19 +123,15 @@ $ git config --global user.email "your_email@example.com"
 
 **git使用ssh密钥**
 
-git支持https和git两种传输协议。相应的，github分享链接时会有两种协议可选：git格式和https格式。
-
-使用https协议，每次pull, push都会提示要输入密码。
-
-使用git协议，然后使用ssh密钥，这样免去每次都输密码的麻烦。
+　　git支持https和git两种传输协议。相应的，github分享链接时会有两种协议可选：git格式和https格式。使用https协议，每次pull, push都会提示要输入密码。使用git协议，然后使用ssh密钥，这样免去每次都输密码的麻烦。
 
 （1）生成密钥对
 
-​		大多数 Git 服务器都会选择使用 SSH 公钥来进行授权，SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。
+　　大多数 Git 服务器都会选择使用 SSH 公钥来进行授权，SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。
 
 首先需要检查你电脑是否已经有 SSH key 
 
-​		运行 git Bash 客户端，输入如下命令，看一下有没有id_rsa和id_rsa.pub(或者是id_dsa和id_dsa.pub之类成对的文件)，有 .pub 后缀的文件就是公钥，另一个文件则是密钥。假如没有这些文件，甚至连 .ssh 目录都没有，可以用 ssh-keygen 来创建。
+　　运行 git Bash 客户端，输入如下命令，看一下有没有id_rsa和id_rsa.pub(或者是id_dsa和id_dsa.pub之类成对的文件)，有 .pub 后缀的文件就是公钥，另一个文件则是密钥。假如没有这些文件，甚至连 .ssh 目录都没有，可以用 ssh-keygen 来创建。
 
 ```shell
 $ cd ~/.ssh
@@ -198,9 +194,9 @@ git remote set-url origin git@github.com:someaccount/someproject.git
 
 #### 4.创建仓库
 
-新建一个名为`你的用户名.github.io`的仓库，比如说，如果你的github用户名是test，那么你就新建`test.github.io`的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 http://test.github.io 了，是不是很方便？
+　　新建一个名为`你的用户名.github.io`的仓库，比如说，如果你的github用户名是test，那么你就新建`test.github.io`的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 http://test.github.io 了，是不是很方便？
 
-由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。
+　　由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。
 
 几个注意的地方：
 
@@ -208,7 +204,7 @@ git remote set-url origin git@github.com:someaccount/someproject.git
 2. 仓库名字必须是：`username.github.io`，其中`username`是你的用户名；
 3. 仓库创建成功不会立即生效，需要过一段时间，大概10-30分钟，或者更久，我的等了半个小时才生效；
 
-创建成功后，默认会在你这个仓库里生成一些示例页面，以后你的网站所有代码都是放在这个仓库里啦。
+　　创建成功后，默认会在你这个仓库里生成一些示例页面，以后你的网站所有代码都是放在这个仓库里啦。
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g3vvgg8qtyj20rs0hgjrq.jpg)
 
@@ -342,7 +338,7 @@ hexo d -g #生成并上传
 
 #### 4.部署
 
-上传之前：在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉。
+　　上传之前：在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉。
 
 首先安装扩展文件
 
@@ -664,11 +660,11 @@ $font-family-base = get_font_family('global'), $font-family-chinese, sans-serif 
 
 #### 13.显示文章更新时间
 
-在文章列表中我们一般都能看的文章的发布时间。对于一些文章来说，比如涉及到文章中的内容过期，或者软件的升级等等，我们都会进行一些修改。这种情况下，我们就像把文章的更新日期也显示处理，也能让读者看的我们写的之前的文章也是有更新的，不会过时的。
+　　在文章列表中我们一般都能看的文章的发布时间。对于一些文章来说，比如涉及到文章中的内容过期，或者软件的升级等等，我们都会进行一些修改。这种情况下，我们就像把文章的更新日期也显示处理，也能让读者看的我们写的之前的文章也是有更新的，不会过时的。
 
 **显示更新日期**
 
-在 `Next` 主题下添加显示更新时间非常简单，找到**themes/next/_config.yml**的 `post_meta`部分：
+　　在 `Next` 主题下添加显示更新时间非常简单，找到**themes/next/_config.yml**的 `post_meta`部分：
 
 ```
 # Post meta display settings
@@ -679,11 +675,11 @@ post_meta:
   categories: true
 ```
 
-将 `updated_at: false` 修改为 `updated_at: true` 即可。通过 `hexo s -g` 预览，可以看到已经自动添加上了更新日期。
+　　将 `updated_at: false` 修改为 `updated_at: true` 即可。通过 `hexo s -g` 预览，可以看到已经自动添加上了更新日期。
 
 **自定义显示更新日期**
 
-对于某些特殊的文章，我们也想能够自定义这个更新的日期。当然，更改起来也非常的简单，Hexo默认就支持更新日期的配置。在每一篇文章的 `Front-matter` 部分，只要添加 `updated` 参数即可。
+　　对于某些特殊的文章，我们也想能够自定义这个更新的日期。当然，更改起来也非常的简单，Hexo默认就支持更新日期的配置。在每一篇文章的 `Front-matter` 部分，只要添加 `updated` 参数即可。
 
 ```
 ---
@@ -694,8 +690,7 @@ updated: 2017-12-01 10:35:18
 
 #### 14.去掉文章目录标题的自动编号
 
-我们自己写文章的时候一般都会自己带上标题编号，但是默认的主题会给我们带上编号，很是别扭，如何去掉呢？
-打开**themes/next/_config.yml**，找到
+　　我们自己写文章的时候一般都会自己带上标题编号，但是默认的主题会给我们带上编号，很是别扭，如何去掉呢？打开**themes/next/_config.yml**，找到
 
 ```shell
 # Table Of Contents in the Sidebar
@@ -822,7 +817,7 @@ $ npm run push
 
 #### 17.文章置顶
 
-Hexo博客中，默认的情况是按照时间倒序来排列的，即新发布的文章排在前面。虽然有一种很简单的方法，就是更改文章的发布时间到一个“未来”的时间点，这样虽然能让文章一直置顶，但是给人的体验和感觉是非常不好的。今天介绍一种非常简单而且体验上也非常好的方法。
+　　Hexo博客中，默认的情况是按照时间倒序来排列的，即新发布的文章排在前面。虽然有一种很简单的方法，就是更改文章的发布时间到一个“未来”的时间点，这样虽然能让文章一直置顶，但是给人的体验和感觉是非常不好的。今天介绍一种非常简单而且体验上也非常好的方法。
 
 **安装node插件**
 
@@ -855,7 +850,7 @@ top: true
 
 #### 18.鼠标点击小红心的设置
 
-将 [love.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js) 文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**文件， 在文件的后面、标签之前添加以下代码：
+　　将 [love.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/love.js) 文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**文件， 在文件的后面、标签之前添加以下代码：
 
 ```
 <!-- 页面点击小红心 -->
@@ -864,7 +859,7 @@ top: true
 
 #### 19.背景的设置
 
-将 [particle.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/particle.js)文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**文件， 在文件的后面、标签之前添加以下代码：
+　　将 [particle.js](https://github.com/Neveryu/Neveryu.github.io/blob/master/js/src/particle.js)文件添加到**\themes\next\source\js\src**文件目录下。修改**\themes\next\layout\\_layout.swing**文件， 在文件的后面、标签之前添加以下代码：
 
 ```
 <!-- 背景动画 -->
@@ -926,6 +921,16 @@ post_wordcount:
 
 参考：[为NexT主题添加文章阅读量统计功能](https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html#配置LeanCloud)
 
+2019年6月20日，LeanCloud主站：https://leancloud.cn/访问异常，导致统计的ap访问失效：https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js，导致博客加载非常缓慢。最后替换域名为：https://c.lcfile.com/static/js/av-core-mini-0.6.4.js，把js下载到本地，按照参考博客更改配置，博客加载缓慢问题才得以解决。如果觉得出现这种问题非常麻烦，可以使用不蒜子统计文章阅读次数。
+
+官方说明：
+
+我们监测到从今天（06/20）下午开始各个地区陆续出现部分网络无法解析华北节点的 api.leancloud.cn 以及 *.lncld.net 域名的问题。通过和我们的域名注册商阿里云沟通，得知他们接到有关部门行政命令将一批域名设置为 ClientHold 状态，其中包括 leancloud.cn 和 lncld.net，但是没有可执行的其它信息可以提供给我们。目前我们仍在和阿里云沟通中。
+
+参考：[关于 LeanCloud 国内域名解析问题的情况更新（6 月 21 日）](https://blog.avoscloud.com/6841/)
+
+解决：[Hexo阅读量api.leancloud.cn解析失败](https://blog.ifiveplus.com/Hexo%E9%98%85%E8%AF%BB%E9%87%8Fapi-leancloud-cn%E8%A7%A3%E6%9E%90%E5%A4%B1%E8%B4%A5.html)
+
 #### 23.添加站点访问次数统计
 
 站点访问计数有名的就是[不蒜子 - 极简网页计数器](<https://busuanzi.ibruce.info/>)，使用起来非常方便。
@@ -979,7 +984,7 @@ post_wordcount:
 
 #### 25.SEO优化
 
-SEO优化对于网站是否能被搜索引擎快速收录有很大帮助，因此适当做一些SEO还是有必要的。但是请注意，因为github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域名。谷歌对此没有限制。
+　　SEO优化对于网站是否能被搜索引擎快速收录有很大帮助，因此适当做一些SEO还是有必要的。但是请注意，因为github是不允许百度的spider爬取github上的内容的，所以如果想让你的站点被百度收录，只能使用自己购买的域名。谷歌对此没有限制。
 
 **首先修改站点URL**
 
@@ -1073,7 +1078,7 @@ Sitemap: <your-domain-name>/sitemap.xml
 
 **其他SEO优化**
 
-SEO优化应该说是一个收益延迟的行为，可能你做的优化短期内看不到什么效果，但是一定要坚持，SEO优化也是有很深的可以研究的东西，从我们最初的网站设计，和最基础的标签的选择都有很大的关系，网站设计就如我们刚刚说的，要让用户点击三次可以到达网站的任何一个页面，要增加高质量的外链，增加相关推荐（比如说我们经常见到右侧本站的最高阅读的排名列表），然后就是给每一个页面加上keyword和描述在代码中，我们应该写出能让浏览器识别的语义化HTML，这样有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；并且对外链设置nofollow标签，避免spider爬着爬着就爬出去了（减少网站的跳出率），并且我们要尽量在一些比较大的网站增加我们站点的曝光率，因为spider会经常访问大站，比如我们在掘金等技术社区发表文章中带有我们的站点，这样spider是很有可能爬到我们中的站点的，so....
+　　SEO优化应该说是一个收益延迟的行为，可能你做的优化短期内看不到什么效果，但是一定要坚持，SEO优化也是有很深的可以研究的东西，从我们最初的网站设计，和最基础的标签的选择都有很大的关系，网站设计就如我们刚刚说的，要让用户点击三次可以到达网站的任何一个页面，要增加高质量的外链，增加相关推荐（比如说我们经常见到右侧本站的最高阅读的排名列表），然后就是给每一个页面加上keyword和描述在代码中，我们应该写出能让浏览器识别的语义化HTML，这样有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；并且对外链设置nofollow标签，避免spider爬着爬着就爬出去了（减少网站的跳出率），并且我们要尽量在一些比较大的网站增加我们站点的曝光率，因为spider会经常访问大站，比如我们在掘金等技术社区发表文章中带有我们的站点，这样spider是很有可能爬到我们中的站点的，so....
 
 - 网站**外链**的推广度、数量和质量
 
@@ -1104,9 +1109,9 @@ SEO优化应该说是一个收益延迟的行为，可能你做的优化短期�
 
 #### 26.添加链接持久化
 
-​		SEO搜索引擎优化认为，网站的最佳结构是**用户从首页点击三次就可以到达任何一个页面**，但是我们使用hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，这样的url结构很不利于SEO，爬虫就会经常爬不到我们的文章，于是，我们可以将url直接改成sitename/title的形式，并且title最好是用英文。
+　　SEO搜索引擎优化认为，网站的最佳结构是**用户从首页点击三次就可以到达任何一个页面**，但是我们使用hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，这样的url结构很不利于SEO，爬虫就会经常爬不到我们的文章，于是，我们可以将url直接改成sitename/title的形式，并且title最好是用英文。
 
-​		hexo 默认的链接是http://xxx.yy.com/2013/07/14/hello-world这种类型的，这源于站点配置文件config.yml里的配置: permalink: :year/:month/:day/:title/。这种默认配置的缺点就是当我们创建的博文名包含中文的名的时候，url 链接地址经常会变成一串很长的难以理解的字符串，不利于博文的链接分享，以及搜索引擎搜索，另外就是年月日都会有分隔符。我们可以让 url 链接持久化来解决这个问。
+　　hexo 默认的链接是http://xxx.yy.com/2013/07/14/hello-world这种类型的，这源于站点配置文件config.yml里的配置: permalink: :year/:month/:day/:title/。这种默认配置的缺点就是当我们创建的博文名包含中文的名的时候，url 链接地址经常会变成一串很长的难以理解的字符串，不利于博文的链接分享，以及搜索引擎搜索，另外就是年月日都会有分隔符。我们可以让 url 链接持久化来解决这个问。
 
 （1）安装hexo-abbrlink插件
 
@@ -1156,6 +1161,7 @@ hexo-site@0.0.0 D:\java\hexo
 +-- gulp-uglify@3.0.2
 +-- hexo@3.7.1
 +-- hexo-abbrlink@2.0.5
++-- hexo-autonofollow@1.0.1
 +-- hexo-deployer-git@0.3.1
 +-- hexo-generator-archive@0.1.5
 +-- hexo-generator-baidu-sitemap@0.1.5
@@ -1181,7 +1187,7 @@ npm update
 
 npm小知识
 
-npm（node package manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）。使用npm安装插件：`npm install <name> [g] [--save -dev]`
+　　npm（node package manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等）。使用npm安装插件：`npm install <name> [g] [--save -dev]`
 
 - `<name>`:node 插件名称
 - `-g`:全局安装，会在node安装的根目录下载对应的包，在计算机的任何文件都可以使用该插件，默认的node安装目录是：`C:\Users\Administrator\AppData\Roaming\npm`;如果不带该属性，将会安装在当前目录，下载安装包的位置是当前目录的`node_modules`文件夹
@@ -1198,7 +1204,7 @@ npm（node package manager）nodejs的包管理器，用于node插件管理（�
 
 使用cnpm
 
-什么是cnpm呢，大家都知道，由于不可描述原因，我们访问国外的资源有时候的速度，大家懂的，所以淘宝除了一个npm镜像，服务器就在中国。c可以理解为China（应该可以这样理解吧）,cnpm使用方法和npm完全相同，只需将npm全部换成cnpm就可以。本文都是使用的npm，如果想要尝试cnpmde的麻烦自行替换~
+　　什么是cnpm呢，大家都知道，由于不可描述原因，我们访问国外的资源有时候的速度，大家懂的，所以淘宝除了一个npm镜像，服务器就在中国。c可以理解为China（应该可以这样理解吧）,cnpm使用方法和npm完全相同，只需将npm全部换成cnpm就可以。本文都是使用的npm，如果想要尝试cnpmde的麻烦自行替换~
 
 > 这是一个完整 npmjs.org 镜像，你可以用此代替官方版本(只读)，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。
 
@@ -1250,4 +1256,3 @@ cnpm 官网地址：[npm.taobao.org；](https://link.juejin.im?target=http%3A%2F
 [Markdown语法汇总](<https://www.jianshu.com/p/45faddb1526d>)
 
 <center style="font-weight:bold">（完）</center>
-
