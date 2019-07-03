@@ -430,27 +430,29 @@ rating:
 
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
-leancloud_visitors:
-  enable: true
-  app_id: SPzBLDOtApJdFECrSy1n6jz9-gzGzoHsz
-  app_key: k23N5iMyBA9E0yXbjl8PoaWo
+#leancloud_visitors:
+#  enable: true
+#  app_id: SPzBLDOtApJdFECrSy1n6jz9-gzGzoHsz
+#  app_key: k23N5iMyBA9E0yXbjl8PoaWo
 
 # Show PV/UV of the website/page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
 # 阅读次数统计
+# 使用的是https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js，但是这个域名被屏蔽了
+# 修改域名配置文件：themes/next/layout/_third-party/analytics/busuanzi-counter.swig
 busuanzi_count:
   # count values only if the other configs are false
-  enable: false
+  enable: true
   # custom uv span for the whole site
   site_uv: false
   site_uv_header: <i class="fa fa-user"></i> 访客数
   site_uv_footer: 人
   # custom pv span for the whole site
-  site_pv: false
+  site_pv: true
   site_pv_header: <i class="fa fa-eye"></i> 总访问量
   site_pv_footer: 次
   # custom pv span for one page only
-  page_pv: false
+  page_pv: true
   page_pv_header: <i class="fa fa-file-o"></i>
   page_pv_footer: 次阅读
 

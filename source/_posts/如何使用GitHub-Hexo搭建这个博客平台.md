@@ -921,7 +921,7 @@ post_wordcount:
 
 参考：[为NexT主题添加文章阅读量统计功能](https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html#配置LeanCloud)
 
-2019年6月20日，LeanCloud主站：https://leancloud.cn/访问异常，导致统计的ap访问失效：https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js，导致博客加载非常缓慢。最后替换域名为：https://c.lcfile.com/static/js/av-core-mini-0.6.4.js，把js下载到本地，按照参考博客更改配置，博客加载缓慢问题才得以解决。如果觉得出现这种问题非常麻烦，可以使用不蒜子统计文章阅读次数。
+2019年6月20日，[LeanCloud](https://leancloud.cn/)主站访问异常，统计的api访问失效：`https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js`，导致博客加载非常缓慢。最后替换域名为：`https://c.lcfile.com/static/js/av-core-mini-0.6.4.js`，把js下载到本地，按照参考博客更改配置，博客加载缓慢问题才得以解决。如果觉得出现这种问题非常麻烦，可以使用不蒜子统计文章阅读次数。
 
 官方说明：
 
@@ -931,18 +931,54 @@ post_wordcount:
 
 解决：[Hexo阅读量api.leancloud.cn解析失败](https://blog.ifiveplus.com/Hexo%E9%98%85%E8%AF%BB%E9%87%8Fapi-leancloud-cn%E8%A7%A3%E6%9E%90%E5%A4%B1%E8%B4%A5.html)
 
-#### 23.添加站点访问次数统计
+#### 23.使用不蒜子统计访问次数
 
 站点访问计数有名的就是[不蒜子 - 极简网页计数器](<https://busuanzi.ibruce.info/>)，使用起来非常方便。
 
-1、安装脚本。打开 **themes/next/layout/_partial/footer.swig**，添加脚本：
+**主题集成步骤**
+
+其实，next主题已经集成不蒜子统计工具。但是因为主题使用的旧的域名解析，需要更换过来。
+
+1. 更换域名。打开**themes/next/layout/_third-party/analytics/busuanzi-counter.swig**，更换域名：
+
+`<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>`
+
+更换为：
+
+`<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>`
+
+2. 更改配置
+
+打开主题配置文件**themes/next/_config.yml**，修改
+
+~~~shell
+busuanzi_count:
+  # count values only if the other configs are false
+  enable: true
+  # custom uv span for the whole site
+  site_uv: false
+  site_uv_header: <i class="fa fa-user"></i> 访客数
+  site_uv_footer: 人
+  # custom pv span for the whole site
+  site_pv: true
+  site_pv_header: <i class="fa fa-eye"></i> 总访问量
+  site_pv_footer: 次
+  # custom pv span for one page only
+  page_pv: true
+  page_pv_header: <i class="fa fa-file-o"></i>
+  page_pv_footer: 次阅读
+~~~
+
+**官网安装步骤**
+
+1. 安装脚本。打开 **themes/next/layout/_partial/footer.swig**，添加脚本：
 
 ```
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 ```
 
- 2、显示站点总访问量
+2. 显示站点总访问量
 
 **themes/next/layout/_partial/footer.swig**
 
@@ -964,7 +1000,7 @@ post_wordcount:
 </span>
 ```
 
-3、显示单页面访问量
+3. 显示单页面访问量
 
 要显示每篇文章的访问量，复制以下代码添加到你需要显示的位置。
 

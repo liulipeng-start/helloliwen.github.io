@@ -35,7 +35,7 @@ tags:
   - Semaphore类：信号量 
     信号量，在我们测试的过程中充当监控并发数的角色。能够维持在同一时间的请求的并发量，达到并发量上线，会阻塞进程。
   - CountDownLatch类：计数器向下减的闭锁 
-    ![这里写图片描述](/upload-image/high-concurrency2-1.png) 
+    ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mql6fv7tj20j00g8jtx.jpg)
   - 说明：假设计数器的值为3，线程A执行了await()方法之后，进入了awaiting等待状态。在其他线程的方法中执行了countDown()方法之后，计数器的值都会减一，直到计数器的值减为0，线程A的方法才继续执行。所以说，countDownLatch类可以阻塞线程执行，并且当满足指定条件后让线程继续执行。
 
 ```
@@ -94,14 +94,14 @@ public class CountExample1 {
 
 CPU的频率太快了，快到主存跟不上，这样在处理器时钟周期内，CPU常常需要等待主存，浪费资源，所以cache的出现，是为了缓解CPU和内存之间速度的不匹配问题。 
 CPU多级缓存配置（演变）： 
-![这里写图片描述](/upload-image/high-concurrency2-2.png) 
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqlpaaubj20yg0ey0vd.jpg)
 局部性原理： 
 (1) 时间局部性：如果某个数据被访问，那么在不久的将来它很可能被再次访问。 
 (2) 空间局部性：如果某个数据被访问，那么与他相邻的数据很快也可能被访问。
 
 ### 3、缓存一致性(MESI Modify|Exclusive|Share|Invalid)
 
-![这里写图片描述](/upload-image/high-concurrency2-3.png) 
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqlvgra7j20h20bfdjw.jpg)
 
 - Modify:被修改，该缓存行只被缓存在该CPU的缓存中。并且是被修改过的，因此它与主存中的数据是不一致的，该缓存行中的内存需要在未来的某个时间点写回主存，这个时间点是允许其他CPU读取主存中相应的内存之前。当这里的值被写回主存之后，该缓存行的状态将变为Excluisive.
 
@@ -123,7 +123,7 @@ CPU多级缓存配置（演变）：
 
 - 远端写入 remote write : 将数据写回Memory中 
   缓存被修改时的情况： 
-  ![这里写图片描述](/upload-image/high-concurrency2-4.png) 
+  ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqm2day4j20a90a0aat.jpg)
   某一时刻缓存被CPU A 与CPU B共享，这时CPU A 要修改本地缓存的时候，会将主存的数据与CPU B在共享的数据置为无效状态。缓存由S -> I
 
 ### 4、乱序执行优化
@@ -131,13 +131,13 @@ CPU多级缓存配置（演变）：
 处理器为提高运算速度而做出违背代码原有顺序的优化。 
 举例：初始计算需求如下
 
-![这里写图片描述](/upload-image/high-concurrency2-5.png) 
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqm8h4mgj20h40dnmys.jpg)
 
 预期计算流程： 
-![这里写图片描述](/upload-image/high-concurrency2-6.png) 
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqmek7v5j20lu05sjse.jpg)
 
 实际计算流程（乱序执行优化后）： 
-![这里写图片描述](/upload-image/high-concurrency2-7.png) 
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqmkwrt1j20m807kab7.jpg)
 
 ### 5、JAVA 内存模型(JMM)
 
@@ -148,21 +148,21 @@ CPU多级缓存配置（演变）：
 - **静态类型**变量跟随类的定义存放在堆上。存放在堆上的对象可以被所持有对这个对象引用的线程访问。
 - 如果两个线程同时调用了同一个对象的同一个方法，他们都会访问这个对象的成员变量。但是这两个线程都拥有的是该对象的成员变量（局部变量）的**私有拷贝**。—[线程封闭中的堆栈封闭]
 
-![这里写图片描述](/upload-image/high-concurrency2-8.png) 
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqmsny5gj20hv0eyaf9.jpg)
 
 - CPU Registers(寄存器):是CPU内存的基础，CPU在寄存器上执行操作的速度远大于在主存上执行的速度。这是因为CPU访问寄存器速度远大于主存。
 - CPU Cache Memory(高速缓存):由于计算机的存储设备与处理器的运算速度之间有着几个数量级的差距，所以现代计算机系统都不得不加入一层读写速度尽可能接近处理器运算速度的高级缓存，来作为内存与处理器之间的缓冲。将运算时所使用到的数据复制到缓存中,让运算能快速的进行。当运算结束后，再从缓存同步回内存之中，这样处理器就无需等待缓慢的内存读写了。
 - RAM-Main Memory(主存/内存):
 - 当一个CPU需要读取主存的时候，他会将主存中的部分读取到CPU缓存中，甚至他可能将缓存中的部分内容读到他的内部寄存器里面，然后在寄存器中执行操作。当CPU需要将结果回写到主存的时候，他会将内部寄存器中的值刷新到缓存中，然后在某个时间点从缓存中刷回主存。
 
-![这里写图片描述](/upload-image/high-concurrency2-9.png) 
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqmy6nl5j20hn0f3tcb.jpg)
 
 - Java内存模型抽象结构：每个线程都有一个私有的本地内存，本地内存他是java内存模型的一个抽象的概念。它并不是真实存在的，它涵盖了缓存、写缓冲区、寄存器以及其他的硬件和编译器的优化。本地内存中它存储了该线程以读或写共享变量拷贝的一个副本。
 - 从更低的层次来说，主内存就是硬件的内存，是为了获取更高的运行速度，虚拟机及硬件系统可能会让工作内存优先存储于寄存器和高速缓存中，java内存模型中的线程的工作内存是CPU的寄存器和高速缓存的一个抽象的描述。而JVM的静态内存存储模型它只是对内存的一种物理划分而已。它只局限在内存，而且只局限在JVM的内存。
 
 ### 6、Java内存模型-同步八种操作
 
-![这里写图片描述](/upload-image/high-concurrency2-10.png)
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4mqn4xigfj20zx0h8dnh.jpg)
 
 - lock(锁定) ：作用于主内存变量，把一个变量标识为一条线程独占状态
 - unlock(解锁) ： 作用于主内存的变量，把一个处于锁定状态的变量释放出来，释放后的变量才可以被其他线程锁定
