@@ -1,10 +1,10 @@
 ---
-title: 【LeetCode】打卡11：1.Two Sum
+title: 【LeetCode】1.Two Sum
 categories:
   - 算法与数据结构
   - LeetCode
-tags: LeetCode
-description: 1.Two Sum（两数之和）
+tags: 
+description: 1.两数之和。主题：数组、Hash Table
 abbrlink: e5726db5
 date: 2019-07-02 10:58:32
 keywords:
