@@ -1,0 +1,117 @@
+---
+title: Java多线程、反射与克隆
+categories:
+  - Java
+tags: 面试
+abbrlink: '12275479'
+date: 2019-07-12 11:18:01
+keywords:
+description:
+---
+
+## 1.并行和并发有什么区别？
+
+- 并行是指两个或者多个事件在同一时刻发生；而并发是指两个或多个事件在同一时间间隔发生。
+- 并行是在不同实体上的多个事件，并发是在同一实体上的多个事件。
+- 并行是在多台处理器上同时处理多个任务，如hadoop分布式集群；并发是在一台处理器上“同时”处理多个任务。
+
+所以并发编程的目标是充分的利用处理器的每一个核，以达到最高的处理性能。
+
+## 2.线程和进程的区别
+
+　　进程是程序运行和资源分配的基本单位，一个程序至少有一个进程，一个进程至少有一个线程。进程在执行过程中拥有独立的内存单元，而多个线程共享内存资源，减少切换次数，从而效率更高。线程是进程的一个实体，是cpu调度和分派的基本单位，是比程序更小的能独立运行的基本单位。同一进程中的多个线程之间可以并发执行。
+
+## 3.什么是守护进程
+
+　　守护线程（即daemon thread），是个服务线程，准确地来说就是服务其他线程的线程。在Java中有两类线程：User Thread(用户线程)、Daemon Thread(守护线程) 。只要当前JVM实例中尚存在任何一个非守护线程没有结束，守护线程就全部工作；只有当最后一个非守护线程结束时，守护线程随着JVM一同结束工作。
+
+　　Daemon的作用是为其他线程的运行提供便利服务，守护线程最典型的应用就是 GC (垃圾回收器)。
+
+　　User和Daemon两者几乎没有区别，唯一的不同之处就在于虚拟机的离开：如果 User Thread已经全部退出运行了，只剩下Daemon Thread存在了，虚拟机也就退出了。
+
+## 4.创建线程有哪几种方式
+
+① 继承<font color="red">Thread类</font>创建线程类
+
+- 定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体。
+- 创建Thread子类的实例，即创建线程对象。
+- 调用线程对象的start()方法来启动该线程。
+
+② 通过<font color="red">Runnable接口</font>创建线程类
+
+- 定义runnable接口的实现类，并重写该接口的run()方法，该run()方法的方法体同样是该线程的线程执行体。
+- 创建 Runnable实现类的实例，并依此实例作为Thread的target来创建Thread对象，该Thread对象才是真正的线程对象。
+- 调用线程对象的start()方法来启动该线程。
+
+③ 通过<font color="red">Callable和Future</font>创建线程类
+
+- 创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值。
+- 创建Callable实现类的实例，使用FutureTask类来包装Callable对象，该FutureTask对象封装了该Callable对象的call()方法的返回值。
+- 使用FutureTask对象作为Thread对象的target创建并启动新线程。
+- 调用FutureTask对象的get()方法来获得子线程执行结束后的返回值。
+
+## 5.说一下 runnable 和 callable 有什么区别
+
+- Runnable接口中的run()方法的返回值是void，它做的事情只是纯粹地去执行run()方法中的代码而已；
+- Callable接口中的call()方法是有返回值的，是一个泛型，和Future、FutureTask配合可以用来获取异步执行的结果。
+
+## 6.线程有哪些状态？
+
+线程通常都有五种状态：<font color="red">新建</font>、<font color="red">运行</font>、<font color="red">阻塞</font>、<font color="red">等待</font>、<font color="red">超时等待</font>和<font color="red">终止</font>。
+
+- <font color="red">新建(New)</font>：新创建了一个线程对象，但还没有调用start()方法。
+- <font color="red">运行(Runable)</font>：Java线程中将就绪（Ready）和运行中（Running）两种状态笼统的称为“运行”。线程对象创建后，其他线程(比如main线程）调用了该对象的start()方法。该状态的线程位于可运行线程池中，等待被线程调度选中，获取CPU的使用权，此时处于就绪状态（Ready）。就绪状态的线程在获得CPU时间片后变为运行中状态（Running）。
+
+- <font color="red">阻塞(Blocked)</font>：表示线程阻塞于锁。线程正在运行的时候，被暂停，通常是为了等待某个事件的发生(比如说某项资源就绪)之后再继续运行。sleep,suspend,wait等方法都可以导致线程阻塞。
+- <font color="red">等待(Waiting)</font>：进入该状态的线程需要等待其他线程做出一些特定动作（通知或中断）。
+- <font color="red">超时等待(Timed Waiting)</font>：该状态不同于WAITING，它可以在指定的时间后自行返回。
+- <font color="red">终止(Terminated)</font>：如果一个线程的run方法执行结束或者调用stop方法后，该线程就会死亡。对于已经死亡的线程，无法再使用start方法令其进入就绪
+
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4xc24mo5jj20w30lfjti.jpg)
+
+[Java线程的6种状态及切换(透彻讲解)](https://blog.csdn.net/pange1991/article/details/53860651)
+
+## 7.sleep() 和 wait() 有什么区别？
+
+sleep()：方法是线程类（Thread）的静态方法，让调用线程进入睡眠状态，让出执行机会给其他线程，等到休眠时间结束后，线程进入就绪状态和其他线程一起竞争cpu的执行时间。因为sleep() 是static静态的方法，他不能改变对象的机锁，当一个synchronized块中调用了sleep() 方法，线程虽然进入休眠，但是对象的机锁没有被释放，其他线程依然无法访问这个对象。
+
+wait()：wait()是Object类的方法，当一个线程执行到wait方法时，它就进入到一个和该对象相关的等待池，同时释放对象的机锁，使得其他线程能够访问，可以通过notify，notifyAll方法来唤醒等待的线程
+
+## 8.notify()和 notifyAll()有什么区别？
+
+- 如果线程调用了对象的 wait()方法，那么线程便会处于该对象的<font color="red">等待池</font>中，等待池中的线程不会去竞争该对象的锁。
+- 当有线程调用了对象的 notifyAll()方法（唤醒所有 wait 线程）或 notify()方法（只随机唤醒一个 wait 线程），被唤醒的的线程便会进入该对象的<font color="red">锁池</font>中，锁池中的线程会去竞争该对象锁。也就是说，调用了notify后只要一个线程会由等待池进入锁池，而notifyAll会将该对象等待池内的所有线程移动到锁池中，等待锁竞争。
+- 优先级高的线程竞争到对象锁的概率大，假若某线程没有竞争到该对象锁，它还会留在锁池中，唯有线程再次调用 wait()方法，它才会重新回到等待池中。而竞争到对象锁的线程则继续往下执行，直到执行完了 synchronized 代码块，它会释放掉该对象锁，这时锁池中的线程会继续竞争该对象锁。
+
+## 9.线程的 run()和 start()有什么区别？
+
+　　每个线程都是通过某个特定Thread对象所对应的方法run()来完成其操作的，方法run()称为线程体。通过调用Thread类的start()方法来启动一个线程。
+
+　　start()方法来启动一个线程，真正实现了多线程运行。这时无需等待run方法体代码执行完毕，可以直接继续执行下面的代码； 这时此线程是处于就绪状态， 并没有运行。 然后通过此Thread类调用方法run()来完成其运行状态， 这里方法run()称为<font color="red">线程体</font>，它包含了要执行的这个线程的内容， Run方法运行结束， 此线程终止。然后CPU再调度其它线程。
+
+　　run()方法是在本线程里的，只是线程里的一个函数，而不是多线程的。 如果直接调用run()，其实就相当于是调用了一个普通函数而已。直接调用run()方法必须等待run()方法执行完毕才能执行下面的代码，所以执行路径还是只有一条，根本就没有线程的特征，所以在多线程执行时要使用start()方法而不是run()方法。
+
+## 10.线程池的几种的方式
+
+在java doc中，并不提倡直接使用ThreadPoolExecutor，而是使用Executors类中提供的几个静态方法来创建线程池：
+
+①newSingleThreadExecutor()	创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。如果这个线程异常结束，会创建一个新的来替代它
+
+②newFixedThreadPool(int nThreads)	创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
+
+③newCachedThreadPool()	创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。线程池的规模不存在任何限制。
+
+④newScheduledThreadPool(int corePoolSize)	创建一个定长线程池，支持定时及周期性任务执行。
+
+[Java并发编程：线程池的使用](https://www.cnblogs.com/dolphin0520/p/3932921.html)
+
+[如何优雅的使用和理解线程池](https://segmentfault.com/a/1190000015808897)
+
+[Java 四种线程池的用法分析](https://blog.csdn.net/u011974987/article/details/51027795)
+
+## 11.线程池状态
+
+线程池有5种状态：Running、ShutDown、Stop、Tidying（收拾、整理）、Terminated。
+
+![](http://ww1.sinaimg.cn/large/75a4a8eegy1g4xf6ibq1qj20m808q0ta.jpg)
+
