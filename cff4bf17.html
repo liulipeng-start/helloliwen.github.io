@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ka5bf08bj20hc0b8tdf.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5kajstouwj20rl0hvgou.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5w3nqkn0jj21400u0dre.jpg">
-<meta property="og:updated_time" content="2019-08-11T14:24:23.501Z">
+<meta property="og:updated_time" content="2019-08-12T08:09:09.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机（JVM）">
 <meta name="twitter:description" content="JVM集锦">
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-11T22:24:23+08:00">
-                2019-08-11
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-12T16:09:09+08:00">
+                2019-08-12
               </time>
             
           </span>
@@ -521,8 +521,11 @@
 <li>jvisualvm：JDK 自带的全能分析工具，可以分析：内存快照、线程快照、程序死锁、监控内存的变化、gc 变化等。</li>
 </ul>
 <h2 id="10-JVM调优常用的参数"><a href="#10-JVM调优常用的参数" class="headerlink" title="10.JVM调优常用的参数"></a>10.JVM调优常用的参数</h2><ol>
-<li>-Xms2g：初始化推大小为 2g</li>
-<li>-Xmx2g：堆最大内存为 2g</li>
+<li>-Xms2g：堆最小内存为 2G</li>
+<li>-Xmx2g：堆最大内存为 2G</li>
+<li>-Xss128k：栈（不区分虚拟机栈和本地方法栈）内存容量</li>
+<li>-XX:PermSize=10M -XX:MaxPermSize=10M 限制方法区从而间接限制常量池的容量</li>
+<li>-XX:MaxDirectMemorySize=10M 本地直接内存容量</li>
 <li>-XX:NewRatio=4：设置新生代(Eden+2个Survivor)和老年代的内存比例为 1:4</li>
 <li>-XX:SurvivorRatio=8：设置新生代 Eden 和 Survivor 比例为 8:2</li>
 <li>-XX:+UseSerialGC：虚拟机运行在Client模式下的默认值，Serial+Serial Old</li>
