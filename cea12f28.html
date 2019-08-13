@@ -97,11 +97,11 @@
 <meta property="og:description" content="《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记3，包括第五部分——高效并发，从第12章到第13章">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5y2stx4dyj20jh08c40w.jpg">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-01c9d97d757d8c1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/565/format/webp">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-68f2cc99d1439039.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/523/format/webp">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-5ab1ae52e69821c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/671/format/webp">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-2501d5d148f80a2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/685/format/webp">
-<meta property="og:updated_time" content="2019-08-13T09:00:15.350Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybbeiv2rj20fp06mmyl.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybgjq512j20ej08iwfw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybhbhya5j20in04ajrq.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybhsiioaj20j109dq5n.jpg">
+<meta property="og:updated_time" content="2019-08-13T12:21:20.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记3">
 <meta name="twitter:description" content="《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记3，包括第五部分——高效并发，从第12章到第13章">
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-13T17:00:15+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-13T20:21:20+08:00">
                 2019-08-13
               </time>
             
@@ -455,7 +455,7 @@
 <li>Java内存模型规定了所有的变量都存储在主内存中，每个线程还有自己的工作内存，线程的工作内存中保存了被该线程使用到的变量的主内存副本拷贝，线程对变量的所有操作都必须在工作内存中进行，而不能直接读写主内存中的变量；</li>
 <li>这里所讲的主内存、工作内存与第二章所讲的Java内存区域中的Java堆、栈、方法区等并不是同一个层次的内存划分，这两者基本上是没有关系的；线程、主内存和工作内存的关系如下所示：</li>
 </ul>
-<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-01c9d97d757d8c1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/565/format/webp" alt="img"></p>
+<p><img src="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybbeiv2rj20fp06mmyl.jpg" alt=""></p>
 <p>线程、主内存和工作内存的关系</p>
 <h4 id="3-2-内存间交互操作"><a href="#3-2-内存间交互操作" class="headerlink" title="3.2 内存间交互操作"></a>3.2 内存间交互操作</h4><p>　　关于主内存与工作内存之间具体的交互协议，即一个变量如何从主内存拷贝到工作内存、如何从工作内存同步回主内存之类的实现细节，Java内存模型中定义了以下八种操作来完成。虚拟机实现时必须保证下面提及的每一种操作都是原子的、不可再分的（对于double和long类型的变量的某些操作在某些平台允许有例外）：</p>
 <ul>
@@ -503,7 +503,7 @@
 <h4 id="4-3-状态转换"><a href="#4-3-状态转换" class="headerlink" title="4.3 状态转换"></a>4.3 状态转换</h4><ul>
 <li>Java语言定义了五种线程状态，在任意一个时间点，一个线程只能有且只有其中一种状态，分别是<font style="color:red">新建（New）</font>、<font style="color:red">运行（Runnable）</font>、<font style="color:red">无限期等待（Waiting）</font>、<font style="color:red">限期等待（Timed Waiting）</font>、<font style="color:red">阻塞（Blocled）</font>、<font style="color:red">结束（Terminated）</font>。它们之间相互的转换关系如下所示：</li>
 </ul>
-<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-68f2cc99d1439039.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/523/format/webp" alt="img"></p>
+<p><img src="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybgjq512j20ej08iwfw.jpg" alt=""></p>
 <p>线程状态转换关系</p>
 <p><a href="https://helloliwen.github.io/12275479.html">Java多线程、反射与克隆</a></p>
 <h3 id="5-本章小结"><a href="#5-本章小结" class="headerlink" title="5.本章小结"></a>5.本章小结</h3><p>　　本章我们首先了解了虚拟机Java内存模型的结构及操作，然后讲解了原子性、可见性、有序性在Java内存模型中的体现，最后介绍了先行发生原则的规则及使用。另外，我们还了解了线程在Java语言之中是如何实现的。</p>
@@ -540,7 +540,7 @@
 <li>轻量级锁是JDK 1.6之中加入的新型锁机制，它是相对于使用操作系统互斥量来实现的传统锁而言的。它并不是用来代替重量级锁的，它的本意是在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量产生的性能消耗。</li>
 <li>要理解轻量级锁，以及后面会讲到的偏向锁的原理和运作过程，必须从HotSpot虚拟机的对象的内存布局开始介绍。HotSpot虚拟机的对象头分为两部分信息：<strong>第一部分用于存储对象自身的运行时数据</strong>，如哈希码、GC分代年龄等，这部分官方称之为Mark Word，是实现轻量级锁和偏向锁的关键；<strong>另外一部分用于存储指向方法区对象类型数据的指针</strong>。 Mark Word被设计成一个非固定的数据结构以便在极小的空间存储尽量多的信息，在32位的HotSpot虚拟机中对象未被锁定的状态下，25bit用于存储对象哈希码，4bit用于存储对象分代年龄，2bit用于存储锁标志位，1bit固定为0；在其他状态（轻量级锁定、重量级锁定、GC标志、可偏向）下对象的存储内容如下：</li>
 </ul>
-<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-5ab1ae52e69821c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/671/format/webp" alt="img"></p>
+<p><img src="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybhbhya5j20in04ajrq.jpg" alt=""></p>
 <p>HotSpot虚拟机对象头</p>
 <ul>
 <li>在代码进入同步块的时候，如果此同步对象没有被锁定，虚拟机首先将在当前线程的栈帧中建立一个名为锁记录（Lock Record）的空间，用于存储对象目前的Mark Word的拷贝（官方称之为Displaced Mark Word）。然后虚拟机将使用CAS操作尝试将对象的Mark Word更新为指向Lock Record的指针，如果更新成功了那么这个线程就拥有了该对象的锁，并且对象Mark Word的锁标志位将转变为“00”，即表示此对象处于轻量级锁定状态；如果这个更新操作失败了，虚拟机首先会检查对象的Mark Word是否指向当前线程的栈帧，如果是就可以直接进入同步块继续执行，否则说明这个锁对象已经被其他线程抢占了；如果有两条以上的线程争用同一个锁，那轻量级锁就不再有效，要膨胀为重量级锁，锁标志的状态值变为“10”，Mark Word中存储的就是指向重量级锁的指针，后面等待锁的线程也要进行阻塞状态；</li>
@@ -551,7 +551,7 @@
 <li>偏向锁会偏向于第一个获得它的线程，如果在接下来的执行过程中，该锁没有被其他的线程获取，则持有偏向锁的线程将永远不需要再进行同步；</li>
 <li>假设当前虚拟机启动了偏向锁，那么当锁对象第一次被线程获取的时候，虚拟机将会把对象头中的标志位设为“01”，即偏向模式；同时使用CAS操作把获取到这个锁的线程ID记录在对象的Mark Word之中；如果CAS操作成功，持有偏向锁的线程以后每次进入这个锁相关的同步块时，虚拟机都可以不再进行任何同步操作；当有另外一个线程去尝试获取这个锁时，偏向模式就宣告结束，根据锁对象目前是否被锁定的状态，撤销偏向后恢复到未锁定或轻量级锁定的状态，后续的同步操作就如上面介绍的轻量级锁那样执行；偏向锁、轻量级锁的状态转化以及对象Mark Work的关系如下图所示：</li>
 </ul>
-<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-2501d5d148f80a2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/685/format/webp" alt="img"></p>
+<p><img src="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybhsiioaj20j109dq5n.jpg" alt=""></p>
 <p>偏向锁、轻量级锁的状态转化</p>
 <ul>
 <li>偏向锁可以提高带有同步但无竞争的程序性能，它同样是一个带有效益权衡性质的优化；</li>
