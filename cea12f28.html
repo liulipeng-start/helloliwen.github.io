@@ -99,9 +99,10 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5y2stx4dyj20jh08c40w.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybbeiv2rj20fp06mmyl.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybgjq512j20ej08iwfw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5z1nowndmj20hg08tq2w.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybhbhya5j20in04ajrq.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybhsiioaj20j109dq5n.jpg">
-<meta property="og:updated_time" content="2019-08-13T12:21:20.498Z">
+<meta property="og:updated_time" content="2019-08-14T03:30:02.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记3">
 <meta name="twitter:description" content="《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记3，包括第五部分——高效并发，从第12章到第13章">
@@ -354,8 +355,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-13T20:21:20+08:00">
-                2019-08-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-14T11:30:02+08:00">
+                2019-08-14
               </time>
             
           </span>
@@ -457,6 +458,7 @@
 </ul>
 <p><img src="http://ww1.sinaimg.cn/large/75a4a8eegy1g5ybbeiv2rj20fp06mmyl.jpg" alt=""></p>
 <p>线程、主内存和工作内存的关系</p>
+<p>　　对于JMM与JVM本身的内存模型，如果一定要勉强对应，那从变量、主内存、工作内存的定义来看，<b>主内存主要对应于Java堆中的对象实例数据部分，而工作内存则对应于虚拟机栈中的部分区域</b>。从更低层次上说，<b>主内存就是物理内存，而为了获取更好的执行速度。虚拟机（甚至是硬件系统本身的优化措施）可能会让工作内存优先存储于寄存器和高速缓存中，因为运行时主要访问——读写的是工作内存</b>。</p>
 <h4 id="3-2-内存间交互操作"><a href="#3-2-内存间交互操作" class="headerlink" title="3.2 内存间交互操作"></a>3.2 内存间交互操作</h4><p>　　关于主内存与工作内存之间具体的交互协议，即一个变量如何从主内存拷贝到工作内存、如何从工作内存同步回主内存之类的实现细节，Java内存模型中定义了以下八种操作来完成。虚拟机实现时必须保证下面提及的每一种操作都是原子的、不可再分的（对于double和long类型的变量的某些操作在某些平台允许有例外）：</p>
 <ul>
 <li>lock（锁定）</li>
@@ -518,11 +520,16 @@
 <li>线程兼容：指对象本身并不是线程安全的，但是可以通过在调用端正确地使用同步手段来保证对象在并发环境中可以安全地使用；我们说一个类不是线程安全的，绝大多数时候指的是这一种情况。</li>
 <li>线程对立：无论调用端是否采取了同步措施，都无法在多线程环境中并发使用的代码，Java语言中很少出现。</li>
 </ul>
-<h4 id="2-2-线程安全的实现方法"><a href="#2-2-线程安全的实现方法" class="headerlink" title="2.2 线程安全的实现方法"></a>2.2 线程安全的实现方法</h4><ul>
-<li><font style="color:red">互斥同步</font>：同步是指在多个线程并发访问共享数据时，保证共享数据在同一个时刻只被一个线程使用。而互斥是实现同步的一种手段，临界区、互斥量和信号量都是主要的互斥实现方式。Java中最基本的互斥同步手段就是synchronized关键字，它对同一个线程来说是可重入的且会阻塞后面其他线程的进入；另外还可以使用java.util.concurrent包中的重入锁（ReentrantLock）来实现同步，相比synchronized关键字ReentrantLock增加了一些高级功能：等待可中断、可实现公平锁以及锁可以绑定多个条件；</li>
-<li><font style="color:red">非阻塞同步</font>：互斥同步最主要的问题就是进行线程阻塞和唤醒带来的性能问题，其属于一种悲观的并发策略；随着硬件指令集的发展，我们有了另外一个选择即基于冲突检测的乐观并发策略，就是先进行操作，如果没有其他线程争用共享数据那就操作成功了，如果有争用产生了冲突，那就再采取其他的补偿措施（最常见的就是不断重试直至成功），这种同步操作称为非阻塞同步；Java并发包的整数原子类，其中的compareAndSet和getAndIncrement等方法都使用了Unsafe类的CAS操作。</li>
-<li><font style="color:red">无同步方案</font>：要保证线程安全，并不是一定就要进行同步；有一些代码天生就是线程安全的，比如可重入代码和线程本地存储的代码；</li>
+<h4 id="2-2-线程安全的实现方法"><a href="#2-2-线程安全的实现方法" class="headerlink" title="2.2 线程安全的实现方法"></a>2.2 线程安全的实现方法</h4><p><img src="http://ww1.sinaimg.cn/large/75a4a8eegy1g5z1nowndmj20hg08tq2w.jpg" alt=""></p>
+<ul>
+<li><p><font style="color:red">互斥同步</font>：同步是指在多个线程并发访问共享数据时，保证共享数据在同一个时刻只被一个线程使用。而互斥是实现同步的一种手段，临界区、互斥量和信号量都是主要的互斥实现方式。Java中最基本的互斥同步手段就是<strong>synchronized关键字</strong>，它对同一个线程来说是可重入的且会阻塞后面其他线程的进入；另外还可以使用java.util.concurrent包中的<strong>重入锁（ReentrantLock）</strong>来实现同步，相比synchronized关键字ReentrantLock增加了一些高级功能：等待可中断、可实现公平锁以及锁可以绑定多个条件；</p>
+</li>
+<li><p><font style="color:red">非阻塞同步</font>：互斥同步最主要的问题就是进行线程阻塞和唤醒带来的性能问题，其属于一种悲观的并发策略；随着硬件指令集的发展，我们有了另外一个选择即基于冲突检测的乐观并发策略，就是先进行操作，如果没有其他线程争用共享数据那就操作成功了，如果有争用产生了冲突，那就再采取其他的补偿措施（最常见的就是不断重试直至成功），这种同步操作称为非阻塞同步；Java并发包的整数原子类，其中的compareAndSet和getAndIncrement等方法都使用了Unsafe类的<strong>CAS</strong>操作。</p>
+</li>
+<li><p><font style="color:red">无同步方案</font>：要保证线程安全，并不是一定就要进行同步；有一些代码天生就是线程安全的，比如<strong>可重入代码</strong>和<strong>线程本地存储</strong>的代码</p>
+</li>
 </ul>
+<p><a href="https://blog.csdn.net/qq_26545305/article/details/79516610" rel="external nofollow noopener noreferrer" target="_blank">【多线程】如何保证线程安全</a></p>
 <h3 id="3-锁优化"><a href="#3-锁优化" class="headerlink" title="3.锁优化"></a>3.锁优化</h3><h4 id="3-1-自旋锁与自适应自旋"><a href="#3-1-自旋锁与自适应自旋" class="headerlink" title="3.1 自旋锁与自适应自旋"></a>3.1 自旋锁与自适应自旋</h4><ul>
 <li>互斥同步对性能最大的影响是阻塞的实现，挂起线程和恢复线程的操作都需要转入内核态中完成，这些操作给系统的并发性能带来了很大的压力。另外在共享数据的锁定状态只会持续很短的一段时间，为了这段时间去挂起和恢复线程并不值得。如果让两个或以上的线程同时并行执行，让后面请求锁的那个线程稍等一下，但不放弃处理器的执行时间，看看持有锁的线程是否很快就会释放锁。为了让线程等待，我们只需让线程执行一个忙循环（自旋），这些技术就是所谓的自旋锁；</li>
 <li>在JDK 1.6已经默认开启自旋锁；如果锁被占用的时间很短自旋等待的效果就会非常好，反之则会白白消耗处理器资源；</li>
@@ -620,6 +627,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/e4d324d5.html" rel="prev" title="【LeetCode】14. Longest Common Prefix">
+                【LeetCode】14. Longest Common Prefix <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -693,7 +704,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">79</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
