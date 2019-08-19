@@ -3,7 +3,7 @@ title: 《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读
 categories: 
   - Java
   - JVM
-description: 《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记
+description: 《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记1，包括第一部分——走进Java和第二部分——自动内存管理，从第2章到第5章
 abbrlink: cfa1c762
 date: 2019-08-11 20:02:32
 tags:

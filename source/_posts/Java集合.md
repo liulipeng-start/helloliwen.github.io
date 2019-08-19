@@ -51,9 +51,11 @@ private void grow(int minCapacity) {
 
 ## 4.Hashmap的实现原理
 
-　　HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null键和null值。此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 HashMap使用“链表散列”数据结构，即数组和链表的结合体。
+　　HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null键和null值。 HashMap使用“链表散列”数据结构，即数组和链表的结合体。
 
 　　当我们往Hashmap中put元素时，首先根据key的hashcode重新计算hash值，根据hash值得到这个元素在数组中的位置(下标)，如果该数组在该位置上已经存放了其他元素，那么在这个位置上的元素将以链表的形式存放，新加入的放在链头，最先加入的放入链尾。Jdk 1.8中对HashMap的实现做了优化，当链表中的节点数据超过八个之后，该链表会转为红黑树来提高查询效率，从原来的O(n)到O(logn)。
+
+　　对HashMap遍历Entry对象的顺序和Entry对象的存储顺序之间没有任何关系。但是，我们有时候想要遍历HashMap的元素Entry的顺序和其存储的顺序一致，HashMap显然不能满足条件了。而LinkedHashMap则可以满足这个需要。
 
 ## 5.HashMap 和 Hashtable 有什么区别？
 
