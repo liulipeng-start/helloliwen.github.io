@@ -60,7 +60,8 @@ public static List<List<Integer>> combinationSum(int[] nums, int target) {
     return list;
 }
 //典型的回溯处理方法
-public static void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start){
+public static void backtrack(List<List<Integer>> list, 
+        List<Integer> tempList, int[] nums, int remain, int start){
     if(remain < 0) 
         return;
     else if(remain == 0) 
@@ -69,18 +70,17 @@ public static void backtrack(List<List<Integer>> list, List<Integer> tempList, i
         //枚举i所有可能的路径
         for(int i = start; i < nums.length; i++){
             tempList.add(nums[i]);
-            backtrack(list, tempList, nums, remain - nums[i], i);// not i + 1 because we can reuse same elements
+            //not i + 1 because we can reuse same elements
+            backtrack(list, tempList, nums, remain - nums[i], i);
             tempList.remove(tempList.size() - 1);//回溯前的清理工作
         }
     }
 }
 ~~~
 
+## 3.举一反三
 
-
-
-
-This structure might apply to many other backtracking questions, but here I am just going to demonstrate Subsets, Permutations, and Combination Sum.
+This structure might apply to many other backtracking questions, but here I am just going to demonstrate Subsets(子集), Permutations(全排列), Combination Sum(组合总和) and Palindrome Partitioning(分割回文串).
 
 Subsets : https://leetcode.com/problems/subsets/
 
@@ -92,7 +92,8 @@ public List<List<Integer>> subsets(int[] nums) {
     return list;
 }
 
-private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+private void backtrack(List<List<Integer>> list , 
+         List<Integer> tempList, int [] nums, int start){
     list.add(new ArrayList<>(tempList));
     for(int i = start; i < nums.length; i++){
         tempList.add(nums[i]);
@@ -112,7 +113,8 @@ public List<List<Integer>> subsetsWithDup(int[] nums) {
     return list;
 }
 
-private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums, int start){
+private void backtrack(List<List<Integer>> list, 
+         List<Integer> tempList, int [] nums, int start){
     list.add(new ArrayList<>(tempList));
     for(int i = start; i < nums.length; i++){
         if(i > start && nums[i] == nums[i-1]) continue; // skip duplicates
@@ -134,7 +136,8 @@ public List<List<Integer>> permute(int[] nums) {
    return list;
 }
 
-private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums){
+private void backtrack(List<List<Integer>> list, 
+         List<Integer> tempList, int [] nums){
    if(tempList.size() == nums.length){
       list.add(new ArrayList<>(tempList));
    } else{
@@ -158,7 +161,8 @@ public List<List<Integer>> permuteUnique(int[] nums) {
     return list;
 }
 
-private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums, boolean [] used){
+private void backtrack(List<List<Integer>> list,
+         List<Integer> tempList, int [] nums, boolean [] used){
     if(tempList.size() == nums.length){
         list.add(new ArrayList<>(tempList));
     } else{
@@ -184,7 +188,8 @@ public List<List<Integer>> combinationSum(int[] nums, int target) {
     return list;
 }
 
-private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums, int remain, int start){
+private void backtrack(List<List<Integer>> list, 
+         List<Integer> tempList, int [] nums, int remain, int start){
     if(remain < 0) return;
     else if(remain == 0) list.add(new ArrayList<>(tempList));
     else{ 
@@ -208,7 +213,8 @@ public List<List<Integer>> combinationSum2(int[] nums, int target) {
     
 }
 
-private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums, int remain, int start){
+private void backtrack(List<List<Integer>> list, 
+         List<Integer> tempList, int [] nums, int remain, int start){
     if(remain < 0) return;
     else if(remain == 0) list.add(new ArrayList<>(tempList));
     else{
@@ -231,7 +237,8 @@ public List<List<String>> partition(String s) {
    return list;
 }
 
-public void backtrack(List<List<String>> list, List<String> tempList, String s, int start){
+public void backtrack(List<List<String>> list, 
+        List<String> tempList, String s, int start){
    if(start == s.length())
       list.add(new ArrayList<>(tempList));
    else{
@@ -253,4 +260,3 @@ public boolean isPalindrome(String s, int low, int high){
 ```
 
 <center><font style="font-weight:bold">（完）</font></center>
-
