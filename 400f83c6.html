@@ -89,17 +89,17 @@
 
 
 
-<meta name="description" content="一、基本概念： ​      所谓贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。">
+<meta name="description" content="一、基本概念　　所谓贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="五大常用算法之三：贪心算法">
 <meta property="og:url" content="https://helloliwen.github.io/400f83c6.html">
 <meta property="og:site_name" content="日拱一卒 不期速成">
-<meta property="og:description" content="一、基本概念： ​      所谓贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。">
+<meta property="og:description" content="一、基本概念　　所谓贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-14T03:12:37.202Z">
+<meta property="og:updated_time" content="2019-08-27T17:20:56.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="五大常用算法之三：贪心算法">
-<meta name="twitter:description" content="一、基本概念： ​      所谓贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。">
+<meta name="twitter:description" content="一、基本概念　　所谓贪心算法是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。">
 
 
 
@@ -348,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-14T11:12:37+08:00">
-                2019-07-14
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-28T01:20:56+08:00">
+                2019-08-28
               </time>
             
           </span>
@@ -421,38 +421,39 @@
       
 
       
-        <p><strong>一、基本概念：</strong></p>
-<p>​      所谓贪心算法是指，在对问题求解时，总是做出在<font color="red">当前看来是最好的选择</font>。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的<font color="red">局部最优解</font>。</p>
+        <h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><p>　　所谓贪心算法是指，在对问题求解时，总是做出在<font color="red">当前看来是最好的选择</font>。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的<font color="red">局部最优解</font>。</p>
 <a id="more"></a>
-<p>​     贪心算法没有固定的算法框架，算法设计的关键是贪心策略的选择。必须注意的是，贪心算法不是对所有问题都能得到整体最优解，选择的贪心策略必须具备无后效性，即某个状态以后的过程不会影响以前的状态，只与当前状态有关。</p>
-<p>​    <font color="red">所以对所采用的贪心策略一定要仔细分析其是否满足无后效性。</font></p>
-<p><strong>二、贪心算法的基本思路：</strong></p>
-<p>​    1.建立数学模型来描述问题。</p>
-<p>​    2.把求解的问题分成若干个子问题。</p>
-<p>​    3.对每一子问题求解，得到子问题的局部最优解。</p>
-<p>​    4.把子问题的解局部最优解合成原来解问题的一个解。</p>
-<p><strong>三、贪心算法适用的问题</strong></p>
-<p>​      <strong>贪心策略适用的前提是：局部最优策略能导致产生全局最优解。</strong></p>
-<p>​    <strong>实际上，<font color="red">贪心算法适用的情况很少。</font>一般，对一个问题分析是否适用于贪心算法，可以先选择该问题下的几个实际数据进行分析，就可做出判断。</strong></p>
-<p><strong>四、贪心算法的实现框架</strong></p>
-<p>​    从问题的某一初始解出发；</p>
-<p>​    while （能朝给定总目标前进一步）</p>
-<p>​    { </p>
-<p>​          利用可行的决策，求出可行解的一个解元素；</p>
-<p>​    }</p>
-<p>​    由所有解元素组合成问题的一个可行解；</p>
-<p><strong>五、贪心策略的选择</strong></p>
-<p>​     因为用贪心算法只能通过解局部最优解的策略来达到全局最优解，因此，一定要注意判断问题是否适合采用贪心算法策略，找到的解是否一定是问题的最优解。</p>
-<p><strong>六、例题分析</strong></p>
-<p>​    下面是一个可以试用贪心算法解的题目，贪心解的确不错，可惜不是最优解。</p>
-<p>​    [背包问题]有一个背包，背包容量是M=150。有7个物品，物品可以分割成任意大小。</p>
-<p>​    要求尽可能让装入背包中的物品总价值最大，但不能超过总容量。</p>
-<p>​    物品 A B C D E F G</p>
-<p>​    重量 35 30 60 50 40 10 25</p>
-<p>​    价值 10 40 30 50 35 40 30</p>
-<p>​    分析：</p>
-<p>​    目标函数： ∑pi最大</p>
-<p>​    约束条件是装入的物品总重量不超过背包容量：∑wi&lt;=M( M=150)</p>
+<p>　　贪心算法没有固定的算法框架，算法设计的关键是贪心策略的选择。必须注意的是，贪心算法不是对所有问题都能得到整体最优解，选择的贪心策略必须具备无后效性：即某个状态以后的过程不会影响以前的状态，只与当前状态有关。</p>
+<p>　　<font color="red">所以对所采用的贪心策略一定要仔细分析其是否满足无后效性。</font></p>
+<h2 id="二、贪心算法的基本思路"><a href="#二、贪心算法的基本思路" class="headerlink" title="二、贪心算法的基本思路"></a>二、贪心算法的基本思路</h2><ol>
+<li><p>建立数学模型来描述问题。</p>
+</li>
+<li><p>把求解的问题分成若干个子问题。</p>
+</li>
+<li><p>对每一子问题求解，得到子问题的局部最优解。</p>
+</li>
+<li><p>把子问题的解局部最优解合成原来解问题的一个解。</p>
+</li>
+</ol>
+<h2 id="三、贪心算法适用的问题"><a href="#三、贪心算法适用的问题" class="headerlink" title="三、贪心算法适用的问题"></a>三、贪心算法适用的问题</h2><p>　　<strong>贪心策略适用的前提是：局部最优策略能导致产生全局最优解。</strong></p>
+<p>　　<strong>实际上，<font color="red">贪心算法适用的情况很少。</font>一般，对一个问题分析是否适用于贪心算法，可以先选择该问题下的几个实际数据进行分析，就可做出判断。</strong></p>
+<h2 id="四、贪心算法的实现框架"><a href="#四、贪心算法的实现框架" class="headerlink" title="四、贪心算法的实现框架"></a>四、贪心算法的实现框架</h2><p>　　从问题的某一初始解出发；</p>
+<p>　　while （能朝给定总目标前进一步）{ </p>
+<p>　　　　利用可行的决策，求出可行解的一个解元素；</p>
+<p>　　}</p>
+<p>　　由所有解元素组合成问题的一个可行解；</p>
+<h2 id="五、贪心策略的选择"><a href="#五、贪心策略的选择" class="headerlink" title="五、贪心策略的选择"></a>五、贪心策略的选择</h2><p>　　因为用贪心算法只能通过解局部最优解的策略来达到全局最优解，因此，一定要注意判断问题是否适合采用贪心算法策略，找到的解是否一定是问题的最优解。</p>
+<h2 id="六、例题分析"><a href="#六、例题分析" class="headerlink" title="六、例题分析"></a>六、例题分析</h2><p>　　下面是一个可以试用贪心算法解的题目，贪心解的确不错，可惜不是最优解。</p>
+<blockquote>
+<p>[背包问题]有一个背包，背包容量是M=150。有7个物品，物品可以分割成任意大小。</p>
+<p>要求尽可能让装入背包中的物品总价值最大，但不能超过总容量。</p>
+<p>物品 A B C D E F G</p>
+<p>重量 35 30 60 50 40 10 25</p>
+<p>价值 10 40 30 50 35 40 30</p>
+</blockquote>
+<p>分析：</p>
+<p>　　目标函数： ∑P<sub>i</sub>最大</p>
+<p>　　约束条件是装入的物品总重量不超过背包容量：∑wi&lt;=M( M=150)</p>
 <p>​    （1）根据贪心的策略，每次挑选价值最大的物品装入背包，得到的结果是否最优？</p>
 <p>​    （2）每次挑选所占重量最小的物品装入是否能得到最优解？</p>
 <p>​    （3）每次选取单位重量价值最大的物品，成为解本题的策略。</p>
@@ -594,8 +595,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Li Wen">
           <p class="site-author-name" itemprop="name">Li Wen</p>
@@ -608,7 +618,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">109</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -655,6 +665,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、基本概念"><span class="nav-text">一、基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、贪心算法的基本思路"><span class="nav-text">二、贪心算法的基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、贪心算法适用的问题"><span class="nav-text">三、贪心算法适用的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、贪心算法的实现框架"><span class="nav-text">四、贪心算法的实现框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、贪心策略的选择"><span class="nav-text">五、贪心策略的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、例题分析"><span class="nav-text">六、例题分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
