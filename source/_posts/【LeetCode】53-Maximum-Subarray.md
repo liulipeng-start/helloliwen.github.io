@@ -3,7 +3,7 @@ title: 【LeetCode】53. Maximum Subarray
 categories:
   - 算法与数据结构
   - LeetCode
-description: 53. 最大子序和。主题：数组、分治算法、动态规划。难度：容易。
+description: 53. 最大子序和（经典动态规划题目）。主题：数组、分治算法、动态规划。难度：容易。
 abbrlink: '90764743'
 date: 2019-08-23 17:42:55
 tags:
@@ -96,4 +96,3 @@ public int maxSubArrayUseDP(int[] nums) {
 ~~~
 
 <center><font style="font-weight:bold">（完）</font></center>
-
