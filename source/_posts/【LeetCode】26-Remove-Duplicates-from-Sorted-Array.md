@@ -67,5 +67,18 @@ public static int removeDuplicates(int[] nums) {
 }
 ~~~
 
-<center><font style="font-weight:bold">（完）</font></center>
+Question wants us to return the length of new array after removing duplicates and that we don't care about what we leave beyond new length , hence we can use `i` to keep track of the position and update the array.
 
+问题要求我们在删除重复项后返回新数组的长度，并且我们不关心超出新长度的内容，因此我们可以使用i来跟踪位置并更新数组。
+
+~~~java
+public int removeDuplicates(int[] nums) {
+    int i = 0;
+    for(int n : nums)
+        if(i < 1 || n > nums[i - 1]) 
+            nums[i++] = n;
+    return i;
+}
+~~~
+
+<center><font style="font-weight:bold">（完）</font></center>
