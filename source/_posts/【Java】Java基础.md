@@ -15,7 +15,13 @@ JDK：Java Development Kit 的简称，提供了 java 的开发环境和运行�
 
 ## 2.== 和 equals 的区别
 
-== 对于基本类型来说是<font color="red">值</font>比较，对于引用类型来说比较的是<font color="red">引用</font>；而 equals本质上就是 == ，默认情况下是引用比较，只是很多类重写了 equals 方法。比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。
+-  ==：对于基本类型来说是<font color="red">值</font>比较，对于引用类型来说比较的是<font color="red">引用，即比较堆内存中的地址是否相同</font>。
+
+-  equals()：本质上就是 == ，默认情况下是引用比较，只是很多类重写了 equals 方法，变成了值比较。
+
+String.intern()：当调用 intern 方法时，如果池已经包含一个等于此 String 对象的字符串（用 equals(Object) 
+方法确定），则返回池中的字符串。否则，将此 String 对象添加到池中，并返回此 String 对象的引用。
+
 
 ## 3.两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？
 

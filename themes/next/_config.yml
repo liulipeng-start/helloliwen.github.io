@@ -52,7 +52,7 @@ menu:
   home: /
   categories: /categories/
   #about: /about/
-  archives: /archives/
+  #archives: /archives/
   tags: /tags/
   #sitemap: /sitemap.xml
   #commonweal: /404/
@@ -448,7 +448,7 @@ busuanzi_count:
   site_uv_header: <i class="fa fa-user"></i> 访客数
   site_uv_footer: 人
   # custom pv span for the whole site
-  site_pv: true
+  site_pv: false
   site_pv_header: <i class="fa fa-eye"></i> 总访问量
   site_pv_footer: 次
   # custom pv span for one page only
