@@ -89,17 +89,17 @@
 
 
 
-<meta name="description" content="15.3个数相加。主题：数组、双指针">
+<meta name="description" content="15.3个数相加。主题：数组、双指针。难度：中等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【LeetCode】15. 3Sum">
 <meta property="og:url" content="https://helloliwen.github.io/5f395550.html">
 <meta property="og:site_name" content="日拱一卒 不期速成">
-<meta property="og:description" content="15.3个数相加。主题：数组、双指针">
+<meta property="og:description" content="15.3个数相加。主题：数组、双指针。难度：中等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-10T10:38:52.515Z">
+<meta property="og:updated_time" content="2019-09-14T12:37:31.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】15. 3Sum">
-<meta name="twitter:description" content="15.3个数相加。主题：数组、双指针">
+<meta name="twitter:description" content="15.3个数相加。主题：数组、双指针。难度：中等。">
 
 
 
@@ -348,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-10T18:38:52+08:00">
-                2019-07-10
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-14T20:37:31+08:00">
+                2019-09-14
               </time>
             
           </span>
@@ -408,7 +408,7 @@
 
           
               <div class="post-description">
-                  15.3个数相加。主题：数组、双指针
+                  15.3个数相加。主题：数组、双指针。难度：中等。
               </div>
           
 
@@ -426,17 +426,19 @@
 
       
         <h2 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h2><p>Given an array <code>nums</code> of <em>n</em> integers, are there elements <em>a</em>, <em>b</em>, <em>c</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> = 0? Find all unique triplets（三胞胎） in the array which gives the sum of zero.</p>
+<p>给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。</p>
 <p><strong>Note:</strong></p>
 <p>The solution set must not contain duplicate triplets.</p>
+<p>注意：答案中不可以包含重复的三元组。</p>
 <p><strong>Example:</strong></p>
 <blockquote>
 <p>Given array nums = [-1, 0, 1, 2, -1, -4],</p>
 <p>A solution set is:<br>[<br>  [-1, 0, 1],<br>  [-1, -1, 2]<br>]</p>
 </blockquote>
 <h2 id="2-Solutions"><a href="#2-Solutions" class="headerlink" title="2.Solutions"></a>2.Solutions</h2><p>The idea is to sort an input array and then run through all indices（指数） of a possible first element of a triplet. For each possible first element we make a standard bi-directional（双向） 2Sum sweep（扫描） of the remaining part of the array. Also we want to skip equal elements to avoid duplicates in the answer without making a set or something like that.</p>
+<p>我们的想法是对输入数组进行排序，然后运行三元组中可能的第一个元素的所有索引。 对于每个可能的第一个元素，我们对阵列的其余部分进行标准的双向2Sum扫描。 此外，我们希望跳过相同的元素，以避免在答案中重复，而不需要设置或类似的东西。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;(); </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length-<span class="number">2</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span> || nums[i] != nums[i-<span class="number">1</span>] ) &#123;</span><br><span class="line">            <span class="keyword">int</span> left = i+<span class="number">1</span>, right = nums.length-<span class="number">1</span>, sum = <span class="number">0</span> - nums[i];</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[left] + nums[right] == sum) &#123;</span><br><span class="line">                    res.add(Arrays.asList(nums[i], nums[left], nums[right]));</span><br><span class="line">                    <span class="comment">//去除重复</span></span><br><span class="line">                    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left+<span class="number">1</span>]) left++;</span><br><span class="line">                    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] == nums[right-<span class="number">1</span>]) right--;</span><br><span class="line">                    left++; right--;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (nums[left] + nums[right] &lt; sum)&#123;</span><br><span class="line">                    <span class="comment">//排序过，所以这里小于必须left++</span></span><br><span class="line">                    left++;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    right--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <center><font style="font-weight:bold">（完）</font></center>
-
 
       
     </div>
