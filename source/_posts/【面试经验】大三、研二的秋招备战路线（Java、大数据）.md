@@ -1,6 +1,6 @@
 ---
 title: 大三、研二的秋招备战路线（Java、大数据）
-categories: 面试
+categories: 面试经验
 top: 100
 abbrlink: 6e869c7c
 date: 2019-06-04 16:43:40
@@ -54,7 +54,6 @@ description:
 
 
 <center><h4>案例1</h4></center>
-
 有小公司**Java实习经验**，参与过**两个项目的开发**，算法不太行，基础一般，有大数据基础，自己做了个大数据项目。
 
 
@@ -98,7 +97,6 @@ description:
 
 
 <center><h4>案例2</h4></center>
-
 目前正在公司实习，但已经确定不留在这家公司，打算秋招前夕辞职全身心备战。
 
 
@@ -122,7 +120,6 @@ description:
 
 
 <center><h4>案例3</h4></center>
-
 懂点Java基础，有学校课设的管理系统项目，懂基本的数据结构。
 
 
@@ -154,7 +151,6 @@ description:
 
 
 <center><h4>案例4</h4></center>
-
 非科班零基础。
 
 
@@ -168,7 +164,6 @@ description:
 
 
 <center><h4>案例5</h4></center>
-
 
 
 大三或研究生，机器学习或者其他方向，技术栈主要是Python，算法基础还行，有个Python小项目。由于机器学习竞争激烈，但自己又没核心竞争力，走Python后台或者爬虫岗位需求少。
@@ -774,4 +769,3 @@ kafka消息持久化和顺序读写？
 来源：大数据肌肉猿（ID：BigData-BigMuscle）
 
 <center style="font-weight:bold">（完）</center>
-

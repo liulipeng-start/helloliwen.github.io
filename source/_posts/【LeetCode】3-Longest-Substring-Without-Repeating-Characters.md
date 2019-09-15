@@ -3,7 +3,7 @@ title: 【LeetCode】3.Longest Substring Without Repeating Characters
 categories:
   - 算法与数据结构
   - LeetCode
-description: 3.最长非重复子串，主题：Hash Table，双指针，字符串，滑动窗口
+description: 3.最长非重复子串，主题：Hash Table，双指针，字符串，滑动窗口。难度：中等。
 abbrlink: d9fa86f8
 date: 2019-07-05 10:59:27
 tags:
@@ -13,6 +13,8 @@ keywords:
 ## 1.题目描述
 
 Given a string, find the length of the **longest substring** without repeating characters.
+
+给定一个字符串，请你找出其中不含有重复字符的 **最长子串** 的长度。
 
 **Example 1:**
 
@@ -31,7 +33,10 @@ Given a string, find the length of the **longest substring** without repeating c
 > Input: "pwwkew"
 > Output: 3
 > Explanation: The answer is "wke", with the length of 3. 
->              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+>           Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+>
+> 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+>      请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
 
 　　乍一看这道题目的时候，直接哇的一声，因为今年投大厂实习的时候，在线笔试碰到这道题。日拱一卒！加油！
 

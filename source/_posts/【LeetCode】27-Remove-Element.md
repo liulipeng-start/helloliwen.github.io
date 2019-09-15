@@ -3,7 +3,7 @@ title: 【LeetCode】27. Remove Element
 categories:
   - 算法与数据结构
   - LeetCode
-description: 27. 移除元素。主题：数组、双指针
+description: 27. 移除元素。主题：数组、双指针。难度：简单。
 abbrlink: f08ce37d
 date: 2019-07-13 16:45:03
 tags:
@@ -17,6 +17,12 @@ Given an array *nums* and a value *val*, remove all instances of that value [**i
 Do not allocate extra space for another array, you must do this by **modifying the input array in-place** with O(1) extra memory.
 
 The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+
+给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。
+
+不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+
+元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
 
 **Example 1:**
 
@@ -43,6 +49,12 @@ Confused why the returned value is an integer but your answer is an array?
 Note that the input array is passed in by **reference**, which means modification to the input array will be known to the caller as well.
 
 Internally you can think of this:
+
+为什么返回数值是整数，但输出的答案是数组呢?
+
+请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。
+
+你可以想象内部操作如下:
 
 > // nums is passed in by reference. (i.e., without making a copy)
 > int len = removeElement(nums, val);
@@ -75,4 +87,3 @@ public static int removeElement(int[] nums, int val) {
 ~~~
 
 <center><font style="font-weight:bold">（完）</font></center>
-

@@ -3,7 +3,7 @@ title: 【LeetCode】2.Add Two Numbers
 categories:
   - 算法与数据结构
   - LeetCode
-description: 2.链表两数相加。主题：链表、数学
+description: 2.链表两数相加。主题：链表、数学。难度：中等。
 abbrlink: caf13328
 date: 2019-07-03 16:57:52
 tags:
@@ -15,6 +15,12 @@ keywords:
 You are given two **non-empty** linked lists representing two non-negative integers. The digits are stored in **reverse order** and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+给出两个**非空**的链表用来表示两个非负的整数。其中，它们各自的位数是按照**逆序**的方式存储的，并且它们的每个节点只能存储一位数字。
+
+如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+
+您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 
 **Example:**
 

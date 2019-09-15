@@ -50,8 +50,6 @@ Java虚拟机栈、本地方法栈、程序员计数器：运行时线程私有�
 
 - 启动类加载器（Bootstrap ClassLoader）：是虚拟机自身的一部分，用来加载Java_HOME/lib/目录中的，或者被 -Xbootclasspath 参数所指定的路径中并且被虚拟机识别的类库；
 
-  
-
 - 扩展类加载器（Extension ClassLoader）：负责加载/lib/ext目录或Java. ext. dirs系统变量指定的路径中的所有类库；
 
 - 应用程序类加载器（Application ClassLoader）：负责加载用户类路径（classpath）上的指定类库，我们可以直接使用这个类加载器。一般情况，如果我们没有自定义类加载器默认就是用这个加载器。
@@ -145,6 +143,16 @@ Java虚拟机栈、本地方法栈、程序员计数器：运行时线程私有�
 12. -XX:+UseConcMarkSweepGC：指定使用 ParNew+CMS+Serial Old 垃圾回收器组合，Serial Old收集器将作为CMS收集器出现Concurrent Mode Failure失败后的后备收集器使用
 13. -XX:+PrintGC：开启打印 gc 信息
 14. -XX:+PrintGCDetails：打印 gc 详细信息
+
+## 11.内存泄漏与内存溢出
+
+**内存泄露是指程序在申请内存后，无法释放已申请的内存空间，从而造成内存不可用的情况。**重启计算机可以解决，但也有可能再次发生内存泄露，内存泄露和硬件没有关系，它是由软件设计缺陷引起的。
+
+内存溢出是指程序在申请内存时，没有足够的内存空间供其使用，出现out of memory。
+
+[内存溢出和内存泄漏的区别、产生原因以及解决方案](https://blog.csdn.net/jingzi123456789/article/details/84196357)
+
+[Java 内存泄漏与内存溢出详解](https://juejin.im/entry/58abdf288ac24732480d0aef)
 
 参考：
 

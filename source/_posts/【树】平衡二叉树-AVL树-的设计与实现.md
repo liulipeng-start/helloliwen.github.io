@@ -2,7 +2,7 @@
 title: 【树】平衡二叉树(AVL树)的设计与实现
 categories:
   - 算法与数据结构
-  - 树
+  - 数据结构
 abbrlink: ff266de3
 date: 2019-06-24 21:21:25
 tags:

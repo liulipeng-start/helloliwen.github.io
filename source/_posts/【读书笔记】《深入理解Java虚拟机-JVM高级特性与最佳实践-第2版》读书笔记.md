@@ -1,5 +1,5 @@
 ---
-title: 《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记
+title: 【读书笔记】《深入理解Java虚拟机 JVM高级特性与最佳实践 第2版》读书笔记
 categories: 
   - Java
   - JVM
@@ -96,7 +96,7 @@ Sun官方所定义的Java技术体系包括：
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g5ka5bf08bj20hc0b8tdf.jpg)
 
-#### 1.程序计数器（Program Counter Register）
+#### 2.1 程序计数器（Program Counter Register）
 
 - 一块较小的内存，可以看作是当前线程所执行的字节码的行号指示器。
 
@@ -108,7 +108,7 @@ Sun官方所定义的Java技术体系包括：
 
 　　此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。
 
-#### 2.Java虚拟机栈（Java Virtual Machine Stacks）
+#### 2.2 Java虚拟机栈（Java Virtual Machine Stacks）
 
 - Java虚拟机栈也是线程私有的；
 
@@ -118,12 +118,12 @@ Sun官方所定义的Java技术体系包括：
 
 - 可能存在两种异常：StackOverflowError和OutOfMemoryError；
 
-#### 3.本地方法栈（Native Method Stack）
+#### 2.3 本地方法栈（Native Method Stack）
 
 - 与虚拟机栈非常相似，只不过是为虚拟机使用到的Native方法服务；
 - 可能存在两种异常：StackOverflowError和OutOfMemoryError；
 
-#### 4.Java堆（Java Heap）
+#### 2.4 Java堆（Java Heap）
 
 - Java堆是被所有线程共享的，在虚拟机启动时创建；
 - 此内存区域的唯一目的就是存放<font style="color:red">对象实例</font>，几乎所有的对象实例都在这分配；
@@ -131,7 +131,7 @@ Sun官方所定义的Java技术体系包括：
 - 可以物理不连续，只要逻辑上是连续的即可；
 - 如果堆中没有内存完成实例分配也无法再扩展时，会抛出OutOfMemoryError异常；
 
-#### 5.方法区（Method Area）
+#### 2.5 方法区（Method Area）
 
 - 是线程共享的区域；
 - 用于存储已被虚拟机加载的<font style="color:red">类信息</font>、<font style="color:red">常量</font>、<font style="color:red">静态变量</font>、<font style="color:red">即时编译器编译后的代码</font>等数据；
@@ -140,7 +140,7 @@ Sun官方所定义的Java技术体系包括：
 
 　　对于HotSpot虚拟机来说，很多人把方法区称为“永久代”（Permanent Generation），本质上两者并不等价，仅仅是因为HotSpot的设计团队选择把GC分代收集扩展至方法区，或者说使用永久代来实现方法区而已。JDK1.7中的HotSpot中，已经移除永久代。
 
-#### 6.运行时常量池（Runtime Constant Pool）
+#### 2.6 运行时常量池（Runtime Constant Pool）
 
 - 是方法区的一部分；
 - Class文件中除了有类的<font style="color:red">版本</font>、<font style="color:red">字段</font>、<font style="color:red">方法</font>、<font style="color:red">接口</font>等描述信息外，还有一项信息是<font style="color:red">常量池</font>，用于存放编译器生成的<u>各种字面量</u>和<u>符号引用</u>，这部分内容将在类加载后进入方法区的运行时常量池中存放；
@@ -148,7 +148,7 @@ Sun官方所定义的Java技术体系包括：
 - 另外一个重要特征是具备动态性，可以在运行期间将新的常量放入池中，如String类的intern()方法；
 - 可能存在的异常：OutOfMemoryError；
 
-#### 7.直接内存（Direct Memory）
+#### 2.7 直接内存（Direct Memory）
 
 - 并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范中定义的内存区域；
 - JDK 1.4的NIO（New Input/Output）类引入了基于通道（Channel）和缓冲区（Buffer）的IO方法，可以使用Native函数库直接分配对外内存，然后通过一个存储在Java堆中的DirectByteBuffer对象作为这块内存的引用进行操作以提升性能；
@@ -157,7 +157,7 @@ Sun官方所定义的Java技术体系包括：
 
 　　进一步了解虚拟机内存中数据的其他细节，比如它们是如何创建、如何布局以及如何访问的。下面以虚拟机HotSpot和常用的内存区域Java堆为例，深入探讨HotSpot虚拟机在Java堆中对象分配、布局和访问的全过程。
 
-#### 1.对象的创建
+#### 3.1 对象的创建
 
 1. **类加载检查**：虚拟机遇到一条new指令时，先检查指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已被加载、解析和初始化过。如果没有，那必须先执行相应的类加载过程。
 
@@ -173,7 +173,7 @@ Sun官方所定义的Java技术体系包括：
 
 - HotSpot解释器的代码片段：略
 
-#### 2.对象的内存布局
+#### 3.2 对象的内存布局
 
 1. 对象在内存中存储的布局可以分为3块区域：<font style="color:red">对象头（Header）</font>、<font style="color:red">实例数据（Instance Data）</font>和<font style="color:red">对齐填充（Padding）</font>。
 
@@ -183,7 +183,7 @@ Sun官方所定义的Java技术体系包括：
 
 4. 对齐填充不是必然存在的，主要是由于HotSpot VM的自动内存管理系统要求对象起始地址必须是8字节的整数倍。
 
-#### 3.对象的访问定位
+#### 3.3 对象的访问定位
 
 1. Java程序需要通过栈上的reference数据来操作堆上的具体对象。而栈上的reference类型在虚拟机规范中只规定了一个指向对象的引用，并没有定义这个引用应该通过何种方式去定位、访问堆栈对象的具体位置，目前主流的访问方式有<font style="color:red">句柄</font>和<font style="color:red">直接指针</font>两种。
 
@@ -218,11 +218,11 @@ Sun官方所定义的Java技术体系包括：
 
 　　在垃圾收集器进行回收前，第一件事就是确定这些对象哪些还存活，哪些已经死去。
 
-#### 1.引用计数法
+#### 2.1 引用计数法
 
 　　给对象添加引用计数器，当有地方引用它时就加1，引用失效就减1，为0时就认为对象不再被使用可回收。该算法实现简单，判断高效，但并不被主流虚拟机采用，主要原因是它**很难解决对象之间相互循环引用的问题**。
 
-#### 2.可达性分析算法
+#### 2.2 可达性分析算法
 
 　　通过一系列的称为“GC Roots”的对象作为起点，从这些节点开始向下搜索，搜索所走过的路径称为引用链（Reference Chain），如果一个对象到GC Roots没有引用链相连，则该对象是不可用的。
 
@@ -235,17 +235,17 @@ Sun官方所定义的Java技术体系包括：
 - 方法区中常量引用的对象；  全局性引用
 - 本地方法栈中JNI（即一般说的Native方法）引用的对象；
 
-#### 3.再谈引用
+#### 2.3 再谈引用
 
 　　在JDK 1.2之后，Java对引用的概念进行了扩充，将引用分为**强引用**、**软引用**、**弱引用**和**虚引用**，这4种引用强度依次减弱。
 
-#### 4.生存还是死亡
+#### 2.4 生存还是死亡
 
 　　要真正宣告一个对象死亡，至少要经历两次标记过程：如果对象在进行可达性分析后发现没有与GC Roots相连接的引用链，那它将会被第一次标记并且进行一次筛选，筛选的条件是此对象是否有必要执行finalize方法（如没有重写finalize方法或者已经被调用过则认为没有必要执行）。如果有必要执行则将该对象放置在F-Queue队列中，并在稍后由一个由虚拟机自己建立的、低优先级的Finalizer线程去执行它；稍后GC将对F-Queue中的对象进行第二次标记，如果对象还是没有被引用，则会被回收。
 
 　　但是作者不建议通过finalize方法“拯救”对象，因为它运行代价高、不确定性大、无法保证各个对象的调用顺序。
 
-#### 5.回收方法区
+#### 2.5 回收方法区
 
 　　永久代的垃圾收集主要回收两部分内容：**废弃常量**和**无用的类**。
 
@@ -266,19 +266,19 @@ Sun官方所定义的Java技术体系包括：
 
 ### 4.HotSpot的算法实现
 
-#### 1.枚举根节点
+#### 4.1 枚举根节点
 
 - 由于要确保在一致性的快照中进行可达性分析，从而导致GC进行时必须要停顿所有Java执行线程（“Stop The World”）
 - 在HotSpot里通过一组OopMap数据结构来知道哪些地方存放着对象引用
 
-#### 2.安全点（Safepoint）
+#### 4.2 安全点（Safepoint）
 
 - HotSpot只在特定的位置记录了OopMap，这些位置称为安全点（SafePoint）；
 - 即程序执行时并非在所有地方都能停顿下来开始GC，只有到达安全点时才能暂停；
 - 对于安全点基本上是以程序“是否具有让程序长时间执行的特征”（比如方法调用、循环跳转、异常跳转等）为标准进行选定的；
 - 另外还需要考虑如果在GC时让所有线程都跑到最近的安全点上，有两种方案：抢先式中断和主动式中断（主流选择）。
 
-#### 3.安全区域
+#### 4.3 安全区域
 
 - 如果程序没有分配CPU时间（如线程处于Sleep或Blocked），此时就需要安全区域（Safe Region），其是指在一段代码片段之中，引用关系不会发生变化。在这个区域中的任意地方开始GC都是安全的。
 - 线程执行到安全区域时，首先标识自己已经进入了安全区域，这样JVM在GC时就不管这些线程了；
@@ -290,7 +290,7 @@ Sun官方所定义的Java技术体系包括：
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g5w3nqkn0jj21400u0dre.jpg)
 
-#### 1.Serial收集器
+#### 5.1 Serial收集器
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g5x58r7jzuj20q705qq3n.jpg)
 
@@ -298,7 +298,7 @@ Sun官方所定义的Java技术体系包括：
 - 是一个单线程的收集器（单线程并非指只会使用一个CPU或者一条收集线程，更重要的是在它进行垃圾收集时必须其他所有的工作线程，直到它收集结束）；
 - 现在依然是虚拟机运行在Client模式下的默认新生代收集器，主要就是因为它简单而高效（没有线程交互的开销）；
 
-#### 2.ParNew收集器
+#### 5.2 ParNew收集器
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g5x5esm88mj20r005it9i.jpg)
 
@@ -310,7 +310,7 @@ Sun官方所定义的Java技术体系包括：
 >
 > 并发（Concurrent）：指用户线程与垃圾收集线程同时执行，用户线程在继续执行而垃圾收集程序运行在另外一个CPU上；
 
-#### 3.Parallel Scavenge收集器
+#### 5.3 Parallel Scavenge收集器
 
 - 新生代收集器，使用**复制算法**，并行的多线程收集器；
 - 与其他收集器关注于尽可能缩短垃圾收集时用户线程停顿时间不同，它的目标是达到一个**可控制的吞吐量**；
@@ -320,7 +320,7 @@ Sun官方所定义的Java技术体系包括：
 
 - 另外它还支持GC自适应的调节策略，这是与ParNew收集器的一个重要区别。
 
-#### 4.Serial Old收集器
+#### 5.4 Serial Old收集器
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g5x5swc8l7j20pm05jq3l.jpg)
 
@@ -328,14 +328,14 @@ Sun官方所定义的Java技术体系包括：
 - 主要是给Client模式下的虚拟机使用的；
 - 在Server模式下主要是给JDK 1.5及之前配合Parallel Scavenge使用或作为CMS收集器的后备预案；
 
-#### 5.Parallel Old收集器
+#### 5.5 Parallel Old收集器
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g5x5ureo68j20pr05owfa.jpg)
 
 - 是Parallel Scavenge的老年代版本，使用多线程和标记-整理算法；
 - 是JDK 1.6中才开始提供的；
 
-#### 6.CMS收集器
+#### 5.6 CMS收集器
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g5x5w1ddxzj20qi05omya.jpg)
 
@@ -344,7 +344,7 @@ Sun官方所定义的Java技术体系包括：
 - 优点：并发收集、低停顿。并发低停顿收集器
 - 还有3个明显的缺点：CMS收集器对CPU非常敏感、无法处理浮动垃圾、大量内存碎片产生；
 
-#### 4.G1收集器
+#### 5.7 G1收集器
 
 ![](http://ww1.sinaimg.cn/large/75a4a8eegy1g5x610z209j20p905gabf.jpg)
 
@@ -422,7 +422,7 @@ Sun官方所定义的Java技术体系包括：
 
 ### 9.JDK的可视化工具
 
-#### 1.JConsole：Java监视与管理控制台
+#### 9.1 JConsole：Java监视与管理控制台
 
 - 是一种基于JMX的可视化监控和管理工具，它管理部分的功能是针对MBean进行管理，由于MBean可以使用代码、中间件服务器或者所有符合JMX规范的软件进行访问，因此这里着重介绍JConsole的监控功能；
 
@@ -430,7 +430,7 @@ Sun官方所定义的Java技术体系包括：
 
 - 进入主界面，支持查看以下标签页：概述、内存、线程、类、VM摘要和MBean。
 
-#### 2.VisualVM：多合一故障处理工具
+#### 9.2 VisualVM：多合一故障处理工具
 
 - 目前为止JDK发布的功能最强调的运行监控和故障处理程序，另外还支持性能分析；
 - VisualVM还有一个很大的优点：不需要被监视的程序基于特殊Agent运行，对应用程序的实际性能影响很小，可直接应用在生成环境中；
@@ -452,7 +452,7 @@ Sun官方所定义的Java技术体系包括：
 
 以下的案例大部分来源作者处理过的一些问题，还有小部分是网络上笔记有代表的案例总结。
 
-#### 1.高性能硬件上的程序部署策略
+#### 2.1 高性能硬件上的程序部署策略
 
  问题描述
 
@@ -472,7 +472,7 @@ Sun官方所定义的Java技术体系包括：
 - 另外考虑服务压力主要在磁盘和内存访问，CPU资源敏感度较低，因此改为CMS收集器；
 - 最终服务没有再出现长时间停顿，速度比硬件升级前有较大提升；
 
-#### 2.集群间同步导致的内存溢出
+#### 2.2 集群间同步导致的内存溢出
 
 问题描述
 
@@ -492,7 +492,7 @@ Sun官方所定义的Java技术体系包括：
 - JBossCache版本改进；
 - 程序设计优化，JBossCahce集群缓存同步，不大适合有频繁写操作的情况；
 
-#### 3.堆外内存导致的溢出错误
+#### 2.3 堆外内存导致的溢出错误
 
 问题描述
 
@@ -500,7 +500,7 @@ Sun官方所定义的Java技术体系包括：
 - 为了实现客户端能实时地从服务器端接收考试数据，使用了逆向AJAX技术（也称为Comet或Server Side Push），选用CometD 1.1.1作为服务端推送框架；
 - 测试期间发现服务端不定期抛出内存溢出；加入-XX:+HeapDumpOnOutOfMemoryError后抛出内存溢出时什么问题都没有，采用jstat观察GC并不频繁且GC回收正常；最后在内存溢出后从系统日志发现如下异常堆栈：
 
-![img](https:////upload-images.jianshu.io/upload_images/3709321-b9c0aabb46751b0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![1.png](http://ww1.sinaimg.cn/large/75a4a8eegy1g6sbuukkpvj20rs044jrf.jpg)
 
 堆外内存溢出日志
 
@@ -509,7 +509,7 @@ Sun官方所定义的Java技术体系包括：
 - 在第二章里曾经说过直接内存溢出的场景，垃圾收集时，虚拟机虽然会对直接内存进行回收，但它只能等老年代满了触发Full GC时顺便清理，否则只能等内存溢出时catch住然后调用System.gc()，如果虚拟机还是不听（比如打开了-XX:+DisableExplictGC）则只能看着堆中还有许多空闲内存而溢出；
 - 本案例中的CometD框架正好有大量的NIO操作需要使用直接内存；
 
-#### 4.外部命令导致系统缓慢
+#### 2.4 外部命令导致系统缓慢
 
 问题描述
 
@@ -523,14 +523,14 @@ Sun官方所定义的Java技术体系包括：
 - Java虚拟机在执行这个命令时先克隆一个和当前虚拟机拥有一样环境变量的进程，再用这个新进程去执行外部命令，如果频繁地执行这个操作，系统消耗会很大；
 - 最终修改时改用Java的API去获取这些信息，系统恢复了正常；
 
-#### 5.服务器JVM进程奔溃
+#### 2.5 服务器JVM进程奔溃
 
 问题描述
 
 - 一个基于B/S的MIS系统，硬件为两台2个CPU、8GB内存的HP系统，服务器是WebLogic 9.2（和案例"集群间同步导致的内存溢出"相同的系统）；
 - 正常运行一段时间后发现运行期间频繁出现集群节点的虚拟机进程自动关闭的现象，留下一个hs_err_pid###.log，奔溃前不久都发生大量相同的异常，日志如下所示：
 
-![img](https:////upload-images.jianshu.io/upload_images/3709321-5b7ef2412d6e42e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![2.png](http://ww1.sinaimg.cn/large/75a4a8eegy1g6sbvpi3q8j20rs04w74g.jpg)
 
 JVM进程奔溃日志
 
@@ -541,18 +541,18 @@ JVM进程奔溃日志
 - 由于MIS使用异步方式调用，两边处理速度不对等，导致在等待的线程和Socket连接越来越多，最终在超过虚拟机承受能力后进场奔溃；
 - 解决方法：将异步调用修改为生产者/消费者模型的消息队列处理，系统恢复正常；
 
-#### 6.不恰当数据结构导致内存占用过大
+#### 2.6 不恰当数据结构导致内存占用过大
 
 问题描述
 
 - 有一个后台RPC服务器，使用64位虚拟机，内存配置为-Xms4g -Xmx8g -Xmn1g，使用ParNew + CMS的收集器组合；
 - 平时Minor GC时间约在20毫秒内，但业务需要每10分钟加载一个约80MB的数据文件到内存进行数据分析，这些数据会在内存中形成超过100万个HashMap<Long, Long> Entry，在这段时间里Minor GC会超过500毫秒，这个时间过长，GC日志如下：
 
-![img](https:////upload-images.jianshu.io/upload_images/3709321-8a96d4ecacbd24c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![3.png](http://ww1.sinaimg.cn/large/75a4a8eegy1g6sbw7go2pj20rs0an758.jpg)
 
 不恰当数据结构GC日志1
 
-![img](https:////upload-images.jianshu.io/upload_images/3709321-badd6bda51fc1da6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![img](http://ww1.sinaimg.cn/large/75a4a8eegy1g6sbyo11ezj20rs03it8q.jpg)
 
 不恰当数据结构GC日志2
 
@@ -562,7 +562,7 @@ JVM进程奔溃日志
 - 从GC可以将Survivor空间去掉（加入参数-XX:SurvivorRatio=65536、-XX:MaxTenuringThreshold=0或者-XX:AlwaysTenure），让新生代存活的对象第一次Minor GC后立即进入老年代，等到Major GC再清理。这种方式可以治标，但也有很大的副作用。
 - 另外一种是从程序设计的角度看，HashMap<Long, Long>结构中，只有key和value所存放的两个长整形数据是有效数据，共16B（2 * 8B），而实际耗费的内存位88B（长整形包装为Long对象需要多8B的MarkWord、8B的Klass指针，Map.Entry多了16B的对象头、8B的next字段和4B的int型hash字段、为对齐添加的4B空白填充，另外还有8B的Entry引用），内存空间效率（18%）太低。
 
-#### 7.由Windows虚拟内存导致的长时间停顿
+#### 2.7 由Windows虚拟内存导致的长时间停顿
 
 问题描述
 
@@ -572,7 +572,7 @@ JVM进程奔溃日志
 - 因为是桌面程序，所需内存不大（-Xmx256m），加入参数-XX:+PrintGCApplicationStoppedTime -XX：PrintGCDateStamps -Xloggc:gclog.log后，从日志文件确认是GC导致的，大部分的GC时间在100ms以内，但偶尔会出现一次接近1min的GC；
 - 加入参数-XX：PrintReferenceGC参数查看GC的具体日志信息，发现执行GC动作的时间并不长，但从准备开始GC到真正GC直接却消耗了大部分时间，如下所示：
 
-![img](https:////upload-images.jianshu.io/upload_images/3709321-0d6fc4af795cca2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![5.png](http://ww1.sinaimg.cn/large/75a4a8eegy1g6sbzxhjonj20rs02haa1.jpg)
 
 虚拟内存案例日志
 
@@ -592,7 +592,7 @@ JVM进程奔溃日志
 - 采用ParNew+CMS的垃圾收集器组合；
 - 最终从Eclipse启动耗时15秒到7秒左右， eclipse.ini配置如下：
 
-![img](https:////upload-images.jianshu.io/upload_images/3709321-cbd0c73008e66a1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/957/format/webp)
+![6.png](http://ww1.sinaimg.cn/large/75a4a8eegy1g6sc0mo263j20ql0fk74w.jpg)
 
 Eclipse调优
 
