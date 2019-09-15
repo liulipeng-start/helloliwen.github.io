@@ -98,7 +98,7 @@
 <meta property="og:description" content="Java基础">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/75a4a8eegy1g4vs7qhlihj21400u0gp9.jpg">
-<meta property="og:updated_time" content="2019-07-16T01:44:29.312Z">
+<meta property="og:updated_time" content="2019-09-15T08:23:36.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础">
 <meta name="twitter:description" content="Java基础">
@@ -216,16 +216,6 @@
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
           </a>
         </li>
       
@@ -351,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-16T09:44:29+08:00">
-                2019-07-16
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-15T16:23:36+08:00">
+                2019-09-15
               </time>
             
           </span>
@@ -418,7 +408,13 @@
 
       
         <h2 id="1-JDK-和-JRE-的区别"><a href="#1-JDK-和-JRE-的区别" class="headerlink" title="1.JDK 和 JRE 的区别"></a>1.JDK 和 JRE 的区别</h2><p>JDK：Java Development Kit 的简称，提供了 java 的开发环境和运行环境。JRE：Java Runtime Environment 的简称，提供了java的运行环境。简单来说：如果你需要运行 java 程序，只需安装 JRE 就可以了，如果你需要编写 java 程序，需要安装 JDK。</p>
-<h2 id="2-和-equals-的区别"><a href="#2-和-equals-的区别" class="headerlink" title="2.== 和 equals 的区别"></a>2.== 和 equals 的区别</h2><p>== 对于基本类型来说是<font color="red">值</font>比较，对于引用类型来说比较的是<font color="red">引用</font>；而 equals本质上就是 == ，默认情况下是引用比较，只是很多类重写了 equals 方法。比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。</p>
+<h2 id="2-和-equals-的区别"><a href="#2-和-equals-的区别" class="headerlink" title="2.== 和 equals 的区别"></a>2.== 和 equals 的区别</h2><ul>
+<li><p>==：对于基本类型来说是<font color="red">值</font>比较，对于引用类型来说比较的是<font color="red">引用，即比较堆内存中的地址是否相同</font>。</p>
+</li>
+<li><p>equals()：本质上就是 == ，默认情况下是引用比较，只是很多类重写了 equals 方法，变成了值比较。</p>
+</li>
+</ul>
+<p>String.intern()：当调用 intern 方法时，如果池已经包含一个等于此 String 对象的字符串（用 equals(Object)<br>方法确定），则返回池中的字符串。否则，将此 String 对象添加到池中，并返回此 String 对象的引用。</p>
 <h2 id="3-两个对象的-hashCode-相同，则-equals-也一定为-true，对吗？"><a href="#3-两个对象的-hashCode-相同，则-equals-也一定为-true，对吗？" class="headerlink" title="3.两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？"></a>3.两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？</h2><p>　　不一定！两个对象的 hashCode()相同，equals()不一定 true。</p>
 <p>　　在Java里，equals()和hashCode()都是用来对比两个对象是否相等一致。它们的区别主要体现在性能和可靠性上：重写的equals（）比较全面比较复杂，但是效率低；而利用hashCode()进行对比，只要生成一个hash值进行比较就可以了，效率很高。</p>
 <p>　　equals()相等的两个对象他们的hashCode()肯定相等，也就是用equals()对比是绝对可靠的。hashCode()相等的两个对象他们的equals()不一定相等，也就是hashCode()不是绝对可靠的。一般的地方不需要重写hashCode，只有当类需要放在HashTable、HashMap、HashSet等等hash结构的集合时才会重写hashCode。</p>
@@ -633,7 +629,7 @@
 
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
+              <a href="/">
                 <span class="site-state-item-count">150</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -734,12 +730,6 @@
 
   
 
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i> 总访问量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      次
-    </span>
   
 </div>
 

@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://files.cnblogs.com/yangecnu/Bplustreebuild.gif">
 <meta property="og:image" content="https://images0.cnblogs.com/blog/94031/201403/290050088914733.png">
 <meta property="og:image" content="https://images0.cnblogs.com/blog/94031/201410/312301180197071.png">
-<meta property="og:updated_time" content="2019-09-14T09:24:04.102Z">
+<meta property="og:updated_time" content="2019-09-15T08:00:00.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【查找】七大查找算法">
 <meta name="twitter:description" content="常见的查找算法总结">
@@ -230,16 +230,6 @@
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
           </a>
         </li>
       
@@ -365,8 +355,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-14T17:24:04+08:00">
-                2019-09-14
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-15T16:00:00+08:00">
+                2019-09-15
               </time>
             
           </span>
@@ -545,7 +535,7 @@
 <p>　　对于插入来说，只需要常数次操作即可完成，因为他只需要修改与该节点关联的节点即可，不需要检查其他节点，所以效率和查找类似。下面是2-3查找树的效率：</p>
 <p><a href="https://images0.cnblogs.com/blog/94031/201403/252249087649035.png" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://images0.cnblogs.com/blog/94031/201403/252249104513019.png" alt="analysis of 2-3 tree"></a></p>
 <h3 id="5-3-平衡查找树之红黑树（Red-Black-Tree）"><a href="#5-3-平衡查找树之红黑树（Red-Black-Tree）" class="headerlink" title="5.3 平衡查找树之红黑树（Red-Black Tree）"></a>5.3 平衡查找树之红黑树（Red-Black Tree）</h3><p>　　2-3查找树能保证在插入元素之后能保持树的平衡状态，最坏情况下即所有的子节点都是2-node，树的高度为lgn，从而保证了最坏情况下的时间复杂度。但是2-3树实现起来比较复杂，于是就有了一种简单实现2-3树的数据结构，即红黑树（Red-Black Tree）。</p>
-<p>　　<strong>基本思想：</strong>红黑树的思想就是对2-3查找树进行编码，尤其是对2-3查找树中的3-nodes节点添加额外的信息。红黑树中将节点之间的链接分为两种不同类型，红色链接，他用来链接两个2-nodes节点来表示一个3-nodes节点。黑色链接用来链接普通的2-3节点。特别的，使用红色链接的两个2-nodes来表示一个3-nodes节点，并且向左倾斜，即一个2-node是另一个2-node的左子节点。这种做法的好处是查找的时候不用做任何修改，和普通的二叉查找树相同。</p>
+<p>　　<strong>基本思想：</strong>红黑树的思想就是对2-3查找树进行编码，尤其是对2-3查找树中的3-nodes节点添加额外的信息。红黑树中将节点之间的链接分为两种不同类型，<strong>红色链接</strong>用来链接两个2-nodes节点来表示一个3-nodes节点。<strong>黑色链接</strong>用来链接普通的2-3节点。特别的，使用红色链接的两个2-nodes来表示一个3-nodes节点，并且向左倾斜，即一个2-node是另一个2-node的左子节点。这种做法的好处是查找的时候不用做任何修改，和普通的二叉查找树相同。</p>
 <p><img src="https://images0.cnblogs.com/blog/94031/201403/270024368439888.png" alt="Red black tree"></p>
 <p>　　<strong>红黑树的定义：</strong></p>
 <p>　　红黑树是一种具有红色和黑色链接的平衡查找树，同时满足：</p>
@@ -557,7 +547,7 @@
 <p>　　下图可以看到红黑树其实是2-3树的另外一种表现形式：如果我们将红色的连线水平绘制，那么他链接的两个2-node节点就是2-3树中的一个3-node节点了。</p>
 <p><a href="https://images0.cnblogs.com/blog/94031/201403/270024386864059.png" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://images0.cnblogs.com/blog/94031/201403/270024403113529.png" alt="1-1 correspondence between 2-3 and LLRB"></a></p>
 <p>　　<strong>红黑树的性质</strong>：<strong>整个树完全黑色平衡，即从根节点到所以叶子结点的路径上，黑色链接的个数都相同（2-3树的第2）性质，从根节点到叶子节点的距离都相等）。</strong></p>
-<p>　　<strong>复杂度分析：**</strong>最坏的情况就是，红黑树中除了最左侧路径全部是由3-node节点组成，即红黑相间的路径长度是全黑路径长度的2倍。**</p>
+<p>　　<strong>复杂度分析：</strong>最坏的情况就是，红黑树中除了最左侧路径全部是由3-node节点组成，即红黑相间的路径长度是全黑路径长度的2倍。</p>
 <p>　　下图是一个典型的红黑树，从中可以看到最长的路径(红黑相间的路径)是最短路径的2倍：</p>
 <p><img src="https://images0.cnblogs.com/blog/94031/201403/270027368747653.png" alt="a typic red black tree"></p>
 <p>红黑树的平均高度大约为logn。</p>
@@ -614,7 +604,7 @@
 </ul>
 <p>　　有关B/B+树在数据库索引中的应用，请看张洋的<a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" rel="external nofollow noopener noreferrer" target="_blank">MySQL索引背后的数据结构及算法原理</a>这篇文章，这篇文章对MySQL中的如何使用B+树进行索引有比较详细的介绍，推荐阅读。</p>
 <p>　　<strong>树表查找总结：</strong></p>
-<p>　　二叉查找树平均查找性能不错，为O(logn)，但是最坏情况会退化为O(n)。在二叉查找树的基础上进行优化，我们可以使用平衡查找树。平衡查找树中的2-3查找树，这种数据结构在插入之后能够进行自平衡操作，从而保证了树的高度在一定的范围内进而能够保证最坏情况下的时间复杂度。但是2-3查找树实现起来比较困难，红黑树是2-3树的一种简单高效的实现，他巧妙地使用颜色标记来替代2-3树中比较难处理的3-node节点问题。红黑树是一种比较高效的平衡查找树，应用非常广泛，很多编程语言的内部实现都或多或少的采用了红黑树。</p>
+<p>　　二叉查找树平均查找性能不错，为O(logn)，但是最坏情况会退化为O(n)。在二叉查找树的基础上进行优化，我们可以使用平衡查找树。平衡查找树中的2-3查找树，这种数据结构在插入之后能够进行自平衡操作，从而保证了树的高度在一定的范围内进而能够保证最坏情况下的时间复杂度。但是2-3查找树实现起来比较困难。红黑树是2-3树的一种简单高效的实现，他巧妙地使用颜色标记来替代2-3树中比较难处理的3-node节点问题。红黑树是一种比较高效的平衡查找树，应用非常广泛，很多编程语言的内部实现都或多或少的采用了红黑树。</p>
 <p>　　除此之外，2-3查找树的另一个扩展——B/B+平衡树，在文件系统和数据库系统中有着广泛的应用。</p>
 <h2 id="6-分块查找"><a href="#6-分块查找" class="headerlink" title="6. 分块查找"></a>6. 分块查找</h2><p>　　分块查找又称索引顺序查找，它是顺序查找的一种改进方法。</p>
 <p>　　<strong>算法思想：</strong>将n个数据元素”按块有序”划分为m块（m ≤ n）。每一块中的结点不必有序，但块与块之间必须”按块有序”；即第1块中任一元素的关键字都必须小于第2块中任一元素的关键字；而第2块中任一元素又都必须小于第3块中的任一元素，……</p>
@@ -784,7 +774,7 @@
 
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
+              <a href="/">
                 <span class="site-state-item-count">150</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -885,12 +875,6 @@
 
   
 
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i> 总访问量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      次
-    </span>
   
 </div>
 
