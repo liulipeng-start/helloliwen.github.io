@@ -127,3 +127,9 @@ String.intern()：当调用 intern 方法时，如果池已经包含一个等于
 
 15. RuntimeException：是那些可能在Java虚拟机正常运行期间抛出的异常的超类。
 
+## 13.Java创建对象的方式（四种）
+
+1. 使用new关键字
+2. 反射：Class类的newInstance()方法和Constructor类的newInstance()方法
+3. 克隆
+4. 序列化与反序列化
