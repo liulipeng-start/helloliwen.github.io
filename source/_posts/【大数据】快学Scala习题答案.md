@@ -1,5 +1,5 @@
 ---
-title: 快学Scala习题答案
+##title: 快学Scala习题答案
 categories:
   - 大数据
   - Scala
@@ -1634,4 +1634,226 @@ def fun8(arr:Array[Int],num:Int)={
     arr.grouped(num)
 }
 ~~~
+
+## 附：林子雨《Spark编程基础》Scala容器相关操作
+
+### 1.遍历操作（foreach for）
+
+**List**
+
+~~~scala
+scala> val list = List(1,2,3)
+list: List[Int] = List(1, 2, 3)
+
+scala> val f=(i:Int)=>println(i)
+f: Int => Unit = <function1>
+
+scala> list foreach f
+scala> list foreach(i=>println(i))
+scala> list foreach println
+1
+2
+3
+for(i<-list) println(i)
+~~~
+
+**Map**
+
+~~~scala
+map foreach{kv => println(kv._1+":"+kv._2)}
+map foreach{case (k,v) => println(k+":"+v)}
+map foreach{x=>x match {case (k,v) => println(k+":"+v)}
+for(kv <- map) println(kv._1+":"+kv._2)
+for((k,v) <= map) println(k+":"+v)
+~~~
+
+### 2.映射操作（map flatMap）
+
+**map：将某个函数应用到集合中的每个元素，映射得到一个新元素**
+
+~~~scala
+scala> val books = List("Hadoop","Hive","HDFS")
+books: List[String] = List(Hadoop, Hive, HDFS)
+
+scala> books.map(s => s.toUpperCase)
+res7: List[String] = List(HADOOP, HIVE, HDFS)
+
+scala> books.map(s => s.length)
+res8: List[Int] = List(6, 4, 4)
+~~~
+
+**flatMap：将某个函数应用到容器中的元素时，对每个元素都会返回一个容器（而不是一个元素），然后flatMap把生成的多个容器“拍扁”成为一个容器并返回。**
+
+~~~scala
+scala> books.flatMap(s => s.toList)  //toList,toSet,toMap
+res9: List[Char] = List(H, a, d, o, o, p, H, i, v, e, H, D, F, S)
+~~~
+
+### 3.过滤操作（filter filterNot exists find）
+
+**filter：遍历一个容器，从中获取满足指定条件的元素，返回一个新的容器。**
+
+~~~scala
+scala> val map = Map(1 -> 1,2 -> 2)
+scala> map filter {kv => kv._2 < 2}
+res15: scala.collection.immutable.Map[Int,Int] = Map(1 -> 1)
+~~~
+
+**exists**
+
+~~~scala
+scala> books exists {_ startsWith "H"}
+res17: Boolean = true
+~~~
+
+**find**
+
+~~~scala
+scala> books find {_ startsWith "H"}
+res18: Option[String] = Some(Hadoop)
+~~~
+
+### 4.规约操作（reduce reduceLeft reduceRight fold foldLeft foldRight）
+
+**reduce：规约操作是对容器的元素进行两两运算，将其“规约”为一个值。**
+
+~~~scala
+scala> list
+res19: List[Int] = List(1, 2, 3)
+
+scala> list.reduce(_ + _)
+res20: Int = 6
+
+scala> list map (_.toString) reduce ((x,y) => s"f($x,$y)")
+res22: String = f(f(1,2),3) //f表示传入reduce的二元函数
+~~~
+
+**reduceLeft：保证遍历顺序，第一个参数表示累计值**
+
+~~~scala
+scala> val list = List(1,2,3,4,5)
+list: List[Int] = List(1, 2, 3, 4, 5)
+
+scala> list reduceLeft(_ - _)
+res23: Int = -13
+
+scala> val s = list map (_.toString)	//将整型列表转换成字符串列表
+s: List[String] = List(1, 2, 3, 4, 5)
+
+scala> s reduceLeft {(accu,x)=>s"($accu-$x)"}
+res24: String = ((((1-2)-3)-4)-5)
+~~~
+
+**reduceRight：保证遍历顺序，第二个参数表示累计值**
+
+~~~scala
+scala> list reduceRight (_ - _)
+res26: Int = 3
+
+scala> s reduceRight {(x,accu)=>s"($x-$accu)"}
+res28: String = (1-(2-(3-(4-5))))
+~~~
+
+**fold：与reduce方法非常类似，是一个双参数列表的函数，第一个参数列表接受一个规约的初始值，第二个参数列表接受与reduce中一样的的二元函数参数。reduce是从容器的两个元素开始规约，而fold则是从提供的初始值开始规约。**
+
+~~~scala
+scala> list
+res29: List[Int] = List(1, 2, 3, 4, 5)
+
+scala> list.fold(10)(_ * _)
+res30: Int = 1200
+
+scala> (list fold 10)(_ * _)	//fold的中缀调用写法
+
+scala> (list foldLeft 10)(_ - _)	//计算顺序(((((10-1)-2)-3)-4)-5)
+res32: Int = -5
+
+scala> (list foldRight 10)(_ - _)	//计算顺序(1-(2-(3-(4-(5-10)))))
+res33: Int = -7
+~~~
+
+对空容器fold的结果为初始值，对空容器调用reduce会报错。
+
+reduce操作总是返回于容器元素相同类型的结果，但是fold操作可以输出与容器元素类型完全不同类型的值，甚至是一个新容器。
+
+~~~scala
+//fold实现类似map的功能
+scala> val list = List(1,2,3,4,5)
+list: List[Int] = List(1, 2, 3, 4, 5)
+
+scala> (list foldRight List.empty[Int]){(x,accu)=>x*2::accu}
+res1: List[Int] = List(2, 4, 6, 8, 10)
+
+scala> list map {_*2}
+res2: List[Int] = List(2, 4, 6, 8, 10)
+~~~
+
+### 5.拆分操作（partition groupBy grouped sliding）
+
+拆分操作是把一个容器里的元素按一定规则分割成多个子容器。
+
+**partition：接受一个布尔函数，用该函数对容器元素进行遍历，以二元组的形式返回满足条件和不满足条件的两个C[T]类型的集合。**
+
+~~~scala
+scala> val list = List(1,2,3,4,5)
+
+scala> list.partition(_<3)
+res3: (List[Int], List[Int]) = (List(1, 2),List(3, 4, 5))
+~~~
+
+**groupBy：接受一个返回U类型的函数，用该函数对容器元素进行遍历，将返回值相同的元素作为一个子容器，并与该相同的值构成一个键值对，最后返回的是一个类型为Map[U,C[T]]的映射。**
+
+~~~scala
+scala> val gby = list.groupBy(x=>x%3)	//按被3整除的余数进行划分
+gby: scala.collection.immutable.Map[Int,List[Int]] = Map(2 -> List(2, 5), 1 -> List(1, 4), 0 -> List(3))
+
+scala> gby(2)	//获取键值为2（余数为2）的子容器
+res4: List[Int] = List(2, 5)
+~~~
+
+**grouped和sliding方法都接受一个整型参数n，两个方法都将容器拆分为多个与原容器类型相同的子容器，并返回由这些子容器构成的迭代器，即Iterator[C[T]]。**
+
+**grouped按从左到右的方式将容器划分为多个大小为n的子容器（最后一个的大小可能小于n）。**
+
+**sliding使用一个长度为n的滑动窗口，从左到右将容器截取为多个大小为n的子容器。**
+
+~~~scala
+scala> list.grouped(3)	//拆分大小为3的子容器
+res5: Iterator[List[Int]] = non-empty iterator
+
+scala> res5.next	//第一个容器
+res6: List[Int] = List(1, 2, 3)
+
+scala> res5.next	//第二个容器
+res7: List[Int] = List(4, 5)
+
+scala> res5.hasNext	//已经迭代完
+res8: Boolean = false
+~~~
+
+~~~scala
+scala> list.sliding(3)	//滑动拆分大小为3的子容器
+res9: Iterator[List[Int]] = non-empty iterator
+
+scala> res9.next	//第一个容器
+res10: List[Int] = List(1, 2, 3)
+
+scala> res9.next	//第二个容器
+res11: List[Int] = List(2, 3, 4)
+
+scala> res9.next	//第三个容器
+res12: List[Int] = List(3, 4, 5)
+
+scala> res9.next	//下一个元素空，迭代报错
+java.util.NoSuchElementException: next on empty iterator
+  at scala.collection.Iterator$GroupedIterator.next(Iterator.scala:1138)
+  at scala.collection.Iterator$GroupedIterator.next(Iterator.scala:1019)
+  at scala.collection.Iterator$$anon$11.next(Iterator.scala:409)
+  ... 32 elided
+
+scala> res9.hasNext	//迭代器已经遍历完
+res14: Boolean = false
+~~~
+
+
 

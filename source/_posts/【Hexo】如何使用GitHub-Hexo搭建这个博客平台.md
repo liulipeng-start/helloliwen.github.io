@@ -117,9 +117,7 @@ $ git config --global user.name "yourName"
 $ git config --global user.email "your_email@example.com"
 ```
 
-注意：引号内请输入你自己设置的名字，和你自己的邮箱。此用户名和邮箱是git提交代码时用来显示你身份和联
-
-系方式的，并不是github用户名和邮箱。
+注意：引号内请输入你自己设置的名字，和你自己的邮箱。此用户名和邮箱是git提交代码时用来显示你身份和联系方式的，并不是github用户名和邮箱。
 
 **git使用ssh密钥**
 
@@ -127,9 +125,7 @@ $ git config --global user.email "your_email@example.com"
 
 （1）生成密钥对
 
-　　大多数 Git 服务器都会选择使用 SSH 公钥来进行授权，SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。
-
-首先需要检查你电脑是否已经有 SSH key 
+　　大多数 Git 服务器都会选择使用 SSH 公钥来进行授权，SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。首先需要检查你电脑是否已经有 SSH key 
 
 　　运行 git Bash 客户端，输入如下命令，看一下有没有id_rsa和id_rsa.pub(或者是id_dsa和id_dsa.pub之类成对的文件)，有 .pub 后缀的文件就是公钥，另一个文件则是密钥。假如没有这些文件，甚至连 .ssh 目录都没有，可以用 ssh-keygen 来创建。
 
@@ -191,6 +187,171 @@ git remote set-url origin git@github.com:someaccount/someproject.git
 然后你可以再用命令 git remote -v 查看一下，url是否已经变成了ssh地址。
 
 然后你就可以愉快的使用git fetch, git pull , git push，再也不用输入烦人的密码了。
+
+[让git push命令不再每次都输入密码 ssh配置_已迁移](https://my.oschina.net/Majw/blog/750049)
+
+[保存、删除、编辑已记住的 Git 账号和密码](https://alvinwp.com/common-sense/1887)
+
+**记录一次困恼一天的问题：**
+
+~~~shell
+$ ssh -vT git@github.com
+OpenSSH_7.7p1, OpenSSL 1.0.2o  27 Mar 2018
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: Connecting to github.com [43.240.146.45] port 22.
+debug1: Connection established.
+debug1: identity file /c/Users/liwen/.ssh/id_rsa type 0
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_rsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_dsa type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_dsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_ecdsa type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_ecdsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_ed25519 type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_ed25519-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_xmss type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /c/Users/liwen/.ssh/id_xmss-cert type -1
+debug1: Local version string SSH-2.0-OpenSSH_7.7
+debug1: Remote protocol version 2.0, remote software version OpenSSH_7.4
+debug1: match: OpenSSH_7.4 pat OpenSSH* compat 0x04000000
+debug1: Authenticating to github.com:22 as 'git'
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: algorithm: curve25519-sha256
+debug1: kex: host key algorithm: ecdsa-sha2-nistp256
+debug1: kex: server->client cipher: aes128-ctr MAC: umac-64-etm@openssh.com compression: none
+debug1: kex: client->server cipher: aes128-ctr MAC: umac-64-etm@openssh.com compression: none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ecdsa-sha2-nistp256 
+SHA256:***
+debug1: Host 'github.com' is known and matches the ECDSA host key.
+debug1: Found key in /c/Users/liwen/.ssh/known_hosts:1
+debug1: rekey after 4294967296 blocks
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: rekey after 4294967296 blocks
+debug1: SSH2_MSG_EXT_INFO received
+debug1: kex_input_ext_info: server-sig-algs=<rsa-sha2-256,rsa-sha2-512>
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+debug1: Next authentication method: publickey
+debug1: Offering public key: RSA  ***
+/c/Users/liwen/.ssh/id_rsa
+debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+debug1: Trying private key: /c/Users/liwen/.ssh/id_dsa
+debug1: Trying private key: /c/Users/liwen/.ssh/id_ecdsa
+debug1: Trying private key: /c/Users/liwen/.ssh/id_ed25519
+debug1: Trying private key: /c/Users/liwen/.ssh/id_xmss
+debug1: Next authentication method: password
+git@github.com's password:
+~~~
+
+无论删除.ssh/文件夹，然后重新添加公钥到github，都需要输入密码。可是生成ssh文件的时候没有输入密码的。所以碰到这个问题不知道哪里出了问题，只能去谷歌找答案。但是大部分都是Linux免秘钥登录，出现的问题解决方案都是.ssh/文件夹和authorized_keys文件权限不对，但是windows文件夹没有600或者700权限这一说！或者教你如何ssh登录github，步骤大同小异。还是无法解决问题。而且这几天github国内网络无法直接访问，不知道和这个有没有关系。最后怀疑可能github缓存导致，过几天再看吧！
+
+[After uploading ssh pub key, git still ask for password]( https://www.drupal.org/project/git_dev/issues/1164232 )
+
+几天之后，突然发现github.com可以正常访问了！测试：
+
+~~~shell
+C:\Users\liwen>ssh -T git@github.com
+The authenticity of host 'github.com (52.74.223.119)' can't be established.
+RSA key fingerprint is ***
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,52.74.223.119' (RSA) to the list of known hosts.
+Hi helloliwen! You've successfully authenticated, but GitHub does not provide shell access.
+~~~
+
+之前ping github.com的时候，域名为43.240.146.45，来自深圳。今天是：
+
+~~~shell
+C:\Users\liwen>ping github.com
+
+正在 Ping github.com [13.250.177.223] 具有 32 字节的数据:
+请求超时。
+请求超时。
+请求超时。
+请求超时。
+
+13.250.177.223 的 Ping 统计信息:
+    数据包: 已发送 = 4，已接收 = 0，丢失 = 4 (100% 丢失)，
+~~~
+
+什么都没做，问题解决！
+
+~~~shell
+C:\Users\liwen>ssh -vT git@github.com
+OpenSSH_for_Windows_7.7p1, LibreSSL 2.6.5
+debug1: Connecting to github.com [13.250.177.223] port 22.
+debug1: Connection established.
+debug1: identity file C:\\Users\\liwen/.ssh/id_rsa type 0
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_rsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_dsa type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_dsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_ecdsa type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_ecdsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_ed25519 type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_ed25519-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_xmss type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file C:\\Users\\liwen/.ssh/id_xmss-cert type -1
+debug1: Local version string SSH-2.0-OpenSSH_for_Windows_7.7
+debug1: Remote protocol version 2.0, remote software version babeld-2e9d163d
+debug1: no match: babeld-2e9d163d
+debug1: Authenticating to github.com:22 as 'git'
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: algorithm: curve25519-sha256
+debug1: kex: host key algorithm: rsa-sha2-512
+debug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ssh-rsa 
+SHA256:***
+debug1: Host 'github.com' is known and matches the RSA host key.
+debug1: Found key in C:\\Users\\liwen/.ssh/known_hosts:1
+Warning: Permanently added the RSA host key for IP address '13.250.177.223' to the list of known hosts.
+debug1: rekey after 134217728 blocks
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: rekey after 134217728 blocks
+debug1: pubkey_prepare: ssh_get_authentication_socket: No such file or directory
+debug1: SSH2_MSG_EXT_INFO received
+debug1: kex_input_ext_info: server-sig-algs=<ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-rsa,rsa-sha2-512,rsa-sha2-256,ssh-dss>
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey
+debug1: Next authentication method: publickey
+debug1: Offering public key: RSA ***
+C:\\Users\\liwen/.ssh/id_rsa
+debug1: Server accepts key: pkalg ssh-rsa blen 279
+debug1: Authentication succeeded (publickey).
+Authenticated to github.com ([13.250.177.223]:22).
+debug1: channel 0: new [client-session]
+debug1: Entering interactive session.
+debug1: pledge: network
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+Hi helloliwen! You've successfully authenticated, but GitHub does not provide shell access.
+debug1: channel 0: free: client-session, nchannels 1
+Transferred: sent 2560, received 2228 bytes, in 0.6 seconds
+2
+~~~
 
 #### 4.创建仓库
 
