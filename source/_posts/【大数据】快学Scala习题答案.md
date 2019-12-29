@@ -1,9 +1,9 @@
 ---
-##title: 快学Scala习题答案
+title: 快学Scala习题答案
 categories:
   - 大数据
   - Scala
-description: 快学Scala习题答案
+description: 快学Scala习题答案及容器相关操作
 abbrlink: 1eb3eaf9
 date: 2019-10-31 20:57:33
 tags:
@@ -1853,6 +1853,42 @@ java.util.NoSuchElementException: next on empty iterator
 
 scala> res9.hasNext	//迭代器已经遍历完
 res14: Boolean = false
+~~~
+
+### 6.函数式编程实例（单词统计）
+
+~~~scala
+import java.io.{File, PrintWriter}
+
+import scala.io.Source
+import collection.mutable.Map
+
+object WordCount {
+	def main(args:Array[String]){
+		val dirFile = new File("F:/logs")
+		val files = dirFile.listFiles()
+        //可变的空的映射(Map)对象，保存统计结果。key是单词，value是次数
+		val results = Map.empty[String,Int] 
+		for (file <- files){    //处理文件
+          val data = Source.fromFile(file)("GBK")
+          //getLines方法返回文件各行构成的迭代器对象，类型为Iterator[String]
+          //flatMap将每一行字符串拆分成单词，再返回所有单词构成的新迭代器
+          val strs = data.getLines().flatMap(line => line.split(" "))
+          strs foreach { word =>
+            if(results.contains(word))
+              results(word)+=1
+            else
+              results(word) = 1
+          }
+        }
+        //输出文件
+        val writer = new PrintWriter("F:/results.txt");
+        writer.write(results.toString())
+        writer.close()
+        //打印控制台
+        results foreach {case (k,v) => {println(s"$k:$v")}}
+	}
+}
 ~~~
 
 
