@@ -119,11 +119,11 @@ import scala.io.Source
 import collection.mutable.Map
 
 object WordCount {
-	def main(args:Array[String]){
-		val dirFile = new File("F:/logs")
-		val files = dirFile.listFiles()
-		val results = Map.empty[String,Int] //可变的空的映射(Map)对象，保存统计结果。key是单词，value是次数
-		for (file <- files){    //处理文件
+  def main(args:Array[String]){
+	val dirFile = new File("F:/logs")
+	val files = dirFile.listFiles()
+	val results = Map.empty[String,Int] //可变的空的映射(Map)对象，保存统计结果。key是单词，value是次数
+	for (file <- files){    //处理文件
       val data = Source.fromFile(file)("GBK")
       //getLines方法返回文件各行构成的迭代器对象，类型为Iterator[String]
       //flatMap将每一行字符串拆分成单词，再返回所有单词构成的新迭代器
@@ -141,7 +141,7 @@ object WordCount {
     writer.close()
     //打印控制台
     results foreach {case (k,v) => {println(s"$k:$v")}}
-	}
+  }
 }
 ~~~
 
