@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="日拱一卒 不期速成">
 <meta property="og:description" content="1.两数之和。主题：数组、Hash Table。难度：容易。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-14T09:29:48.744Z">
+<meta property="og:updated_time" content="2020-07-22T14:30:55.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】1.Two Sum">
 <meta name="twitter:description" content="1.两数之和。主题：数组、Hash Table。难度：容易。">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-14T17:29:48+08:00">
-                2019-09-14
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-22T22:30:55+08:00">
+                2020-07-22
               </time>
             
           </span>
@@ -430,6 +430,8 @@
 <p>时间复杂度：O(n<sup>2</sup>)</p>
 <h3 id="算法改进"><a href="#算法改进" class="headerlink" title="算法改进"></a>算法改进</h3><p>　　一般来说，我们为了提高时间的复杂度，需要用空间来换，这算是一个 trade off 吧。我们只想用线性的时间复杂度来解决问题，那么就是说只能遍历一个数字，那么另一个数字呢？我们可以事先将其存储起来，使用一个 HashMap，来建立数字和其坐标位置之间的映射。我们都知道 HashMap 是常数级的查找效率，这样，我们在遍历数组的时候，用 target 减去遍历到的数字，就是另一个需要的数字了，直接在 HashMap 中查找其是否存在即可。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum2(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] results = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(target-nums[i]))&#123;</span><br><span class="line">            results[<span class="number">0</span>] = map.get(target-nums[i]);</span><br><span class="line">            results[<span class="number">1</span>] = i;</span><br><span class="line">            <span class="keyword">return</span> results;</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Scala版：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span></span>(nums: <span class="type">Array</span>[<span class="type">Int</span>], target: <span class="type">Int</span>): <span class="type">Array</span>[<span class="type">Int</span>] = &#123;</span><br><span class="line">    nums.zipWithIndex.foldLeft(<span class="type">Map</span>.empty[<span class="type">Int</span>,<span class="type">Int</span>])((m,x)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(m.get(target - x._1)==<span class="type">None</span>)</span><br><span class="line">        m+(x._1 -&gt; x._2)</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="type">Array</span>(m.getOrElse(target-x._1, <span class="number">-1</span>), x._2)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参考：</p>
 <p><a href="https://www.cnblogs.com/grandyang/p/4606334.html" rel="external nofollow noopener noreferrer" target="_blank">LeetCode All in One 题目讲解汇总(持续更新中…)</a></p>
 <center><font style="font-weight:bold">（完）</font></center>
@@ -671,7 +673,19 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
 
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
   
 </div>
 
@@ -1124,6 +1138,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
