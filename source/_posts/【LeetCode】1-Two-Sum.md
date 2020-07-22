@@ -74,6 +74,20 @@ public static int[] twoSum2(int[] nums, int target) {
 }
 ~~~
 
+Scala版：
+
+~~~scala
+def twoSum(nums: Array[Int], target: Int): Array[Int] = {
+    nums.zipWithIndex.foldLeft(Map.empty[Int,Int])((m,x)=>{
+        if(m.get(target - x._1)==None)
+        m+(x._1 -> x._2)
+        else
+        return Array(m.getOrElse(target-x._1, -1), x._2)
+    })
+    null
+}
+~~~
+
 参考：
 
 [LeetCode All in One 题目讲解汇总(持续更新中...)](https://www.cnblogs.com/grandyang/p/4606334.html)
