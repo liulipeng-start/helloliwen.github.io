@@ -88,9 +88,11 @@ service nptd start
 
 #### 3.1 相关下载
 
-[1.Cloudera Manager下载地址](http://archive.cloudera.com/cm5/cm/5/)
+[1.Cloudera Manager下载地址]
+(http://archive.cloudera.com/cm5/cm/5/)
 
 [2.Cloudera Manager的安装包和pacels下载链接](https://blog.csdn.net/high2011/article/details/52884997)
+http://archive.cloudera.com/cdh5/parcels/5.16.2/
 
 CDH-5.16.2-1.cdh5.16.2.p0.8-el7.parcel
 
